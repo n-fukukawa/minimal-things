@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "931FA28E-97C7-4260-B93E-6023DB18B94D",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:MinimalThings.xcodeproj",
+      "identifier" : "552ACBEE2D44CE490055BA9A",
+      "name" : "MinimalThings"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:MinimalThings.xcodeproj",
+        "identifier" : "552ACC002D44CE4B0055BA9A",
+        "name" : "MinimalThingsTests"
+      }
+    },
+    {
+      "enabled" : false,
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:MinimalThings.xcodeproj",
+        "identifier" : "552ACC0A2D44CE4B0055BA9A",
+        "name" : "MinimalThingsUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

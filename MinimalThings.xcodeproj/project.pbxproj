@@ -46,6 +46,7 @@
 		552ACC0B2D44CE4B0055BA9A /* MinimalThingsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MinimalThingsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		552ACC0F2D44CE4B0055BA9A /* MinimalThingsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalThingsUITests.swift; sourceTree = "<group>"; };
 		552ACC112D44CE4B0055BA9A /* MinimalThingsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalThingsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		552ACC1E2D44CF250055BA9A /* MinimalThings.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MinimalThings.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +77,7 @@
 		552ACBE62D44CE490055BA9A = {
 			isa = PBXGroup;
 			children = (
+				552ACC1E2D44CF250055BA9A /* MinimalThings.xctestplan */,
 				552ACBF12D44CE490055BA9A /* MinimalThings */,
 				552ACC042D44CE4B0055BA9A /* MinimalThingsTests */,
 				552ACC0E2D44CE4B0055BA9A /* MinimalThingsUITests */,
