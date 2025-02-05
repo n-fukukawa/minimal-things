@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		552ACBF32D44CE490055BA9A /* MinimalThingsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552ACBF22D44CE490055BA9A /* MinimalThingsApp.swift */; };
 		552ACBF52D44CE490055BA9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552ACBF42D44CE490055BA9A /* ContentView.swift */; };
-		552ACBF72D44CE490055BA9A /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552ACBF62D44CE490055BA9A /* Item.swift */; };
 		552ACBF92D44CE4A0055BA9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 552ACBF82D44CE4A0055BA9A /* Assets.xcassets */; };
 		552ACBFC2D44CE4A0055BA9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 552ACBFB2D44CE4A0055BA9A /* Preview Assets.xcassets */; };
 		552ACC062D44CE4B0055BA9A /* MinimalThingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552ACC052D44CE4B0055BA9A /* MinimalThingsTests.swift */; };
 		552ACC102D44CE4B0055BA9A /* MinimalThingsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552ACC0F2D44CE4B0055BA9A /* MinimalThingsUITests.swift */; };
 		552ACC122D44CE4B0055BA9A /* MinimalThingsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552ACC112D44CE4B0055BA9A /* MinimalThingsUITestsLaunchTests.swift */; };
+		5532DE382D52D0030079E80B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5532DE372D52D0030079E80B /* Item.swift */; };
+		5532DE3A2D541C770079E80B /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5532DE392D541C770079E80B /* ItemCategory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,6 @@
 		552ACBEF2D44CE490055BA9A /* MinimalThings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinimalThings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		552ACBF22D44CE490055BA9A /* MinimalThingsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalThingsApp.swift; sourceTree = "<group>"; };
 		552ACBF42D44CE490055BA9A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		552ACBF62D44CE490055BA9A /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		552ACBF82D44CE4A0055BA9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		552ACBFB2D44CE4A0055BA9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		552ACC012D44CE4B0055BA9A /* MinimalThingsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MinimalThingsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +47,8 @@
 		552ACC0F2D44CE4B0055BA9A /* MinimalThingsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalThingsUITests.swift; sourceTree = "<group>"; };
 		552ACC112D44CE4B0055BA9A /* MinimalThingsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalThingsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		552ACC1E2D44CF250055BA9A /* MinimalThings.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MinimalThings.xctestplan; sourceTree = "<group>"; };
+		5532DE372D52D0030079E80B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		5532DE392D541C770079E80B /* ItemCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,9 +100,9 @@
 		552ACBF12D44CE490055BA9A /* MinimalThings */ = {
 			isa = PBXGroup;
 			children = (
+				5532DE362D52CFD80079E80B /* Model */,
 				552ACBF22D44CE490055BA9A /* MinimalThingsApp.swift */,
 				552ACBF42D44CE490055BA9A /* ContentView.swift */,
-				552ACBF62D44CE490055BA9A /* Item.swift */,
 				552ACBF82D44CE4A0055BA9A /* Assets.xcassets */,
 				552ACBFA2D44CE4A0055BA9A /* Preview Content */,
 			);
@@ -130,6 +132,15 @@
 				552ACC112D44CE4B0055BA9A /* MinimalThingsUITestsLaunchTests.swift */,
 			);
 			path = MinimalThingsUITests;
+			sourceTree = "<group>";
+		};
+		5532DE362D52CFD80079E80B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5532DE372D52D0030079E80B /* Item.swift */,
+				5532DE392D541C770079E80B /* ItemCategory.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,7 +274,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				552ACBF52D44CE490055BA9A /* ContentView.swift in Sources */,
-				552ACBF72D44CE490055BA9A /* Item.swift in Sources */,
+				5532DE3A2D541C770079E80B /* ItemCategory.swift in Sources */,
+				5532DE382D52D0030079E80B /* Item.swift in Sources */,
 				552ACBF32D44CE490055BA9A /* MinimalThingsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
