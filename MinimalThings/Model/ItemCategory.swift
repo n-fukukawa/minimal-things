@@ -9,11 +9,11 @@ import SwiftData
 
 @Model
 final class ItemCategory {
-    @Attribute(.unique) var name: String
-    @Relationship(deleteRule: .nullify, inverse: \Item.category) 
-    var items = [Item]()
-    
-    init(name: String) {
-        self.name = name
-    }
+  @Attribute(.unique) var name: String
+  @Relationship(deleteRule: .nullify, inverse: \Item.category)
+  var items = [Item]()
+  
+  init(name: String) {
+    self.name = name
+  }
 }
