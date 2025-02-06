@@ -14,11 +14,11 @@ struct MyItemList: View {
   
   @State private var searchText: String = ""
   
-  var gridItems = [GridItem(.adaptive(minimum: 100, maximum: 160))]
+  var gridItems = [GridItem(.adaptive(minimum: 100, maximum: 180))]
   
   var body: some View {
     ScrollView {
-      LazyVGrid(columns: gridItems, spacing: 5) {
+      LazyVGrid(columns: gridItems, spacing: 10) {
         ForEach(items) { item in
           NavigationLink(value: item) {
             MyItemCard(item: item)

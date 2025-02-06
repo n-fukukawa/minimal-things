@@ -14,6 +14,8 @@ struct MyItemCard: View {
     Image("turtlerock")
       .resizable()
       .aspectRatio(contentMode: .fill)
+      .cornerRadius(10)
+      
   }
 }
 
