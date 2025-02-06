@@ -12,7 +12,10 @@ struct ContentView: View {
   var body: some View {
     TabView {
       MyItemView()
-        .tabItem { /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Item Label@*/Text("Label")/*@END_MENU_TOKEN@*/ }
+        .tabItem {
+          Image(systemName: "house")
+          Text("ホーム")
+        }
     }
   }
 }
