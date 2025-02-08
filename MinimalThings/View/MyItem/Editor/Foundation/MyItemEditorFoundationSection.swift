@@ -12,7 +12,7 @@ struct MyItemEditorFoundationSection: View {
   @Query private var categories: [ItemCategory]
   @Binding var name: String
   @Binding var category: ItemCategory?
-  
+  @Binding var memo: String
   
   var body: some View {
     
@@ -34,6 +34,18 @@ struct MyItemEditorFoundationSection: View {
           }
         }
         .pickerStyle(.menu)
+        
+      }
+      
+      VStack(alignment: .leading, spacing: 5) {
+        Text("メモ")
+          .font(.subheadline)
+        TextEditor(text: $memo)
+          .multilineTextAlignment(.leading)
+          .lineSpacing(5)
+          .border(Color(UIColor.systemGray5), width: 1)
+          .frame(height: 120)
+          .padding(8)
       }
     }
   }
@@ -42,6 +54,7 @@ struct MyItemEditorFoundationSection: View {
 #Preview {
   MyItemEditorFoundationSection(
     name: .constant("name"),
-    category: .constant(nil)
+    category: .constant(nil),
+    memo: .constant("")
   )
 }

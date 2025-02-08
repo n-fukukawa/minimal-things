@@ -12,7 +12,7 @@ struct MyItemDetail: View {
   
   var body: some View {
     GeometryReader { geometry in
-      VStack {
+      VStack(alignment: .leading) {
         if item.images.count > 0,
            let uiImage = UIImage(data: item.images[0])
         {
@@ -23,6 +23,7 @@ struct MyItemDetail: View {
         }
         
         Text(item.name)
+        Text(item.memo ?? "").lineLimit(nil)
         Text(item.category?.name ?? "").font(.caption)
         
         Spacer()
