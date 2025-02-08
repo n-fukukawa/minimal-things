@@ -11,13 +11,15 @@ struct MyItemEditorDetailSection: View {
   @FocusState.Binding var focused: Bool
   @Binding var brand: String
   @Binding var size: String
+  @Binding var weightInput: String
+  @Binding var weightUnit: Item.WeightUnit
   
   @State private var isExpanded: Bool = false
   
     var body: some View {
       DisclosureGroup("詳細", isExpanded: $isExpanded) {
         
-        VStack(spacing: 15) {
+        VStack(alignment: .leading, spacing: 15) {
           VStack(alignment: .leading, spacing: 5) {
             Text("メーカー／ブランド")
               .font(.subheadline)
@@ -34,6 +36,27 @@ struct MyItemEditorDetailSection: View {
               .focused($focused)
               .textFieldStyle(.roundedBorder)
           }
+          
+          VStack(alignment: .leading, spacing: 5) {
+            Text("重さ")
+              .font(.subheadline)
+            
+            HStack {
+              TextField("例）380", text: $weightInput)
+                .focused($focused)
+                .keyboardType(.decimalPad)
+                .textFieldStyle(.roundedBorder)
+              
+              Picker("", selection: $weightUnit) {
+                ForEach(Item.WeightUnit.allCases, id: \.self) { weightUnit in
+                  Text(weightUnit.rawValue).tag(weightUnit as Item.WeightUnit)
+                }
+              }
+              .pickerStyle(.segmented)
+            }
+            .frame(maxWidth: 240)
+
+          }
         }
         .padding(.vertical)
       }
@@ -44,6 +67,8 @@ struct MyItemEditorDetailSection: View {
     MyItemEditorDetailSection(
       focused: FocusState<Bool>().projectedValue,
       brand: .constant(""),
-      size: .constant("")
+      size: .constant(""),
+      weightInput: .constant(""),
+      weightUnit: .constant(Item.WeightUnit.g)
     )
 }

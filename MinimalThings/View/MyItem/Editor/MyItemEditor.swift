@@ -24,6 +24,8 @@ struct MyItemEditor: View {
   
   @State private var brand: String = ""
   @State private var size: String = ""
+  @State private var weightInput: String = ""
+  @State private var weightUnit: Item.WeightUnit = Item.WeightUnit.g
   
   var body: some View {
     VStack {
@@ -46,43 +48,34 @@ struct MyItemEditor: View {
             MyItemEditorDetailSection(
               focused: $focused,
               brand: $brand,
-              size: $size
+              size: $size,
+              weightInput: $weightInput,
+              weightUnit: $weightUnit
             )
           }
         }
       }
       
-      if !focused {
-        Button {
-          if let item {
-            // 編集処理
-            item.images = selectedPhotoData.map({ $0.data })
-            item.name = name
-            item.category = category
-            item.memo = memo
-            item.brand = brand
-          } else {
-            // 新規作成
-            let newItem = Item(name: name, status: .owned)
-            newItem.images = selectedPhotoData.map({ $0.data })
-            newItem.category = category
-            newItem.memo = memo.isEmpty ? nil : memo
-            newItem.brand = brand.isEmpty ? nil : brand
-            modelContext.insert(newItem)
-          }
-          dismissAction()
-        } label: {
-          Text("追加")
-            .font(.title2)
-            .frame(maxWidth: .infinity)
-            .padding(10)
-            .foregroundStyle(.white)
-            .background(
-              RoundedRectangle(cornerRadius: 5)
-                .fill(.primaryFill)
-            )
+      
+      Button {
+        if let item {
+          updateItem(item: item)
+        } else {
+          insertItem()
+        }
+        dismissAction()
+      } label: {
+        Text("追加")
+          .font(.title2)
+          .frame(maxWidth: .infinity)
+          .padding(10)
+          .foregroundStyle(.white)
+          .background(
+            RoundedRectangle(cornerRadius: 5)
+              .fill(.primaryFill)
+          )
       }
-      }
+      
     }
     .padding()
     .toolbar {
@@ -95,17 +88,59 @@ struct MyItemEditor: View {
     }
     .onAppear {
       if let item {
-        item.images.forEach({ imageData in
-          let photoData = PhotoData(id: UUID().uuidString, stored: true, fixed: true, data: imageData)
-          selectedPhotoData.append(photoData)
-        })
-        name = item.name
-        category = item.category
-        memo = item.memo ?? ""
-        brand = item.brand ?? ""
+        setDefaultValues(item: item)
       }
     }
   }
+  
+  // 初期値設定
+  private func setDefaultValues(item: Item) {
+    item.images.forEach({ imageData in
+      let photoData = PhotoData(id: UUID().uuidString, stored: true, fixed: true, data: imageData)
+      selectedPhotoData.append(photoData)
+    })
+    name = item.name
+    category = item.category
+    memo = item.memo ?? ""
+    brand = item.brand ?? ""
+    
+  }
+  
+  // 編集処理
+  private func updateItem(item: Item) {
+    item.images = selectedPhotoData.map({ $0.data })
+    item.name = name
+    item.category = category
+    item.memo = memo.isEmpty ? nil : memo
+    item.brand = brand.isEmpty ? nil : memo
+    item.weightUnit = weightUnit
+    item.gram = getGramValue()
+  }
+  // 新規作成
+  private func insertItem() {
+    let newItem = Item(name: name, status: .owned)
+    newItem.images = selectedPhotoData.map({ $0.data })
+    newItem.category = category
+    newItem.memo = memo.isEmpty ? nil : memo
+    newItem.brand = brand.isEmpty ? nil : brand
+    newItem.weightUnit = weightUnit
+    newItem.gram = getGramValue()
+    modelContext.insert(newItem)
+  }
+  
+  // 重さの整形
+  private func getGramValue() -> Int? {
+    if let floatWeight = Float(weightInput) {
+      if weightUnit == Item.WeightUnit.g {
+        return Int(floor(floatWeight))
+      } else {
+        return Int(floor(floatWeight * 1000))
+      }
+    } else {
+      return nil
+    }
+  }
+  
 }
 
 #Preview {
