@@ -22,6 +22,8 @@ struct MyItemEditor: View {
   @State private var category: ItemCategory?
   @State private var memo: String = ""
   
+  @State private var brand: String = ""
+  
   var body: some View {
     VStack {
       ScrollView(.vertical, showsIndicators: false) {
@@ -38,6 +40,13 @@ struct MyItemEditor: View {
               focused: $focused
             )
           }
+          
+          Section {
+            MyItemEditorDetailSection(
+              focused: $focused,
+              brand: $brand
+            )
+          }
         }
       }
       
@@ -49,12 +58,14 @@ struct MyItemEditor: View {
             item.name = name
             item.category = category
             item.memo = memo
+            item.brand = brand
           } else {
             // 新規作成
             let newItem = Item(name: name, status: .owned)
             newItem.images = selectedPhotoData.map({ $0.data })
             newItem.category = category
-            newItem.memo = memo
+            newItem.memo = memo.isEmpty ? nil : memo
+            newItem.brand = brand.isEmpty ? nil : brand
             modelContext.insert(newItem)
           }
           dismissAction()
@@ -89,6 +100,7 @@ struct MyItemEditor: View {
         name = item.name
         category = item.category
         memo = item.memo ?? ""
+        brand = item.brand ?? ""
       }
     }
   }
