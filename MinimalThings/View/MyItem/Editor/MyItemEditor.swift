@@ -13,6 +13,8 @@ struct MyItemEditor: View {
   var item: Item?
   var dismissAction: () -> Void
   
+  @FocusState private var focused: Bool
+  
   @State private var selectedPhotos: [PhotosPickerItem] = []
   @State private var selectedPhotoData: [PhotoData] = []
   
@@ -32,41 +34,52 @@ struct MyItemEditor: View {
             MyItemEditorFoundationSection(
               name: $name,
               category: $category,
-              memo: $memo
+              memo: $memo,
+              focused: $focused
             )
           }
         }
       }
       
-      Button {
-        if let item {
-          // 編集処理
-          item.images = selectedPhotoData.map({ $0.data })
-          item.name = name
-          item.category = category
-          item.memo = memo
-        } else {
-          // 新規作成
-          let newItem = Item(name: name, status: .owned)
-          newItem.images = selectedPhotoData.map({ $0.data })
-          newItem.category = category
-          newItem.memo = memo
-          modelContext.insert(newItem)
-        }
-        dismissAction()
-      } label: {
-        Text("追加")
-          .font(.title2)
-          .frame(maxWidth: .infinity)
-          .padding(10)
-          .foregroundStyle(.white)
-          .background(
-            RoundedRectangle(cornerRadius: 5)
-              .fill(.primaryFill)
-          )
+      if !focused {
+        Button {
+          if let item {
+            // 編集処理
+            item.images = selectedPhotoData.map({ $0.data })
+            item.name = name
+            item.category = category
+            item.memo = memo
+          } else {
+            // 新規作成
+            let newItem = Item(name: name, status: .owned)
+            newItem.images = selectedPhotoData.map({ $0.data })
+            newItem.category = category
+            newItem.memo = memo
+            modelContext.insert(newItem)
+          }
+          dismissAction()
+        } label: {
+          Text("追加")
+            .font(.title2)
+            .frame(maxWidth: .infinity)
+            .padding(10)
+            .foregroundStyle(.white)
+            .background(
+              RoundedRectangle(cornerRadius: 5)
+                .fill(.primaryFill)
+            )
+      }
       }
     }
     .padding()
+    .toolbar {
+      ToolbarItemGroup(placement: .keyboard) {
+        Spacer()
+        Button("閉じる") {
+          focused = false
+        }
+      }
+    }
     .onAppear {
       if let item {
         item.images.forEach({ imageData in

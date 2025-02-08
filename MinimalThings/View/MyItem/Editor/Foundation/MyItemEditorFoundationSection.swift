@@ -13,6 +13,7 @@ struct MyItemEditorFoundationSection: View {
   @Binding var name: String
   @Binding var category: ItemCategory?
   @Binding var memo: String
+  @FocusState.Binding var focused: Bool
   
   var body: some View {
     
@@ -21,6 +22,7 @@ struct MyItemEditorFoundationSection: View {
         Text("アイテム名")
           .font(.subheadline)
         TextField("", text: $name)
+          .focused($focused)
           .textFieldStyle(.roundedBorder)
       }
       
@@ -41,6 +43,7 @@ struct MyItemEditorFoundationSection: View {
         Text("メモ")
           .font(.subheadline)
         TextEditor(text: $memo)
+          .focused($focused)
           .multilineTextAlignment(.leading)
           .lineSpacing(5)
           .border(Color(UIColor.systemGray5), width: 1)
@@ -55,6 +58,7 @@ struct MyItemEditorFoundationSection: View {
   MyItemEditorFoundationSection(
     name: .constant("name"),
     category: .constant(nil),
-    memo: .constant("")
+    memo: .constant(""),
+    focused: FocusState<Bool>().projectedValue
   )
 }
