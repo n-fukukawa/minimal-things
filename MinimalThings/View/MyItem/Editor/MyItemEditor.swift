@@ -23,6 +23,7 @@ struct MyItemEditor: View {
   @State private var memo: String = ""
   
   @State private var brand: String = ""
+  @State private var size: String = ""
   
   var body: some View {
     VStack {
@@ -44,7 +45,8 @@ struct MyItemEditor: View {
           Section {
             MyItemEditorDetailSection(
               focused: $focused,
-              brand: $brand
+              brand: $brand,
+              size: $size
             )
           }
         }
