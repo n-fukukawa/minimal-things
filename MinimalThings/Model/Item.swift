@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import PhotosUI
 import SwiftData
 
 @Model
@@ -17,7 +18,7 @@ final class Item {
   
   var status: ItemStatus
   
-  var images: [Data]?
+  var images: [Data] = []
   
   var brand: String?
   var size:  String?
