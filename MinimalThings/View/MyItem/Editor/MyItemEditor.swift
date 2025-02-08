@@ -23,14 +23,7 @@ struct MyItemEditor: View {
           Section {
             MyItemEditorPhotoField(photosPickerItem: $selectedPhotos, photoDataArray: $selectedPhotoData)
           }
-          .onAppear {
-            if let item {
-              item.images.forEach({ imageData in
-                let photoData = PhotoData(id: UUID().uuidString, stored: true, fixed: true, data: imageData)
-                selectedPhotoData.append(photoData)
-              })
-            }
-          }
+
         }
       }
       
@@ -47,6 +40,23 @@ struct MyItemEditor: View {
         dismissAction()
       } label: {
         Text("追加")
+          .font(.title2)
+          .frame(maxWidth: .infinity)
+          .padding(10)
+          .foregroundStyle(.white)
+          .background(
+            RoundedRectangle(cornerRadius: 5)
+              .fill(.primaryFill)
+          )
+      }
+    }
+    .padding()
+    .onAppear {
+      if let item {
+        item.images.forEach({ imageData in
+          let photoData = PhotoData(id: UUID().uuidString, stored: true, fixed: true, data: imageData)
+          selectedPhotoData.append(photoData)
+        })
       }
     }
   }
