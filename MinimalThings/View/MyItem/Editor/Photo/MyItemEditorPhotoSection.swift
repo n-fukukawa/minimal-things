@@ -1,5 +1,5 @@
 //
-//  MyItemEditorPhotoField.swift
+//  MyItemEditorPhotoSection.swift
 //  MinimalThings
 //
 //  Created by Naruki Fukukawa on 2025/02/08.
@@ -8,7 +8,7 @@
 import SwiftUI
 import PhotosUI
 
-struct MyItemEditorPhotoField: View {
+struct MyItemEditorPhotoSection: View {
   @Binding var photosPickerItem: [PhotosPickerItem]
   @Binding var photoDataArray: [PhotoData]
   @State private var isPresented: Bool = false
@@ -91,6 +91,6 @@ struct MyItemEditorPhotoField: View {
 }
 
 #Preview {
-  MyItemEditorPhotoField(photosPickerItem: .constant([]), photoDataArray: .constant([]))
+  MyItemEditorPhotoSection(photosPickerItem: .constant([]), photoDataArray: .constant([]))
     .modelContainer(for: [Item.self], inMemory: true)
 }

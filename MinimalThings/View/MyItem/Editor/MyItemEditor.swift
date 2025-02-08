@@ -16,12 +16,18 @@ struct MyItemEditor: View {
   @State private var selectedPhotos: [PhotosPickerItem] = []
   @State private var selectedPhotoData: [PhotoData] = []
   
+  @State private var name: String = ""
+  
   var body: some View {
     VStack {
       ScrollView(.vertical, showsIndicators: false) {
         VStack {
           Section {
-            MyItemEditorPhotoField(photosPickerItem: $selectedPhotos, photoDataArray: $selectedPhotoData)
+            MyItemEditorPhotoSection(photosPickerItem: $selectedPhotos, photoDataArray: $selectedPhotoData)
+          }
+          
+          Section {
+            
           }
 
         }
