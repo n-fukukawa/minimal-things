@@ -21,13 +21,13 @@ struct MyItemEditor: View {
   var body: some View {
     VStack {
       ScrollView(.vertical, showsIndicators: false) {
-        VStack {
+        VStack(spacing: 20) {
           Section {
             MyItemEditorPhotoSection(photosPickerItem: $selectedPhotos, photoDataArray: $selectedPhotoData)
           }
           
           Section {
-            
+            MyItemEditorFoundationSection(name: $name)
           }
 
         }
@@ -37,9 +37,10 @@ struct MyItemEditor: View {
         if let item {
           // 編集処理
           item.images = selectedPhotoData.map({ $0.data })
+          item.name = name
         } else {
           // 新規作成
-          let newItem = Item(name: "new", status: .owned)
+          let newItem = Item(name: name, status: .owned)
           newItem.images = selectedPhotoData.map({ $0.data })
           modelContext.insert(newItem)
         }
@@ -63,6 +64,7 @@ struct MyItemEditor: View {
           let photoData = PhotoData(id: UUID().uuidString, stored: true, fixed: true, data: imageData)
           selectedPhotoData.append(photoData)
         })
+        name = item.name
       }
     }
   }
