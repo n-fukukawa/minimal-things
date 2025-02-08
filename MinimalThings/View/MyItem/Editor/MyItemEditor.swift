@@ -17,6 +17,7 @@ struct MyItemEditor: View {
   @State private var selectedPhotoData: [PhotoData] = []
   
   @State private var name: String = ""
+  @State private var category: ItemCategory?
   
   var body: some View {
     VStack {
@@ -27,7 +28,7 @@ struct MyItemEditor: View {
           }
           
           Section {
-            MyItemEditorFoundationSection(name: $name)
+            MyItemEditorFoundationSection(name: $name, category: $category)
           }
 
         }
@@ -38,10 +39,12 @@ struct MyItemEditor: View {
           // 編集処理
           item.images = selectedPhotoData.map({ $0.data })
           item.name = name
+          item.category = category
         } else {
           // 新規作成
           let newItem = Item(name: name, status: .owned)
           newItem.images = selectedPhotoData.map({ $0.data })
+          newItem.category = category
           modelContext.insert(newItem)
         }
         dismissAction()
@@ -65,6 +68,7 @@ struct MyItemEditor: View {
           selectedPhotoData.append(photoData)
         })
         name = item.name
+        category = item.category
       }
     }
   }

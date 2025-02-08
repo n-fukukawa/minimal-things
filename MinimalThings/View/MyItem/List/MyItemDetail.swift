@@ -23,6 +23,7 @@ struct MyItemDetail: View {
         }
         
         Text(item.name)
+        Text(item.category?.name ?? "").font(.caption)
         
         Spacer()
       }
