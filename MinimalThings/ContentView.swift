@@ -58,6 +58,7 @@ struct ContentView: View {
     item.weightUnit = Item.WeightUnit.g
     item.color = Item.ItemColor.white
     item.purchasedAt = Date()
+    item.price = 3780
     item.shop = "無印良品オンラインショップ"
     item.url = "https://www.muji.com/jp/ja/store/cmdty/section/T20213"
     modelContext.insert(item)

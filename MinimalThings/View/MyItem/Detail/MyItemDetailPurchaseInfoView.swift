@@ -38,17 +38,12 @@ struct MyItemDetailPurchaseInfoView: View {
       
       VStack {
         HStack {
-          Text("価格")
+          Text("購入場所")
             .font(.subheadline)
             .frame(width: 80, alignment: .leading)
             .padding(.leading, 8)
-          if let price = item.price {
-            Text(String(price))
-              .font(.subheadline)
-          } else {
-            Text("ー")
-              .font(.subheadline)
-          }
+          Text(item.shop ?? "ー")
+            .font(.subheadline)
           Spacer()
         }
         Rectangle()
@@ -60,12 +55,17 @@ struct MyItemDetailPurchaseInfoView: View {
       
       VStack {
         HStack {
-          Text("購入場所")
+          Text("価格")
             .font(.subheadline)
             .frame(width: 80, alignment: .leading)
             .padding(.leading, 8)
-          Text(item.shop ?? "ー")
-            .font(.subheadline)
+          if let price = item.price {
+            Text("\(price)円")
+              .font(.subheadline)
+          } else {
+            Text("ー")
+              .font(.subheadline)
+          }
           Spacer()
         }
         Rectangle()

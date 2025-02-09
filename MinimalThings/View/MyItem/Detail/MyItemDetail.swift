@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct MyItemDetail: View {
+  @Environment(\.modelContext) var modelContext
+  @Environment(\.dismiss) var dismiss
   var item: Item
   
   @State private var isEditorPresented: Bool = false
+  @State private var isDeleteConfirmationPresented: Bool = false
   
   var body: some View {
     GeometryReader { geometry in
@@ -45,15 +48,18 @@ struct MyItemDetail: View {
     }
     .toolbar {
       ToolbarItemGroup(placement: .secondaryAction) {
-        Button {
+        Button("編集") {
           isEditorPresented.toggle()
-        } label: {
-          Label("編集", systemImage: "pencil")
         }
-        Button {
-          
-        } label: {
-          Label("削除", systemImage: "trash")
+        Button("削除", role: .destructive) {
+          isDeleteConfirmationPresented.toggle()
+        }
+        .confirmationDialog("", isPresented: $isDeleteConfirmationPresented) {
+          Button("削除", role: .destructive) {
+            modelContext.delete(item)
+            dismiss()
+          }
+          Button("キャンセル", role: .cancel) {}
         }
       }
     }

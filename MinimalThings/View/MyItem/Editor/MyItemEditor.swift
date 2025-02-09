@@ -146,6 +146,7 @@ struct MyItemEditor: View {
     item.purchasedAt = purchasedAt
     item.shop = shop.isEmpty ? nil : shop
     item.url = url
+    item.updatedAt = Date()
   }
   // 新規作成
   private func insertItem() {
@@ -161,6 +162,8 @@ struct MyItemEditor: View {
     newItem.purchasedAt = purchasedAt
     newItem.shop = shop.isEmpty ? nil : shop
     newItem.url = url.isEmpty ? nil : url
+    newItem.createdAt = Date()
+    newItem.updatedAt = Date()
     modelContext.insert(newItem)
   }
   
