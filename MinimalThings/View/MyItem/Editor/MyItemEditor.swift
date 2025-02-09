@@ -15,6 +15,8 @@ struct MyItemEditor: View {
   
   @FocusState private var focused: Bool
   
+  @State private var activeTab: Int = 1
+  
   @State private var selectedPhotos: [PhotosPickerItem] = []
   @State private var selectedPhotoData: [PhotoData] = []
   
@@ -35,55 +37,56 @@ struct MyItemEditor: View {
   
   var body: some View {
     VStack {
-      ScrollView(.vertical, showsIndicators: false) {
-        VStack(spacing: 20) {
-          MyItemEditorPhotoSection(photosPickerItem: $selectedPhotos, photoDataArray: $selectedPhotoData)
+      VStack(spacing: 20) {
+        MyItemEditorTabBar(activeTab: $activeTab)
+        
+        ScrollView(.vertical, showsIndicators: false) {
+          if activeTab == 1 {
+            MyItemEditorPhotoSection(
+              photosPickerItem: $selectedPhotos,
+              photoDataArray: $selectedPhotoData
+            )
+            .padding(.bottom)
+            
+            MyItemEditorFoundationSection(
+              name: $name,
+              category: $category,
+              memo: $memo,
+              focused: $focused
+            )
+          }
           
-          MyItemEditorFoundationSection(
-            name: $name,
-            category: $category,
-            memo: $memo,
-            focused: $focused
-          )
-          
-          MyItemEditorDetailSection(
-            focused: $focused,
-            brand: $brand,
-            size: $size,
-            weightInput: $weightInput,
-            weightUnit: $weightUnit,
-            color: $color,
-            priceInput: $priceInput,
-            purchasedAt: $purchasedAt,
-            shop: $shop,
-            url: $url
-          )
-          
+          if activeTab == 2 {
+            MyItemEditorDetailSection(
+              focused: $focused,
+              brand: $brand,
+              size: $size,
+              weightInput: $weightInput,
+              weightUnit: $weightUnit,
+              color: $color,
+              priceInput: $priceInput,
+              purchasedAt: $purchasedAt,
+              shop: $shop,
+              url: $url
+            )
+          }
         }
-      }
-      
-      Button {
-        if let item {
-          updateItem(item: item)
-        } else {
-          insertItem()
-        }
-        dismissAction()
-      } label: {
-        Text(item == nil ? "保存" : "上書き保存")
-          .font(.body)
-          .tracking(1)
-          .frame(maxWidth: .infinity)
-          .padding(6)
-          .foregroundStyle(Color.foreground.opacity(0.8))
-          .background(
-            RoundedRectangle(cornerRadius: 4)
-              .stroke(Color.foreground.opacity(0.5))
-          )
       }
     }
     .padding()
     .toolbar {
+      ToolbarItem(placement: .primaryAction) {
+        Button {
+          if let item {
+            updateItem(item: item)
+          } else {
+            insertItem()
+          }
+          dismissAction()
+        } label: {
+          Text(item == nil ? "作成" : "保存")
+        }
+      }
       ToolbarItemGroup(placement: .keyboard) {
         Spacer()
         Button("閉じる") {

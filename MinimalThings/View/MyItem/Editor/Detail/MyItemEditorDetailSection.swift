@@ -19,100 +19,94 @@ struct MyItemEditorDetailSection: View {
   @Binding var shop: String
   @Binding var url: String
   
-  @State private var isExpanded: Bool = false
-  
   var body: some View {
-    DisclosureGroup("詳細", isExpanded: $isExpanded) {
+    VStack(alignment: .leading, spacing: 20) {
+      VStack(alignment: .leading, spacing: 4) {
+        Text("メーカー")
+          .font(.subheadline)
+        TextField("", text: $brand)
+        
+          .focused($focused)
+          .textFieldStyle(.roundedBorder)
+      }
       
-      VStack(alignment: .leading, spacing: 15) {
-        VStack(alignment: .leading, spacing: 5) {
-          Text("メーカー／ブランド")
-            .font(.subheadline)
-          TextField("例）無印良品、Apple", text: $brand)
-          
+      VStack(alignment: .leading, spacing: 4) {
+        Text("サイズ")
+          .font(.subheadline)
+        TextField("", text: $size)
+          .focused($focused)
+          .textFieldStyle(.roundedBorder)
+      }
+      
+      VStack(alignment: .leading, spacing: 4) {
+        Text("重さ")
+          .font(.subheadline)
+        
+        HStack {
+          TextField("", text: $weightInput)
             .focused($focused)
+            .keyboardType(.decimalPad)
             .textFieldStyle(.roundedBorder)
-        }
-        
-        VStack(alignment: .leading, spacing: 5) {
-          Text("サイズ")
-            .font(.subheadline)
-          TextField("例）Mサイズ、26.0cm", text: $size)
-            .focused($focused)
-            .textFieldStyle(.roundedBorder)
-        }
-        
-        VStack(alignment: .leading, spacing: 5) {
-          Text("重さ")
-            .font(.subheadline)
           
-          HStack {
-            TextField("例）380", text: $weightInput)
-              .focused($focused)
-              .keyboardType(.decimalPad)
-              .textFieldStyle(.roundedBorder)
-            
-            Picker("", selection: $weightUnit) {
-              ForEach(Item.WeightUnit.allCases, id: \.self) { weightUnit in
-                Text(weightUnit.rawValue).tag(weightUnit as Item.WeightUnit)
-              }
-            }
-            .pickerStyle(.segmented)
-          }
-          .frame(maxWidth: 240)
-        }
-        
-        VStack(alignment: .leading, spacing: 5) {
-          Text("カラー")
-            .font(.subheadline)
-          Picker("", selection: $color) {
-            Text("選択してください").tag(nil as Item.ItemColor?)
-            ForEach(Item.ItemColor.allCases, id: \.self) { color in
-              Label(
-                title: { Text("\(color.text)")},
-                icon: { colorImage(color: color.color)}
-              )
-              .tag(color as Item.ItemColor?)
-              
+          Picker("", selection: $weightUnit) {
+            ForEach(Item.WeightUnit.allCases, id: \.self) { weightUnit in
+              Text(weightUnit.rawValue).tag(weightUnit as Item.WeightUnit)
             }
           }
-          .pickerStyle(.menu)
+          .pickerStyle(.segmented)
         }
-        
-        VStack(alignment: .leading, spacing: 5) {
-          Text("価格")
-            .font(.subheadline)
-          HStack(spacing: 5) {
-            TextField("", text: $priceInput)
-              .focused($focused)
-              .keyboardType(.numberPad)
-              .textFieldStyle(.roundedBorder)
-              .frame(maxWidth: 160)
-            Text("円")
+        .frame(maxWidth: 240)
+      }
+      
+      VStack(alignment: .leading, spacing: 4) {
+        Text("カラー")
+          .font(.subheadline)
+        Picker("", selection: $color) {
+          Text("選択してください").tag(nil as Item.ItemColor?)
+          ForEach(Item.ItemColor.allCases, id: \.self) { color in
+            Label(
+              title: { Text("\(color.text)")},
+              icon: { colorImage(color: color.color)}
+            )
+            .tag(color as Item.ItemColor?)
           }
         }
-        
-        MyItemEditorPurchaseDateField(purchasedAt: $purchasedAt)
-        
-        VStack(alignment: .leading, spacing: 5) {
-          Text("購入場所")
-            .font(.subheadline)
-          TextField("", text: $shop)
+        .pickerStyle(.menu)
+      }
+      
+      VStack(alignment: .leading, spacing: 4) {
+        Text("価格")
+          .font(.subheadline)
+        HStack(spacing: 5) {
+          TextField("", text: $priceInput)
             .focused($focused)
+            .keyboardType(.numberPad)
             .textFieldStyle(.roundedBorder)
-        }        
-        
-        VStack(alignment: .leading, spacing: 5) {
-          Text("URL")
-            .font(.subheadline)
-          TextField("", text: $url)
-            .focused($focused)
-            .keyboardType(.URL)
-            .textFieldStyle(.roundedBorder)
+            .frame(maxWidth: 160)
+          Text("円")
         }
       }
-      .padding(.vertical)
+      
+      MyItemEditorPurchaseDateField(purchasedAt: $purchasedAt)
+      
+      VStack(alignment: .leading, spacing: 4) {
+        Text("購入場所")
+          .font(.subheadline)
+        TextField("", text: $shop)
+          .focused($focused)
+          .textFieldStyle(.roundedBorder)
+      }
+      
+      VStack(alignment: .leading, spacing: 4) {
+        Text("URL")
+          .font(.subheadline)
+        TextField("", text: $url)
+          .focused($focused)
+          .keyboardType(.URL)
+          .textFieldStyle(.roundedBorder)
+      }
     }
+    .padding(.bottom)
   }
   
   private func colorImage(color: Color) -> Image {

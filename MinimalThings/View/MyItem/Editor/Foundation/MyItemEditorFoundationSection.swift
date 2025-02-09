@@ -18,7 +18,7 @@ struct MyItemEditorFoundationSection: View {
   var body: some View {
     
     VStack(alignment: .leading, spacing: 20) {
-      VStack(alignment: .leading, spacing: 5) {
+      VStack(alignment: .leading, spacing: 4) {
         Text("アイテム名")
           .font(.subheadline)
         TextField("", text: $name)
@@ -26,7 +26,7 @@ struct MyItemEditorFoundationSection: View {
           .textFieldStyle(.roundedBorder)
       }
       
-      VStack(alignment: .leading, spacing: 5) {
+      VStack(alignment: .leading, spacing: 4) {
         Text("カテゴリ")
           .font(.subheadline)
         Picker("", selection: $category) {
@@ -39,16 +39,15 @@ struct MyItemEditorFoundationSection: View {
         
       }
       
-      VStack(alignment: .leading, spacing: 5) {
+      VStack(alignment: .leading, spacing: 4) {
         Text("メモ")
           .font(.subheadline)
         TextEditor(text: $memo)
           .focused($focused)
           .multilineTextAlignment(.leading)
-          .lineSpacing(5)
+          .lineSpacing(4)
           .border(Color(UIColor.systemGray5), width: 1)
           .frame(height: 200)
-          .padding(8)
       }
     }
   }

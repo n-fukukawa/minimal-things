@@ -43,7 +43,7 @@ struct MyItemList: View {
     .sheet(isPresented: $isEditorPresented) {
       NavigationStack {
         MyItemEditor(dismissAction: { isEditorPresented = false })
-          .navigationTitle("新規追加")
+          .navigationTitle("新規作成")
           .navigationBarTitleDisplayMode(.inline)
           .toolbar {
             ToolbarItem(placement: .cancellationAction) {
