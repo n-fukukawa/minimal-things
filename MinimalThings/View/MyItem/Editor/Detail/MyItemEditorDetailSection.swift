@@ -17,6 +17,7 @@ struct MyItemEditorDetailSection: View {
   @Binding var priceInput: String
   @Binding var purchasedAt: Date?
   @Binding var shop: String
+  @Binding var url: String
   
   @State private var isExpanded: Bool = false
   
@@ -97,7 +98,15 @@ struct MyItemEditorDetailSection: View {
             .font(.subheadline)
           TextField("", text: $shop)
             .focused($focused)
-            .keyboardType(.numberPad)
+            .textFieldStyle(.roundedBorder)
+        }        
+        
+        VStack(alignment: .leading, spacing: 5) {
+          Text("URL")
+            .font(.subheadline)
+          TextField("", text: $url)
+            .focused($focused)
+            .keyboardType(.URL)
             .textFieldStyle(.roundedBorder)
         }
       }
@@ -128,6 +137,7 @@ struct MyItemEditorDetailSection: View {
     color: .constant(nil),
     priceInput: .constant(""),
     purchasedAt: .constant(nil),
-    shop: .constant("")
+    shop: .constant(""),
+    url: .constant("")
   )
 }

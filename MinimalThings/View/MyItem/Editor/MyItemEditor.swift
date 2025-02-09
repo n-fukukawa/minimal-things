@@ -31,6 +31,7 @@ struct MyItemEditor: View {
   @State private var priceInput: String = ""
   @State private var purchasedAt: Date?
   @State private var shop: String = ""
+  @State private var url: String = ""
   
   var body: some View {
     VStack {
@@ -54,7 +55,8 @@ struct MyItemEditor: View {
             color: $color,
             priceInput: $priceInput,
             purchasedAt: $purchasedAt,
-            shop: $shop
+            shop: $shop,
+            url: $url
           )
           
         }
@@ -123,6 +125,7 @@ struct MyItemEditor: View {
     }
     purchasedAt = item.purchasedAt
     shop = item.shop ?? ""
+    url = item.url ?? ""
   }
   
   // 編集処理
@@ -138,6 +141,7 @@ struct MyItemEditor: View {
     item.price = priceInput.isEmpty ? nil : Int(priceInput)
     item.purchasedAt = purchasedAt
     item.shop = shop.isEmpty ? nil : shop
+    item.url = url
   }
   // 新規作成
   private func insertItem() {
@@ -152,6 +156,7 @@ struct MyItemEditor: View {
     newItem.price = priceInput.isEmpty ? nil : Int(priceInput)
     newItem.purchasedAt = purchasedAt
     newItem.shop = shop.isEmpty ? nil : shop
+    newItem.url = url.isEmpty ? nil : url
     modelContext.insert(newItem)
   }
   
