@@ -15,6 +15,7 @@ struct MyItemEditorDetailSection: View {
   @Binding var weightUnit: Item.WeightUnit
   @Binding var color: Item.ItemColor?
   @Binding var priceInput: String
+  @Binding var purchasedAt: Date?
   
   @State private var isExpanded: Bool = false
   
@@ -87,6 +88,9 @@ struct MyItemEditorDetailSection: View {
             Text("円")
           }
         }
+        
+        MyItemEditorPurchaseDateField(purchasedAt: $purchasedAt)
+
       }
       .padding(.vertical)
     }
@@ -113,6 +117,7 @@ struct MyItemEditorDetailSection: View {
     weightInput: .constant(""),
     weightUnit: .constant(Item.WeightUnit.g),
     color: .constant(nil),
-    priceInput: .constant("")
+    priceInput: .constant(""),
+    purchasedAt: .constant(nil)
   )
 }

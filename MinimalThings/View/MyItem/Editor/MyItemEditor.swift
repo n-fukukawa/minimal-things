@@ -29,6 +29,7 @@ struct MyItemEditor: View {
   
   @State private var color: Item.ItemColor?
   @State private var priceInput: String = ""
+  @State private var purchasedAt: Date?
   
   var body: some View {
     VStack {
@@ -55,7 +56,8 @@ struct MyItemEditor: View {
               weightInput: $weightInput,
               weightUnit: $weightUnit,
               color: $color,
-              priceInput: $priceInput
+              priceInput: $priceInput,
+              purchasedAt: $purchasedAt
             )
           }
         }
@@ -124,6 +126,7 @@ struct MyItemEditor: View {
     } else {
       priceInput = ""
     }
+    purchasedAt = item.purchasedAt
   }
   
   // 編集処理
@@ -137,6 +140,8 @@ struct MyItemEditor: View {
     item.gram = getGramValue()
     item.color = color
     item.price = priceInput.isEmpty ? nil : Int(priceInput)
+    item.purchasedAt = purchasedAt
+
   }
   // 新規作成
   private func insertItem() {
@@ -149,6 +154,7 @@ struct MyItemEditor: View {
     newItem.gram = getGramValue()
     newItem.color = color
     newItem.price = priceInput.isEmpty ? nil : Int(priceInput)
+    newItem.purchasedAt = purchasedAt
     modelContext.insert(newItem)
   }
   
@@ -164,7 +170,7 @@ struct MyItemEditor: View {
       return nil
     }
   }
-  
+
 }
 
 #Preview {
