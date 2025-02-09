@@ -10,7 +10,6 @@ import SwiftUI
 struct MyItemDetailPurchaseInfoView: View {
   @Environment(\.openURL) private var openURL
   let item: Item
-  let formatter = DateFormatter()
   
   var body: some View {
     VStack {
@@ -21,7 +20,7 @@ struct MyItemDetailPurchaseInfoView: View {
             .frame(width: 80, alignment: .leading)
             .padding(.leading, 8)
           if let date = item.purchasedAt {
-            Text(formatter.string(from: date))
+            Text(date, format: Date.FormatStyle(date: .numeric, time: .omitted))
               .font(.subheadline)
           } else {
             Text("ー")
@@ -82,11 +81,6 @@ struct MyItemDetailPurchaseInfoView: View {
           .frame(height: 1)
       }
       .padding(.bottom, 8)
-    }
-    .onAppear {
-      formatter.locale = Locale(identifier: "ja_JP")
-      formatter.dateFormat = "yyyy/MM/dd"
-      formatter.timeZone = TimeZone(identifier: "Asia/Tokyo")
     }
   }
 }
