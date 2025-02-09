@@ -38,6 +38,28 @@ struct MyItemDetailPurchaseInfoView: View {
       
       VStack {
         HStack {
+          Text("価格")
+            .font(.subheadline)
+            .frame(width: 80, alignment: .leading)
+            .padding(.leading, 8)
+          if let price = item.price {
+            Text(String(price))
+              .font(.subheadline)
+          } else {
+            Text("ー")
+              .font(.subheadline)
+          }
+          Spacer()
+        }
+        Rectangle()
+          .fill(Color(UIColor.systemGray3))
+          .opacity(0.5)
+          .frame(height: 1)
+      }
+      .padding(.bottom, 8)
+      
+      VStack {
+        HStack {
           Text("購入場所")
             .font(.subheadline)
             .frame(width: 80, alignment: .leading)
