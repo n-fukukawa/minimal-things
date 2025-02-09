@@ -14,6 +14,7 @@ struct MyItemEditorDetailSection: View {
   @Binding var weightInput: String
   @Binding var weightUnit: Item.WeightUnit
   @Binding var color: Item.ItemColor?
+  @Binding var priceInput: String
   
   @State private var isExpanded: Bool = false
   
@@ -72,7 +73,19 @@ struct MyItemEditorDetailSection: View {
             }
           }
           .pickerStyle(.menu)
-          
+        }
+        
+        VStack(alignment: .leading, spacing: 5) {
+          Text("価格")
+            .font(.subheadline)
+          HStack(spacing: 5) {
+            TextField("", text: $priceInput)
+              .focused($focused)
+              .keyboardType(.numberPad)
+              .textFieldStyle(.roundedBorder)
+              .frame(maxWidth: 160)
+            Text("円")
+          }
         }
       }
       .padding(.vertical)
@@ -99,6 +112,7 @@ struct MyItemEditorDetailSection: View {
     size: .constant(""),
     weightInput: .constant(""),
     weightUnit: .constant(Item.WeightUnit.g),
-    color: .constant(nil)
+    color: .constant(nil),
+    priceInput: .constant("")
   )
 }

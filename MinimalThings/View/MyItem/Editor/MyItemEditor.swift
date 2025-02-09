@@ -28,6 +28,7 @@ struct MyItemEditor: View {
   @State private var weightUnit: Item.WeightUnit = Item.WeightUnit.g
   
   @State private var color: Item.ItemColor?
+  @State private var priceInput: String = ""
   
   var body: some View {
     VStack {
@@ -53,7 +54,8 @@ struct MyItemEditor: View {
               size: $size,
               weightInput: $weightInput,
               weightUnit: $weightUnit,
-              color: $color
+              color: $color,
+              priceInput: $priceInput
             )
           }
         }
@@ -117,6 +119,11 @@ struct MyItemEditor: View {
       weightInput = ""
     }
     color = item.color
+    if let price = item.price {
+      priceInput = String(price)
+    } else {
+      priceInput = ""
+    }
   }
   
   // 編集処理
@@ -129,6 +136,7 @@ struct MyItemEditor: View {
     item.weightUnit = weightUnit
     item.gram = getGramValue()
     item.color = color
+    item.price = priceInput.isEmpty ? nil : Int(priceInput)
   }
   // 新規作成
   private func insertItem() {
@@ -140,6 +148,7 @@ struct MyItemEditor: View {
     newItem.weightUnit = weightUnit
     newItem.gram = getGramValue()
     newItem.color = color
+    newItem.price = priceInput.isEmpty ? nil : Int(priceInput)
     modelContext.insert(newItem)
   }
   
