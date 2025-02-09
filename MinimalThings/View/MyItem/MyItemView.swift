@@ -11,8 +11,6 @@ struct MyItemView: View {
   var body: some View {
     NavigationStack {
       MyItemList()
-        .navigationTitle("My Items")
-        .navigationBarTitleDisplayMode(.inline)
     }
   }
 }
