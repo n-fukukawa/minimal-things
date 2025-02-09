@@ -16,6 +16,7 @@ struct MyItemEditorDetailSection: View {
   @Binding var color: Item.ItemColor?
   @Binding var priceInput: String
   @Binding var purchasedAt: Date?
+  @Binding var shop: String
   
   @State private var isExpanded: Bool = false
   
@@ -90,7 +91,15 @@ struct MyItemEditorDetailSection: View {
         }
         
         MyItemEditorPurchaseDateField(purchasedAt: $purchasedAt)
-
+        
+        VStack(alignment: .leading, spacing: 5) {
+          Text("購入場所")
+            .font(.subheadline)
+          TextField("", text: $shop)
+            .focused($focused)
+            .keyboardType(.numberPad)
+            .textFieldStyle(.roundedBorder)
+        }
       }
       .padding(.vertical)
     }
@@ -118,6 +127,7 @@ struct MyItemEditorDetailSection: View {
     weightUnit: .constant(Item.WeightUnit.g),
     color: .constant(nil),
     priceInput: .constant(""),
-    purchasedAt: .constant(nil)
+    purchasedAt: .constant(nil),
+    shop: .constant("")
   )
 }

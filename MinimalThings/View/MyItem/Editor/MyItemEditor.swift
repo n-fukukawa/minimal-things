@@ -30,39 +30,35 @@ struct MyItemEditor: View {
   @State private var color: Item.ItemColor?
   @State private var priceInput: String = ""
   @State private var purchasedAt: Date?
+  @State private var shop: String = ""
   
   var body: some View {
     VStack {
       ScrollView(.vertical, showsIndicators: false) {
         VStack(spacing: 20) {
-          Section {
-            MyItemEditorPhotoSection(photosPickerItem: $selectedPhotos, photoDataArray: $selectedPhotoData)
-          }
+          MyItemEditorPhotoSection(photosPickerItem: $selectedPhotos, photoDataArray: $selectedPhotoData)
           
-          Section {
-            MyItemEditorFoundationSection(
-              name: $name,
-              category: $category,
-              memo: $memo,
-              focused: $focused
-            )
-          }
+          MyItemEditorFoundationSection(
+            name: $name,
+            category: $category,
+            memo: $memo,
+            focused: $focused
+          )
           
-          Section {
-            MyItemEditorDetailSection(
-              focused: $focused,
-              brand: $brand,
-              size: $size,
-              weightInput: $weightInput,
-              weightUnit: $weightUnit,
-              color: $color,
-              priceInput: $priceInput,
-              purchasedAt: $purchasedAt
-            )
-          }
+          MyItemEditorDetailSection(
+            focused: $focused,
+            brand: $brand,
+            size: $size,
+            weightInput: $weightInput,
+            weightUnit: $weightUnit,
+            color: $color,
+            priceInput: $priceInput,
+            purchasedAt: $purchasedAt,
+            shop: $shop
+          )
+          
         }
       }
-      
       
       Button {
         if let item {
@@ -82,7 +78,6 @@ struct MyItemEditor: View {
               .fill(.primaryFill)
           )
       }
-      
     }
     .padding()
     .toolbar {
@@ -127,6 +122,7 @@ struct MyItemEditor: View {
       priceInput = ""
     }
     purchasedAt = item.purchasedAt
+    shop = item.shop ?? ""
   }
   
   // 編集処理
@@ -141,7 +137,7 @@ struct MyItemEditor: View {
     item.color = color
     item.price = priceInput.isEmpty ? nil : Int(priceInput)
     item.purchasedAt = purchasedAt
-
+    item.shop = shop.isEmpty ? nil : shop
   }
   // 新規作成
   private func insertItem() {
@@ -155,6 +151,7 @@ struct MyItemEditor: View {
     newItem.color = color
     newItem.price = priceInput.isEmpty ? nil : Int(priceInput)
     newItem.purchasedAt = purchasedAt
+    newItem.shop = shop.isEmpty ? nil : shop
     modelContext.insert(newItem)
   }
   
@@ -170,7 +167,6 @@ struct MyItemEditor: View {
       return nil
     }
   }
-
 }
 
 #Preview {

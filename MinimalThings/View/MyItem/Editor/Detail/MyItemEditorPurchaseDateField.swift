@@ -16,7 +16,7 @@ struct MyItemEditorPurchaseDateField: View {
   let formatter = DateFormatter()
   
   var body: some View {
-    VStack(alignment: .leading, spacing: 5) {
+    VStack(alignment: .leading, spacing: 10) {
       Text("購入日")
         .font(.subheadline)
       
@@ -28,7 +28,6 @@ struct MyItemEditorPurchaseDateField: View {
             } label: {
               Text(formatter.string(from: date))
             }
-            .padding(.leading)
             
             Button {
               purchasedAt = nil
@@ -44,7 +43,6 @@ struct MyItemEditorPurchaseDateField: View {
           } label: {
             Text("購入日を選択する")
           }
-          .padding(.leading)
         }
       }
       
