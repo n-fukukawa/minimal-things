@@ -47,7 +47,7 @@ struct MyItemEditorFoundationSection: View {
           .multilineTextAlignment(.leading)
           .lineSpacing(5)
           .border(Color(UIColor.systemGray5), width: 1)
-          .frame(height: 120)
+          .frame(height: 200)
           .padding(8)
       }
     }

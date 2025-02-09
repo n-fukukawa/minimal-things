@@ -60,15 +60,15 @@ struct MyItemDetailPurchaseInfoView: View {
             .font(.subheadline)
             .frame(width: 80, alignment: .leading)
             .padding(.leading, 8)
-          if let url = item.url {
+          if let urlString = item.url, let url = URL(string: urlString) {
             HStack {
-              Link(url, destination: URL(string: url)!)
+              Link(urlString, destination: url)
                 .font(.subheadline)
                 .foregroundStyle(.blue)
                 .lineLimit(1)
                 .truncationMode(.tail)
                 .textSelection(.enabled)
-              ShareLink("", item: URL(string: url)!)
+              ShareLink("", item: url)
             }
           } else {
             Text("ー")

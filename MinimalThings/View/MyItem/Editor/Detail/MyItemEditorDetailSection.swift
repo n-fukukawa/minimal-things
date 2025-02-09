@@ -70,7 +70,8 @@ struct MyItemEditorDetailSection: View {
             ForEach(Item.ItemColor.allCases, id: \.self) { color in
               Label(
                 title: { Text("\(color.text)")},
-                icon: { colorImage(color: color.color) })
+                icon: { colorImage(color: color.color)}
+              )
               .tag(color as Item.ItemColor?)
               
             }
@@ -118,10 +119,18 @@ struct MyItemEditorDetailSection: View {
     Image(size: CGSize(width: 26, height: 20)) { ctx in
       ctx.fill(
         Path(
-          roundedRect: CGRect(origin: .zero, size: CGSize(width: 20, height: 20)),
-          cornerRadius: 3
+          roundedRect: CGRect(origin: .zero, size: CGSize(width: 18, height: 18)),
+          cornerRadius: 0
         ),
         with: .color(color)
+      )
+      ctx.stroke(
+        Path(
+          roundedRect: CGRect(origin: .zero, size: CGSize(width: 18, height: 18)),
+          cornerRadius: 0
+        ),
+        with: .color(Color(UIColor.systemGray3)),
+        lineWidth: 1
       )
     }
   }

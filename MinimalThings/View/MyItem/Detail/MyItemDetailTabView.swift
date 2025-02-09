@@ -12,7 +12,7 @@ struct MyItemDetailTabView: View {
   @State private var activeTab: Int = 1
   
   var body: some View {
-    VStack {
+    VStack(alignment: .leading) {
       MyItemDetailTabBar(activeTab: $activeTab)
       
       if activeTab == 1 {

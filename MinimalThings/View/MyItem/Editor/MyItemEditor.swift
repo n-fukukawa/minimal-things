@@ -70,14 +70,15 @@ struct MyItemEditor: View {
         }
         dismissAction()
       } label: {
-        Text("追加")
-          .font(.title2)
+        Text(item == nil ? "保存" : "上書き保存")
+          .font(.body)
+          .tracking(1)
           .frame(maxWidth: .infinity)
-          .padding(10)
-          .foregroundStyle(.white)
+          .padding(6)
+          .foregroundStyle(Color.foreground.opacity(0.8))
           .background(
-            RoundedRectangle(cornerRadius: 5)
-              .fill(.primaryFill)
+            RoundedRectangle(cornerRadius: 4)
+              .stroke(Color.foreground.opacity(0.5))
           )
       }
     }

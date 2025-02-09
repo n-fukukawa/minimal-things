@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MyItemDetailMemoView: View {
   let item: Item
+  
   var body: some View {
     Text(item.memo ?? "")
       .lineLimit(nil)

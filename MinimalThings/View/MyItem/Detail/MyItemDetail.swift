@@ -10,6 +10,8 @@ import SwiftUI
 struct MyItemDetail: View {
   var item: Item
   
+  @State private var isEditorPresented: Bool = false
+  
   var body: some View {
     GeometryReader { geometry in
       ScrollView(.vertical, showsIndicators: false) {
@@ -23,6 +25,36 @@ struct MyItemDetail: View {
           .padding(.horizontal, 15)
         }
         .foregroundStyle(Color.foreground)
+        .sheet(isPresented: $isEditorPresented ){
+          NavigationStack {
+            MyItemEditor(item: item, dismissAction: { isEditorPresented = false })
+              .navigationTitle("編集")
+              .navigationBarTitleDisplayMode(.inline)
+              .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                  Button {
+                    isEditorPresented = false
+                  } label : {
+                    Label("閉じる", systemImage: "xmark")
+                  }
+                }
+              }
+          }
+        }
+      }
+    }
+    .toolbar {
+      ToolbarItemGroup(placement: .secondaryAction) {
+        Button {
+          isEditorPresented.toggle()
+        } label: {
+          Label("編集", systemImage: "pencil")
+        }
+        Button {
+          
+        } label: {
+          Label("削除", systemImage: "trash")
+        }
       }
     }
   }
