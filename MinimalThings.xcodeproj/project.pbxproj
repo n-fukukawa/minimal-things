@@ -343,11 +343,11 @@
 			};
 			buildConfigurationList = 552ACBEA2D44CE490055BA9A /* Build configuration list for PBXProject "MinimalThings" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ja;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				ja,
 			);
 			mainGroup = 552ACBE62D44CE490055BA9A;
 			productRefGroup = 552ACBF02D44CE490055BA9A /* Products */;
