@@ -135,7 +135,7 @@ struct MyItemEditor: View {
     item.name = name
     item.category = category
     item.memo = memo.isEmpty ? nil : memo
-    item.brand = brand.isEmpty ? nil : memo
+    item.brand = brand.isEmpty ? nil : brand
     item.weightUnit = weightUnit
     item.gram = getGramValue()
     item.color = color

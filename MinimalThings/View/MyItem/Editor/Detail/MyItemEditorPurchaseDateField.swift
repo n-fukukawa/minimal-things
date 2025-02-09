@@ -11,10 +11,8 @@ struct MyItemEditorPurchaseDateField: View {
   @Binding var purchasedAt: Date?
   
   @State private var isPurchasedAtPresented: Bool = false
-  
-  let year = Calendar.current.component(.year, from: Date())
-  let formatter = DateFormatter()
-  
+  @State private var purchasedAtState: Date = Date()
+
   var body: some View {
     VStack(alignment: .leading, spacing: 10) {
       Text("購入日")
@@ -26,7 +24,7 @@ struct MyItemEditorPurchaseDateField: View {
             Button {
               isPurchasedAtPresented.toggle()
             } label: {
-              Text(formatter.string(from: date))
+              Text(date, format: Date.FormatStyle(date: .numeric, time: .omitted))
             }
             
             Button {
@@ -39,7 +37,6 @@ struct MyItemEditorPurchaseDateField: View {
         } else {
           Button {
             isPurchasedAtPresented.toggle()
-            purchasedAt = Date()
           } label: {
             Text("購入日を選択する")
           }
@@ -48,31 +45,40 @@ struct MyItemEditorPurchaseDateField: View {
       
     }
     .sheet(isPresented: $isPurchasedAtPresented) {
-      VStack {
-        HStack {
-          Spacer()
-          Button("完了") {
-            isPurchasedAtPresented.toggle()
-          }
-        }
+      NavigationStack {
         DatePicker(
           "",
-          selection: Binding<Date>(
-            get: { self.purchasedAt ?? Date() },
-            set: { self.purchasedAt = $0 }
-          ),
+          selection: $purchasedAtState,
           displayedComponents: [.date]
         )
         .labelsHidden()
         .datePickerStyle(.wheel)
+        
+        .toolbar {
+          ToolbarItem(placement: .cancellationAction) {
+            Button("キャンセル") {
+              isPurchasedAtPresented.toggle()
+            }
+          }
+          ToolbarItem(placement: .primaryAction) {
+            Button("今日") {
+              purchasedAtState = Date()
+            }
+          }
+          ToolbarItem(placement: .primaryAction) {
+            Button("完了") {
+              isPurchasedAtPresented.toggle()
+              purchasedAt = purchasedAtState
+            }
+          }
+        }
       }
-      .padding()
       .presentationDetents([.height(280)])
     }
-    .onAppear {
-      formatter.locale = Locale(identifier: "ja_JP")
-      formatter.dateFormat = "yyyy年MM月dd日"
-      formatter.timeZone = TimeZone(identifier: "Asia/Tokyo")
+    .onChange(of: isPurchasedAtPresented) { _, newValue in
+      if newValue {
+        purchasedAtState = purchasedAt ?? Date()
+      }
     }
   }
 }
