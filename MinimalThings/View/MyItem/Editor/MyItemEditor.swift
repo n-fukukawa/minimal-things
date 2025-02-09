@@ -27,6 +27,8 @@ struct MyItemEditor: View {
   @State private var weightInput: String = ""
   @State private var weightUnit: Item.WeightUnit = Item.WeightUnit.g
   
+  @State private var color: Item.ItemColor?
+  
   var body: some View {
     VStack {
       ScrollView(.vertical, showsIndicators: false) {
@@ -50,7 +52,8 @@ struct MyItemEditor: View {
               brand: $brand,
               size: $size,
               weightInput: $weightInput,
-              weightUnit: $weightUnit
+              weightUnit: $weightUnit,
+              color: $color
             )
           }
         }
@@ -103,7 +106,17 @@ struct MyItemEditor: View {
     category = item.category
     memo = item.memo ?? ""
     brand = item.brand ?? ""
-    
+    weightUnit = item.weightUnit ?? Item.WeightUnit.g
+    if let gram = item.gram {
+      if item.weightUnit == Item.WeightUnit.kg {
+        weightInput = String(Float(gram / 1000))
+      } else {
+        weightInput = String(gram)
+      }
+    } else {
+      weightInput = ""
+    }
+    color = item.color
   }
   
   // 編集処理
@@ -115,6 +128,7 @@ struct MyItemEditor: View {
     item.brand = brand.isEmpty ? nil : memo
     item.weightUnit = weightUnit
     item.gram = getGramValue()
+    item.color = color
   }
   // 新規作成
   private func insertItem() {
@@ -125,6 +139,7 @@ struct MyItemEditor: View {
     newItem.brand = brand.isEmpty ? nil : brand
     newItem.weightUnit = weightUnit
     newItem.gram = getGramValue()
+    newItem.color = color
     modelContext.insert(newItem)
   }
   
