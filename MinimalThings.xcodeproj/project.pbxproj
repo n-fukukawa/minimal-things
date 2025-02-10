@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5503E8ED2D596B5C00B6DFC2 /* MyItemViewSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5503E8EC2D596B5C00B6DFC2 /* MyItemViewSetting.swift */; };
+		5503E8F32D5AAD2600B6DFC2 /* MyItemCategoryListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5503E8F22D5AAD2600B6DFC2 /* MyItemCategoryListRow.swift */; };
 		552ACBF32D44CE490055BA9A /* MinimalThingsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552ACBF22D44CE490055BA9A /* MinimalThingsApp.swift */; };
 		552ACBF52D44CE490055BA9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552ACBF42D44CE490055BA9A /* ContentView.swift */; };
 		552ACBF92D44CE4A0055BA9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 552ACBF82D44CE4A0055BA9A /* Assets.xcassets */; };
@@ -33,6 +35,7 @@
 		55B968422D58874400ED174C /* MyItemDetailTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B968412D58874400ED174C /* MyItemDetailTabBar.swift */; };
 		55B968442D58878900ED174C /* MyItemDetailMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B968432D58878900ED174C /* MyItemDetailMemoView.swift */; };
 		55B968462D58CA8700ED174C /* MyItemEditorTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B968452D58CA8700ED174C /* MyItemEditorTabBar.swift */; };
+		55B968492D5964C100ED174C /* MyItemCategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B968482D5964C100ED174C /* MyItemCategoryList.swift */; };
 		55DA8FDE2D56E5F1001BFF10 /* MyItemEditorPhotoHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DA8FDD2D56E5F1001BFF10 /* MyItemEditorPhotoHome.swift */; };
 		55DA8FE02D56FB06001BFF10 /* MyItemEditorPhotoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DA8FDF2D56FB06001BFF10 /* MyItemEditorPhotoList.swift */; };
 		55EDE1FE2D556A190027B07D /* MyItemEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EDE1FD2D556A190027B07D /* MyItemEditor.swift */; };
@@ -57,6 +60,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5503E8EC2D596B5C00B6DFC2 /* MyItemViewSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyItemViewSetting.swift; sourceTree = "<group>"; };
+		5503E8F22D5AAD2600B6DFC2 /* MyItemCategoryListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyItemCategoryListRow.swift; sourceTree = "<group>"; };
 		552ACBEF2D44CE490055BA9A /* MinimalThings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinimalThings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		552ACBF22D44CE490055BA9A /* MinimalThingsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalThingsApp.swift; sourceTree = "<group>"; };
 		552ACBF42D44CE490055BA9A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -87,6 +92,7 @@
 		55B968412D58874400ED174C /* MyItemDetailTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyItemDetailTabBar.swift; sourceTree = "<group>"; };
 		55B968432D58878900ED174C /* MyItemDetailMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyItemDetailMemoView.swift; sourceTree = "<group>"; };
 		55B968452D58CA8700ED174C /* MyItemEditorTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyItemEditorTabBar.swift; sourceTree = "<group>"; };
+		55B968482D5964C100ED174C /* MyItemCategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyItemCategoryList.swift; sourceTree = "<group>"; };
 		55DA8FDD2D56E5F1001BFF10 /* MyItemEditorPhotoHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyItemEditorPhotoHome.swift; sourceTree = "<group>"; };
 		55DA8FDF2D56FB06001BFF10 /* MyItemEditorPhotoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyItemEditorPhotoList.swift; sourceTree = "<group>"; };
 		55EDE1FD2D556A190027B07D /* MyItemEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyItemEditor.swift; sourceTree = "<group>"; };
@@ -118,6 +124,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5503E8EB2D596B1500B6DFC2 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				5532DE432D55638C0079E80B /* MyItemView.swift */,
+				5503E8EC2D596B5C00B6DFC2 /* MyItemViewSetting.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		552ACBE62D44CE490055BA9A = {
 			isa = PBXGroup;
 			children = (
@@ -212,8 +227,10 @@
 		5532DE3C2D5425DB0079E80B /* MyItem */ = {
 			isa = PBXGroup;
 			children = (
-				5532DE432D55638C0079E80B /* MyItemView.swift */,
+				5503E8EB2D596B1500B6DFC2 /* Navigation */,
 				5532DE3D2D54261D0079E80B /* MyItemList.swift */,
+				55B968482D5964C100ED174C /* MyItemCategoryList.swift */,
+				5503E8F22D5AAD2600B6DFC2 /* MyItemCategoryListRow.swift */,
 				5532DE3F2D542B950079E80B /* MyItemCard.swift */,
 				553002052D58814400D2F8AF /* Detail */,
 				5534FCC92D56E0E100507A72 /* Editor */,
@@ -393,13 +410,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				552ACBF52D44CE490055BA9A /* ContentView.swift in Sources */,
+				5503E8ED2D596B5C00B6DFC2 /* MyItemViewSetting.swift in Sources */,
 				557481E32D5754B200C02ABF /* MyItemEditorFoundationSection.swift in Sources */,
 				55DA8FDE2D56E5F1001BFF10 /* MyItemEditorPhotoHome.swift in Sources */,
 				55B9683A2D58847500ED174C /* MyItemDetailHeader.swift in Sources */,
+				5503E8F32D5AAD2600B6DFC2 /* MyItemCategoryListRow.swift in Sources */,
 				55EDE21C2D557CBF0027B07D /* MyItemEditorPhotoPicker.swift in Sources */,
 				5532DE3A2D541C770079E80B /* ItemCategory.swift in Sources */,
 				55DA8FE02D56FB06001BFF10 /* MyItemEditorPhotoList.swift in Sources */,
 				55B9683E2D5885EE00ED174C /* MyItemDetailSpecView.swift in Sources */,
+				55B968492D5964C100ED174C /* MyItemCategoryList.swift in Sources */,
 				5532DE402D542B950079E80B /* MyItemCard.swift in Sources */,
 				5532DE442D55638C0079E80B /* MyItemView.swift in Sources */,
 				553B949E2D56E21C0083C5A9 /* MyItemEditorPhotoSection.swift in Sources */,

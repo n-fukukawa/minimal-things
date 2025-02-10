@@ -9,11 +9,12 @@ import SwiftUI
 import SwiftData
 
 struct MyItemList: View {
-  @Environment(\.modelContext) private var modelContext
   @Query private var items: [Item]
-  
-  @State private var searchText: String = ""
-  @State private var isEditorPresented = false
+    
+  init(sortOrder: SortOrder, searchText: String) {
+    let predicate = Item.predicate(searchText: searchText)
+    _items = Query(filter: predicate, sort: \.purchasedAt, order: sortOrder)
+  }
   
   var gridItems = [GridItem(.adaptive(minimum: 100, maximum: 180), spacing: 5)]
   
@@ -30,36 +31,9 @@ struct MyItemList: View {
         MyItemDetail(item: item)
       }
     }
-    .toolbar {
-      ToolbarItem {
-        Button {
-          isEditorPresented.toggle()
-        } label: {
-          Label("追加", systemImage: "plus")
-        }
-      }
-    }
-    .searchable(text: $searchText)
-    .sheet(isPresented: $isEditorPresented) {
-      NavigationStack {
-        MyItemEditor(dismissAction: { isEditorPresented = false })
-          .navigationTitle("新規作成")
-          .navigationBarTitleDisplayMode(.inline)
-          .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-              Button {
-                isEditorPresented = false
-              } label : {
-                Label("閉じる", systemImage: "xmark")
-              }
-            }
-          }
-      }
-    }
   }
 }
 
 #Preview {
-  MyItemList()
-    .modelContainer(for: Item.self, inMemory: true)
+  MyItemList(sortOrder: SortOrder.reverse, searchText: "")
 }
