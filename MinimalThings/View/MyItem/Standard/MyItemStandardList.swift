@@ -21,8 +21,7 @@ struct MyItemStandardList: View {
   
   var body: some View {
     ScrollView {
-      VStack(spacing: 0) {
-        Rectangle().fill(Color(UIColor.systemGray5).opacity(0.5)).frame(height: 1)
+      LazyVStack(spacing: 0) {
         ForEach(items) { item in
           NavigationLink(value: item) {
             MyItemListItem(item: item)
