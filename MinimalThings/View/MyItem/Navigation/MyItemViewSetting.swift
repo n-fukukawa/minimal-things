@@ -14,17 +14,17 @@ struct MyItemViewSetting: View {
   
   var body: some View {
     Menu {
-      Section("表示形式") {
-        Picker("表示形式", selection: $displayType) {
-          ForEach(DisplayType.allCases, id: \.self) { type in
-            Label(type.name, systemImage: type.icon)
-          }
-        }
-      }
       Section(header: Text("グループ化")) {
         Picker("グルーピング", selection: $groupingType) {
           ForEach(GroupingType.allCases, id: \.self) { type in
             Text(type.name)
+          }
+        }
+      }
+      Section("表示形式") {
+        Picker("表示形式", selection: $displayType) {
+          ForEach(DisplayType.allCases, id: \.self) { type in
+            Label(type.name, systemImage: type.icon)
           }
         }
       }

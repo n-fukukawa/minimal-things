@@ -12,13 +12,15 @@ struct MyItemCategoryGallery: View {
   @Query private var items: [Item]
   @Query private var categoires: [ItemCategory]
   
+  let searchText: String
+  
   var body: some View {
     ScrollView(.vertical, showsIndicators: false) {
       VStack(alignment: .leading, spacing: 20) {
         ForEach(categoires) { category in
-          MyItemCategoryGalleryRow(category: category)
+          MyItemCategoryGalleryRow(category: category, searchText: searchText)
         }
-        MyItemCategoryGalleryRow(category: nil)
+        MyItemCategoryGalleryRow(category: nil, searchText: searchText)
         Spacer()
       }
       .padding(.bottom)
@@ -31,6 +33,6 @@ struct MyItemCategoryGallery: View {
 }
 
 #Preview {
-  MyItemCategoryGallery()
+  MyItemCategoryGallery(searchText: "")
     .modelContainer(for: Item.self, inMemory: true)
 }

@@ -12,9 +12,9 @@ struct MyItemCategoryGalleryRow: View {
   @Query private var items: [Item]
   let category: ItemCategory?
   
-  init(category: ItemCategory?) {
+  init(category: ItemCategory?, searchText: String) {
     self.category = category
-    let predicate = Item.fetchByCategory(category: category)
+    let predicate = Item.fetchByCategory(category: category, searchText: searchText)
     _items = Query(filter: predicate)
   }
   
@@ -44,5 +44,5 @@ struct MyItemCategoryGalleryRow: View {
 }
 
 #Preview {
-  MyItemCategoryGalleryRow(category: nil)
+  MyItemCategoryGalleryRow(category: nil, searchText: "")
 }

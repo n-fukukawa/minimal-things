@@ -16,6 +16,7 @@ struct MyItemView: View {
   
   var body: some View {
     NavigationStack {
+      
       Group {
         if groupingType == .none {
           if displayType == .gallery {
@@ -28,7 +29,10 @@ struct MyItemView: View {
         
         if groupingType == .category {
           if displayType == .gallery {
-            MyItemCategoryGallery()
+            MyItemCategoryGallery(searchText: searchText)
+          }
+          if displayType == .list {
+            MyItemCategoryList(searchText: searchText)
           }
         }
       }

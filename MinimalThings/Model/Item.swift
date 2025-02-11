@@ -130,14 +130,16 @@ extension Item {
 }
 
 extension Item {
-  static func fetchByCategory(category: ItemCategory?) -> Predicate<Item> {
+  static func fetchByCategory(category: ItemCategory?, searchText: String) -> Predicate<Item> {
     if let categoryName = category?.name {
       return #Predicate<Item> { item in
-        item.category?.name == categoryName
+        item.category?.name == categoryName &&
+        (searchText.isEmpty || item.name.contains(searchText))
       }
     } else {
       return #Predicate<Item> { item in
-        item.category == nil
+        item.category == nil &&
+        (searchText.isEmpty || item.name.contains(searchText))
       }
     }
   }
