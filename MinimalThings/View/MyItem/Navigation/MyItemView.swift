@@ -8,20 +8,28 @@
 import SwiftUI
 
 struct MyItemView: View {
-  @AppStorage("view.listType") private var listType: ListType = ListType.grid
-  @State private var sortOrder: SortOrder = SortOrder.reverse
+  @AppStorage("view.displayType") private var displayType: DisplayType = .gallery
+  @AppStorage("view.sortOrder") private var sortOrder: ItemSortOrder = .reverse
+  @AppStorage("view.groupingType") private var groupingType: GroupingType = .none
   @State private var searchText: String = ""
   @State private var isEditorPresented = false
   
   var body: some View {
     NavigationStack {
       Group {
-        if listType == ListType.grid {
-          MyItemList(sortOrder: sortOrder, searchText: searchText)
+        if groupingType == .none {
+          if displayType == .gallery {
+            MyItemStandardGallery(searchText: searchText)
+          }
+          if displayType == .list {
+            MyItemStandardList(searchText: searchText)
+          }
         }
         
-        if listType == ListType.category {
-          MyItemCategoryList()
+        if groupingType == .category {
+          if displayType == .gallery {
+            MyItemCategoryGallery()
+          }
         }
       }
       .searchable(text: $searchText)
@@ -43,7 +51,7 @@ struct MyItemView: View {
       }
       .toolbar {
         ToolbarItemGroup(placement: .topBarTrailing) {
-          MyItemViewSetting(listType: $listType, sortOrder: $sortOrder)
+          MyItemViewSetting()
           Label("追加", systemImage: "plus")
             .onTapGesture {
               isEditorPresented.toggle()
@@ -54,26 +62,57 @@ struct MyItemView: View {
   }
 }
 
-enum ListType: String, CaseIterable {
-  case grid
-  case category
+enum DisplayType: String, CaseIterable {
+  case gallery
   case list
   
   var name: String {
     switch self {
-    case .grid: return "標準"
-    case .category: return "カテゴリー"
+    case .gallery: return "ギャラリー"
     case .list: return "リスト"
     }
   }
   
   var icon: String {
     switch self {
-    case .grid: return "square.grid.3x3"
-    case .category: return "square.grid.3x1.below.line.grid.1x2"
+    case .gallery: return "square.grid.3x3"
     case .list: return "list.dash"
     }
   }
+}
+
+enum GroupingType: String, CaseIterable {
+  case none
+  case category
+  case purchasedMonth
+  
+  var name: String {
+    switch self {
+    case .none: return "グループ化なし"
+    case .category: return "カテゴリー別"
+    case .purchasedMonth: return "購入年月別"
+    }
+  }
+}
+
+enum ItemSortOrder: String, CaseIterable {
+  case reverse
+  case forward
+  
+  var value: SortOrder {
+    switch self {
+    case .reverse: return .reverse
+    case .forward: return .forward
+    }
+  }
+  
+  var name: String {
+    switch self {
+    case .reverse: return "購入日の新しい順"
+    case .forward: return "購入日の古い順"
+    }
+  }
+  
 }
 
 extension SortOrder {

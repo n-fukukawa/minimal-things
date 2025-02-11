@@ -8,19 +8,31 @@
 import SwiftUI
 
 struct MyItemViewSetting: View {
-  @Binding var listType: ListType
-  @Binding var sortOrder: SortOrder
+  @AppStorage("view.displayType") private var displayType: DisplayType = .gallery
+  @AppStorage("view.groupingType") private var groupingType: GroupingType = .none
+  @AppStorage("view.sortOrder") private var sortOrder: ItemSortOrder = .reverse
   
   var body: some View {
     Menu {
-      Picker("表示形式", selection: $listType) {
-        ForEach(ListType.allCases, id: \.self) { type in
-          Label(type.name, systemImage: type.icon)
+      Section("表示形式") {
+        Picker("表示形式", selection: $displayType) {
+          ForEach(DisplayType.allCases, id: \.self) { type in
+            Label(type.name, systemImage: type.icon)
+          }
         }
       }
-      Picker("並び順", selection: $sortOrder) {
-        ForEach([SortOrder.reverse, .forward], id: \.self) { order in
-          Text(order.name)
+      Section(header: Text("グループ化")) {
+        Picker("グルーピング", selection: $groupingType) {
+          ForEach(GroupingType.allCases, id: \.self) { type in
+            Text(type.name)
+          }
+        }
+      }
+      Section("並び順") {
+        Picker("並び順", selection: $sortOrder) {
+          ForEach([ItemSortOrder.reverse, .forward], id: \.self) { order in
+            Text(order.name)
+          }
         }
       }
     } label: {
@@ -30,8 +42,5 @@ struct MyItemViewSetting: View {
 }
 
 #Preview {
-  MyItemViewSetting(
-    listType: .constant(ListType.grid),
-    sortOrder: .constant(.reverse)
-  )
+  MyItemViewSetting()
 }

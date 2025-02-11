@@ -1,5 +1,5 @@
 //
-//  MyItemCategoryList.swift
+//  MyItemCategoryGallery.swift
 //  MinimalThings
 //
 //  Created by Naruki Fukukawa on 2025/02/10.
@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct MyItemCategoryList: View {
+struct MyItemCategoryGallery: View {
   @Query private var items: [Item]
   @Query private var categoires: [ItemCategory]
   
@@ -16,9 +16,9 @@ struct MyItemCategoryList: View {
     ScrollView(.vertical, showsIndicators: false) {
       VStack(alignment: .leading, spacing: 20) {
         ForEach(categoires) { category in
-          MyItemCategoryListRow(category: category)
+          MyItemCategoryGalleryRow(category: category)
         }
-        MyItemCategoryListRow(category: nil)
+        MyItemCategoryGalleryRow(category: nil)
         Spacer()
       }
       .padding(.bottom)
@@ -31,6 +31,6 @@ struct MyItemCategoryList: View {
 }
 
 #Preview {
-  MyItemCategoryList()
+  MyItemCategoryGallery()
     .modelContainer(for: Item.self, inMemory: true)
 }

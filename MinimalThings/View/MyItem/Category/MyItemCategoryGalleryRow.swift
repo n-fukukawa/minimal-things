@@ -1,5 +1,5 @@
 //
-//  MyItemCategoryListRow.swift
+//  MyItemCategoryGalleryRow.swift
 //  MinimalThings
 //
 //  Created by Naruki Fukukawa on 2025/02/11.
@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct MyItemCategoryListRow: View {
+struct MyItemCategoryGalleryRow: View {
   @Query private var items: [Item]
   let category: ItemCategory?
   
@@ -31,7 +31,7 @@ struct MyItemCategoryListRow: View {
           LazyHGrid(rows: gridItems) {
             ForEach(items) { item in
               NavigationLink(value: item) {
-                MyItemCard(item: item)
+                MyItemGalleryItem(item: item)
               }
             }
           }
@@ -44,5 +44,5 @@ struct MyItemCategoryListRow: View {
 }
 
 #Preview {
-  MyItemCategoryListRow(category: nil)
+  MyItemCategoryGalleryRow(category: nil)
 }
