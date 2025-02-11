@@ -20,17 +20,15 @@ struct MyItemStandardGallery: View {
   var gridItems = [GridItem(.adaptive(minimum: 100, maximum: 180), spacing: 5)]
   
   var body: some View {
-    Text("")
     ScrollView {
       LazyVGrid(columns: gridItems, spacing: 5) {
         ForEach(items) { item in
-          NavigationLink(value: item) {
+          NavigationLink {
+            MyItemDetail(item: item)
+          } label: {
             MyItemGalleryItem(item: item)
           }
         }
-      }
-      .navigationDestination(for: Item.self) { item in
-        MyItemDetail(item: item)
       }
     }
   }

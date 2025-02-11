@@ -1,14 +1,14 @@
 //
-//  MyItemCategoryListSection.swift
+//  MyItemCategoryGallerySection.swift
 //  MinimalThings
 //
-//  Created by Naruki Fukukawa on 2025/02/12.
+//  Created by Naruki Fukukawa on 2025/02/11.
 //
 
 import SwiftUI
 import SwiftData
 
-struct MyItemCategoryListSection: View {
+struct MyItemCategoryGallerySection: View {
   @Query private var items: [Item]
   let category: ItemCategory?
   
@@ -18,16 +18,24 @@ struct MyItemCategoryListSection: View {
     _items = Query(filter: predicate)
   }
   
+  var gridItems = [GridItem(.fixed(120), spacing: 5)]
+  
   var body: some View {
     if !items.isEmpty {
       Section {
-        VStack(spacing: 0) {
-          ForEach(items) { item in
-            NavigationLink {
-              MyItemDetail(item: item)
-            } label: {
-              MyItemListItem(item: item)
+        VStack(alignment: .leading, spacing: 5) {
+          ScrollView(.horizontal, showsIndicators: false) {
+            LazyHGrid(rows: gridItems) {
+              ForEach(items) { item in
+                NavigationLink {
+                  MyItemDetail(item: item)
+                } label: {
+                  MyItemGalleryItem(item: item)
+                }
+              }
             }
+            .frame(maxHeight: 120)
+            .padding(.horizontal, 10)
           }
         }
       } header: {
@@ -36,7 +44,7 @@ struct MyItemCategoryListSection: View {
             .font(.subheadline)
             .foregroundStyle(Color.foreground)
             .padding(4)
-            
+          
           Spacer()
         }.background(Color(UIColor.systemGray6))
       }
@@ -45,5 +53,5 @@ struct MyItemCategoryListSection: View {
 }
 
 #Preview {
-  MyItemCategoryListSection(category: nil, searchText: "")
+  MyItemCategoryGallerySection(category: nil, searchText: "")
 }

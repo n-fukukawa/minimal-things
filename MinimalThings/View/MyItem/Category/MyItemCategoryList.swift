@@ -23,9 +23,6 @@ struct MyItemCategoryList: View {
       }
       .padding(.bottom)
     }
-    .navigationDestination(for: Item.self) { item in
-      MyItemDetail(item: item)
-    }
     .padding(.top, 10)
   }
 }

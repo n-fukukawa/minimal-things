@@ -23,13 +23,12 @@ struct MyItemStandardList: View {
     ScrollView {
       LazyVStack(spacing: 0) {
         ForEach(items) { item in
-          NavigationLink(value: item) {
+          NavigationLink {
+            MyItemDetail(item: item)
+          } label: {
             MyItemListItem(item: item)
           }
         }
-      }
-      .navigationDestination(for: Item.self) { item in
-        MyItemDetail(item: item)
       }
     }
   }

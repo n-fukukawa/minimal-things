@@ -16,17 +16,14 @@ struct MyItemCategoryGallery: View {
   
   var body: some View {
     ScrollView(.vertical, showsIndicators: false) {
-      VStack(alignment: .leading, spacing: 20) {
+      LazyVStack(spacing: 10, pinnedViews: [.sectionHeaders]) {
         ForEach(categoires) { category in
-          MyItemCategoryGalleryRow(category: category, searchText: searchText)
+          MyItemCategoryGallerySection(category: category, searchText: searchText)
         }
-        MyItemCategoryGalleryRow(category: nil, searchText: searchText)
+        MyItemCategoryGallerySection(category: nil, searchText: searchText)
         Spacer()
       }
       .padding(.bottom)
-    }
-    .navigationDestination(for: Item.self) { item in
-      MyItemDetail(item: item)
     }
     .padding(.top, 10)
   }
