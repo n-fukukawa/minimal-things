@@ -11,17 +11,31 @@ import SwiftData
 struct MyItemStandardList: View {
   @AppStorage("view.sortOrder") private var sortOrder: ItemSortOrder = .reverse
   @Query private var items: [Item]
-    
+  
   init(searchText: String) {
     let predicate = Item.predicate(searchText: searchText)
     _items = Query(filter: predicate, sort: \.purchasedAt, order: sortOrder.value)
   }
   
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+  var gridItems = [GridItem(.fixed(.infinity), spacing: 0)]
+  
+  var body: some View {
+    ScrollView {
+      VStack(spacing: 0) {
+        Rectangle().fill(Color(UIColor.systemGray5).opacity(0.5)).frame(height: 1)
+        ForEach(items) { item in
+          NavigationLink(value: item) {
+            MyItemListItem(item: item)
+          }
+        }
+      }
+      .navigationDestination(for: Item.self) { item in
+        MyItemDetail(item: item)
+      }
     }
+  }
 }
 
 #Preview {
-    MyItemStandardList(searchText: "")
+  MyItemStandardList(searchText: "")
 }
