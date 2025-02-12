@@ -55,7 +55,7 @@ struct MyItemView: View {
       }
       .toolbar {
         ToolbarItemGroup(placement: .topBarTrailing) {
-          MyItemViewSetting()
+          MyItemViewDisplaySettings()
           Label("追加", systemImage: "plus")
             .onTapGesture {
               isEditorPresented.toggle()
@@ -88,13 +88,11 @@ enum DisplayType: String, CaseIterable {
 enum GroupingType: String, CaseIterable {
   case none
   case category
-  case purchasedMonth
   
   var name: String {
     switch self {
-    case .none: return "グループ化なし"
-    case .category: return "カテゴリー別"
-    case .purchasedMonth: return "購入年月別"
+    case .none: return "なし"
+    case .category: return "カテゴリー"
     }
   }
 }
@@ -112,21 +110,12 @@ enum ItemSortOrder: String, CaseIterable {
   
   var name: String {
     switch self {
-    case .reverse: return "購入日の新しい順"
-    case .forward: return "購入日の古い順"
+    case .reverse: return "新しい順"
+    case .forward: return "古い順"
     }
   }
-  
 }
 
-extension SortOrder {
-  var name: String {
-    switch self {
-    case .reverse: return "購入日の新しい順"
-    case .forward: return "購入日の古い順"
-    }
-  }
-}
 
 #Preview {
   MyItemView()

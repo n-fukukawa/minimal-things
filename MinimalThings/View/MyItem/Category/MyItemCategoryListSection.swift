@@ -34,7 +34,6 @@ struct MyItemCategoryListSection: View {
         HStack {
           Text(category?.name ?? "未分類")
             .font(.subheadline)
-            .foregroundStyle(Color.foreground)
             .padding(4)
             
           Spacer()

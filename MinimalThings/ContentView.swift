@@ -21,6 +21,7 @@ struct ContentView: View {
           Text("ホーム")
         }
     }
+    .tint(.text)
     .onAppear {
       createCategoriesIfNeed()
       createItemsIfNeed()

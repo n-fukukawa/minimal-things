@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5503E8ED2D596B5C00B6DFC2 /* MyItemViewSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5503E8EC2D596B5C00B6DFC2 /* MyItemViewSetting.swift */; };
+		5503E8ED2D596B5C00B6DFC2 /* MyItemViewDisplaySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5503E8EC2D596B5C00B6DFC2 /* MyItemViewDisplaySettings.swift */; };
 		5503E8F32D5AAD2600B6DFC2 /* MyItemCategoryGallerySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5503E8F22D5AAD2600B6DFC2 /* MyItemCategoryGallerySection.swift */; };
 		552ACBF32D44CE490055BA9A /* MinimalThingsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552ACBF22D44CE490055BA9A /* MinimalThingsApp.swift */; };
 		552ACBF52D44CE490055BA9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552ACBF42D44CE490055BA9A /* ContentView.swift */; };
@@ -64,7 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5503E8EC2D596B5C00B6DFC2 /* MyItemViewSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyItemViewSetting.swift; sourceTree = "<group>"; };
+		5503E8EC2D596B5C00B6DFC2 /* MyItemViewDisplaySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyItemViewDisplaySettings.swift; sourceTree = "<group>"; };
 		5503E8F22D5AAD2600B6DFC2 /* MyItemCategoryGallerySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyItemCategoryGallerySection.swift; sourceTree = "<group>"; };
 		552ACBEF2D44CE490055BA9A /* MinimalThings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinimalThings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		552ACBF22D44CE490055BA9A /* MinimalThingsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalThingsApp.swift; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				5532DE432D55638C0079E80B /* MyItemView.swift */,
-				5503E8EC2D596B5C00B6DFC2 /* MyItemViewSetting.swift */,
+				5503E8EC2D596B5C00B6DFC2 /* MyItemViewDisplaySettings.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -235,9 +235,9 @@
 		5532DE3C2D5425DB0079E80B /* MyItem */ = {
 			isa = PBXGroup;
 			children = (
+				5503E8EB2D596B1500B6DFC2 /* Navigation */,
 				55B4EA842D5BFEAC00DE912E /* Category */,
 				55B4EA832D5BFEA100DE912E /* Standard */,
-				5503E8EB2D596B1500B6DFC2 /* Navigation */,
 				5532DE3F2D542B950079E80B /* MyItemGalleryItem.swift */,
 				55B4EA8B2D5C064200DE912E /* MyItemListItem.swift */,
 				553002052D58814400D2F8AF /* Detail */,
@@ -439,7 +439,7 @@
 			files = (
 				552ACBF52D44CE490055BA9A /* ContentView.swift in Sources */,
 				55B4EA8A2D5BFFCC00DE912E /* MyItemStandardList.swift in Sources */,
-				5503E8ED2D596B5C00B6DFC2 /* MyItemViewSetting.swift in Sources */,
+				5503E8ED2D596B5C00B6DFC2 /* MyItemViewDisplaySettings.swift in Sources */,
 				557481E32D5754B200C02ABF /* MyItemEditorFoundationSection.swift in Sources */,
 				55DA8FDE2D56E5F1001BFF10 /* MyItemEditorPhotoHome.swift in Sources */,
 				55B9683A2D58847500ED174C /* MyItemDetailHeader.swift in Sources */,

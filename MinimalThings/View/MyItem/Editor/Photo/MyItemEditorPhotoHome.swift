@@ -15,7 +15,6 @@ struct MyItemEditorPhotoHome: View {
   
   var body: some View {
     VStack {
-      
       TabView {
         MyItemEditorPhotoPicker(photosPickerItem: $photosPickerItem, photoDataArray: $photoDataArray)
           .tabItem {

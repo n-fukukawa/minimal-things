@@ -107,6 +107,11 @@ struct MyItemEditorDetailSection: View {
       }
     }
     .padding(.bottom)
+    .onAppear {
+      UISegmentedControl.appearance().selectedSegmentTintColor = .text
+      UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.systemBackground], for: .selected)
+      UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(.text)], for: .normal)
+    }
   }
   
   private func colorImage(color: Color) -> Image {

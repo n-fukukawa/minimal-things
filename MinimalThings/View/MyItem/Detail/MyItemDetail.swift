@@ -27,7 +27,6 @@ struct MyItemDetail: View {
           .padding(.vertical, 10)
           .padding(.horizontal, 15)
         }
-        .foregroundStyle(Color.foreground)
         .sheet(isPresented: $isEditorPresented ){
           NavigationStack {
             MyItemEditor(item: item, dismissAction: { isEditorPresented = false })

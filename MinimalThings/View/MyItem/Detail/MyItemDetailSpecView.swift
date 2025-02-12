@@ -73,7 +73,7 @@ struct MyItemDetailSpecView: View {
           Rectangle()
             .fill(item.color?.color ?? Color(UIColor.systemBackground))
             .frame(width: 16, height: 16)
-            .border(Color.foreground, width: 1)
+            .border(Color.gray, width: 1)
           Spacer()
         }
         Rectangle()
