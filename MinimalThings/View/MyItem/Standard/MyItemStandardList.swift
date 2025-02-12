@@ -17,8 +17,6 @@ struct MyItemStandardList: View {
     _items = Query(filter: predicate, sort: \.purchasedAt, order: sortOrder.value)
   }
   
-  var gridItems = [GridItem(.fixed(.infinity), spacing: 0)]
-  
   var body: some View {
     ScrollView {
       LazyVStack(spacing: 0) {

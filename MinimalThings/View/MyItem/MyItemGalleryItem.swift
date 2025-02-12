@@ -8,25 +8,27 @@
 import SwiftUI
 
 struct MyItemGalleryItem: View {
+  @AppStorage("view.gallerySize") private var gallerySize: Int = 120
   var item: Item
   
   var body: some View {
     if item.images.count > 0 {
-      if let uiImage = UIImage(data: item.images[0]) {
-        Image(uiImage: uiImage)
-          .resizable()
-          .aspectRatio(contentMode: .fill)
-          .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-          .clipped()
-          .aspectRatio(1, contentMode: .fit)
-          .cornerRadius(5)
-      } else {
-        Text(item.name)
-          .font(.caption)
-          .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-          .clipped()
-          .aspectRatio(1, contentMode: .fit)
-          .border(Color(UIColor.systemGray3), width: 1)
+      ZStack {
+        RoundedRectangle(cornerRadius: 5)
+          .fill(Color(UIColor.systemBackground))
+          .shadow(color: .gray.opacity(0.25), radius: 4, x: 1, y: 1)
+          .frame(width: CGFloat(gallerySize), height: CGFloat(gallerySize))
+        
+        if let uiImage = UIImage(data: item.images[0]) {
+          Image(uiImage: uiImage)
+            .resizable()
+            .scaledToFit()
+            .frame(width: CGFloat(gallerySize), height: CGFloat(gallerySize))
+        } else {
+          Text(item.name)
+            .font(.caption)
+            .frame(width: CGFloat(gallerySize), height: CGFloat(gallerySize))
+        }
       }
     }
     

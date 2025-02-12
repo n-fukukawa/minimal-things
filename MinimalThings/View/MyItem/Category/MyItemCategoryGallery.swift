@@ -16,7 +16,7 @@ struct MyItemCategoryGallery: View {
   
   var body: some View {
     ScrollView(.vertical, showsIndicators: false) {
-      LazyVStack(spacing: 10, pinnedViews: [.sectionHeaders]) {
+      LazyVStack(spacing: 0, pinnedViews: [.sectionHeaders]) {
         ForEach(categoires) { category in
           MyItemCategoryGallerySection(category: category, searchText: searchText)
         }

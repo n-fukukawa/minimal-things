@@ -9,16 +9,18 @@ import SwiftUI
 import SwiftData
 
 struct MyItemCategoryGallerySection: View {
+  @AppStorage("view.gallerySize") private var gallerySize: Int = 120
   @Query private var items: [Item]
   let category: ItemCategory?
+  
+  private var gridItems = [GridItem(.fixed(120), spacing: 5)]
   
   init(category: ItemCategory?, searchText: String) {
     self.category = category
     let predicate = Item.fetchByCategory(category: category, searchText: searchText)
     _items = Query(filter: predicate)
+    gridItems = [GridItem(.fixed(CGFloat(gallerySize)), spacing: 5)]
   }
-  
-  var gridItems = [GridItem(.fixed(120), spacing: 5)]
   
   var body: some View {
     if !items.isEmpty {
@@ -34,8 +36,8 @@ struct MyItemCategoryGallerySection: View {
                 }
               }
             }
-            .frame(maxHeight: 120)
-            .padding(.horizontal, 10)
+            .frame(height: CGFloat(gallerySize))
+            .padding(10)
           }
         }
       } header: {
