@@ -66,7 +66,7 @@ struct MyItemDetail: View {
 }
 
 #Preview {
-  let item = Item(name: "急速充電ができるモバイルバッテリー", status: .owned)
+  let item = Item(name: "急速充電ができるモバイルバッテリー", status: Item.ItemStatus.owned.rawValue)
   item.images = [Data()]
   item.category = nil
   item.memo = """

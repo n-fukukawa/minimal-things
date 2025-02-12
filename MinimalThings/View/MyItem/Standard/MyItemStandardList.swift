@@ -13,7 +13,7 @@ struct MyItemStandardList: View {
   @Query private var items: [Item]
   
   init(searchText: String) {
-    let predicate = Item.predicate(searchText: searchText)
+    let predicate = Item.predicate(status: .owned, searchText: searchText)
     _items = Query(filter: predicate, sort: \.purchasedAt, order: sortOrder.value)
   }
   

@@ -27,6 +27,6 @@ struct MyItemDetailImage: View {
 }
 
 #Preview {
-  let item = Item(name: "", status: .owned)
+  let item = Item(name: "", status: Item.ItemStatus.owned.rawValue)
   return MyItemDetailImage(item: item, size: 100)
 }

@@ -46,7 +46,7 @@ struct ContentView: View {
   
   func createItemsIfNeed() {
     if items.isEmpty {
-      let item = Item(name: "急速充電ができるモバイルバッテリー", status: .owned)
+      let item = Item(name: "急速充電ができるモバイルバッテリー", status: Item.ItemStatus.owned.rawValue)
       item.images = [Data()]
       item.category = categories.first
       item.memo = """
@@ -66,7 +66,7 @@ struct ContentView: View {
       item.url = "https://www.muji.com/jp/ja/store/cmdty/section/T20213"
       modelContext.insert(item)
       
-      let item2 = Item(name: "急速充電ができるモバイルバッテリー", status: .owned)
+      let item2 = Item(name: "急速充電ができるモバイルバッテリー", status: Item.ItemStatus.owned.rawValue)
       item2.images = [Data()]
       item2.category = nil
       item2.memo = """

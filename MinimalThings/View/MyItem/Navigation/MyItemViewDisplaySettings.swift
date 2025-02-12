@@ -35,7 +35,7 @@ struct MyItemViewDisplaySettings: View {
       Section("購入日") {
         Picker("購入日", selection: $sortOrder) {
           ForEach([ItemSortOrder.reverse, .forward], id: \.self) { order in
-            Label(order.name, systemImage: "")
+            Text(order.name)
           }
         }
         .pickerStyle(.inline)

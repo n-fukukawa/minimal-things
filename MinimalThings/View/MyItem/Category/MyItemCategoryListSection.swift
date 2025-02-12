@@ -14,7 +14,7 @@ struct MyItemCategoryListSection: View {
   
   init(category: ItemCategory?, searchText: String) {
     self.category = category
-    let predicate = Item.fetchByCategory(category: category, searchText: searchText)
+    let predicate = Item.fetchByCategory(status: .owned, category: category, searchText: searchText)
     _items = Query(filter: predicate)
   }
   

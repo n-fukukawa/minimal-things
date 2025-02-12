@@ -28,5 +28,5 @@ struct MyItemDetailHeader: View {
 }
 
 #Preview {
-  MyItemDetailHeader(item: Item(name: "itemname", status: .owned))
+  MyItemDetailHeader(item: Item(name: "itemname", status: Item.ItemStatus.owned.rawValue))
 }

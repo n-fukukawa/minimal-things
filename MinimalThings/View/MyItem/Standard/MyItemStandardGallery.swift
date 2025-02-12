@@ -16,7 +16,7 @@ struct MyItemStandardGallery: View {
   private var gridItems = [GridItem(.fixed(120), spacing: 10)]
   
   init(searchText: String) {
-    let predicate = Item.predicate(searchText: searchText)
+    let predicate = Item.predicate(status: .owned, searchText: searchText)
     _items = Query(filter: predicate, sort: \.purchasedAt, order: sortOrder.value)
     gridItems = [GridItem(.adaptive(minimum: CGFloat(gallerySize), maximum: CGFloat(gallerySize)), spacing: 10)]
   }

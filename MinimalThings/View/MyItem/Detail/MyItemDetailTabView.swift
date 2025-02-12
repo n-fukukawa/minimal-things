@@ -31,5 +31,5 @@ struct MyItemDetailTabView: View {
 }
 
 #Preview {
-  MyItemDetailTabView(item: Item(name: "", status: .owned))
+  MyItemDetailTabView(item: Item(name: "", status: Item.ItemStatus.owned.rawValue))
 }

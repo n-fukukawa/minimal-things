@@ -20,5 +20,5 @@ struct MyItemDetailMemoView: View {
 }
 
 #Preview {
-  MyItemDetailMemoView(item: Item(name: "itemname", status: .owned))
+  MyItemDetailMemoView(item: Item(name: "itemname", status: Item.ItemStatus.owned.rawValue))
 }

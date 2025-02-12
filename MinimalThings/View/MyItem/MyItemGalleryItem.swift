@@ -35,6 +35,6 @@ struct MyItemGalleryItem: View {
 }
 
 #Preview {
-  let item = Item(name: "item name", status: .owned)
+  let item = Item(name: "item name", status: Item.ItemStatus.owned.rawValue)
   return MyItemGalleryItem(item: item).modelContainer(for: Item.self, inMemory: true)
 }

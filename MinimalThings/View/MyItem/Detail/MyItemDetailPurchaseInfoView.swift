@@ -108,7 +108,7 @@ struct MyItemDetailPurchaseInfoView: View {
 }
 
 #Preview {
-  let item = Item(name: "itemname", status: .owned)
+  let item = Item(name: "itemname", status: Item.ItemStatus.owned.rawValue)
   item.purchasedAt = Date()
   item.shop = "sample store"
   item.url = "https://exampleexampleexampleexample.com"

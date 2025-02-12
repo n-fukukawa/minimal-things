@@ -99,5 +99,5 @@ struct MyItemDetailSpecView: View {
 }
 
 #Preview {
-  MyItemDetailSpecView(item: Item(name: "itemname", status: .owned))
+  MyItemDetailSpecView(item: Item(name: "itemname", status: Item.ItemStatus.owned.rawValue))
 }

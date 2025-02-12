@@ -150,7 +150,7 @@ struct MyItemEditor: View {
   }
   // 新規作成
   private func insertItem() {
-    let newItem = Item(name: name, status: .owned)
+    let newItem = Item(name: name, status: Item.ItemStatus.owned.rawValue)
     newItem.images = selectedPhotoData.map({ $0.data })
     newItem.category = category
     newItem.memo = memo.isEmpty ? nil : memo

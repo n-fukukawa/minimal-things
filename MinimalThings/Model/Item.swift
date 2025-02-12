@@ -16,7 +16,7 @@ final class Item {
   var memo: String?
   var category: ItemCategory?
   
-  var status: ItemStatus
+  var status: ItemStatus.RawValue
   
   var images: [Data] = []
   
@@ -37,7 +37,7 @@ final class Item {
   var createdAt: Date?
   var updatedAt: Date?
   
-  init(name: String, status: ItemStatus) {
+  init(name: String, status: ItemStatus.RawValue) {
     self.name = name
     self.status = status
   }
@@ -122,22 +122,28 @@ extension Item {
 }
 
 extension Item {
-  static func predicate(searchText: String) -> Predicate<Item> {
+  static func predicate(status: ItemStatus, searchText: String) -> Predicate<Item> {
+    let statusRawValue = status.rawValue
     return #Predicate<Item> { item in
-      searchText.isEmpty || item.name.contains(searchText)
+      item.status == statusRawValue &&
+      (searchText.isEmpty || item.name.contains(searchText))
     }
   }
 }
 
 extension Item {
-  static func fetchByCategory(category: ItemCategory?, searchText: String) -> Predicate<Item> {
+  static func fetchByCategory(status: ItemStatus, category: ItemCategory?, searchText: String) -> Predicate<Item> {
+    let statusRawValue = status.rawValue
+    
     if let categoryName = category?.name {
       return #Predicate<Item> { item in
+        item.status == statusRawValue &&
         item.category?.name == categoryName &&
         (searchText.isEmpty || item.name.contains(searchText))
       }
     } else {
       return #Predicate<Item> { item in
+        item.status == statusRawValue &&
         item.category == nil &&
         (searchText.isEmpty || item.name.contains(searchText))
       }
