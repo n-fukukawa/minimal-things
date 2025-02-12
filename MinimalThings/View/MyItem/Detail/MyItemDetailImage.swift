@@ -15,8 +15,8 @@ struct MyItemDetailImage: View {
     if item.images.count > 0, let uiImage = UIImage(data: item.images[0]) {
       Image(uiImage: uiImage)
         .resizable()
+        .scaledToFit()
         .frame(width: size, height: size)
-        .scaledToFill()
     } else {
       Text(item.name)
         .font(.subheadline)

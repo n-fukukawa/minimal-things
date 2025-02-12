@@ -17,15 +17,16 @@ struct MyItemListItem: View {
           if let uiImage = UIImage(data: item.images[0]) {
             Image(uiImage: uiImage)
               .resizable()
+              .scaledToFit()
               .frame(width: 80, height: 80)
-              .aspectRatio(contentMode: .fill)
           } else {
             Text(item.name)
               .font(.caption)
               .frame(width: 80, height: 80)
-            Rectangle()
-              .fill(Color(UIColor.systemGray5).opacity(0.5)).frame(width: 1)
           }
+          
+          Rectangle()
+            .fill(Color(UIColor.systemGray5).opacity(0.5)).frame(width: 1)
           
           Text(item.name)
             .font(.subheadline)
