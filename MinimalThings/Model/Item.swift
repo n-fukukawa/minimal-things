@@ -31,7 +31,6 @@ final class Item {
   var shop: String?
   var url: String?
   
-  var reasonWhyWant: String?
   var reasonWhyDiscard: String?
   
   var createdAt: Date?

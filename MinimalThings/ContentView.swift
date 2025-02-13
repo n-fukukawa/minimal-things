@@ -14,19 +14,7 @@ struct ContentView: View {
   @Query private var items: [Item]
   
   var body: some View {
-    TabView {
-      MyItemView()
-        .tabItem {
-          Image(systemName: "house")
-          Text("ホーム")
-        }
-      
-      WantedItemView()
-        .tabItem {
-          Image(systemName: "star")
-          Text("ほしい物")
-        }
-    }
+    MyItemView()
     .tint(.text)
     .onAppear {
       createCategoriesIfNeed()
