@@ -8,11 +8,35 @@
 import SwiftUI
 
 struct WantedItemListItem: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+  let item: Item
+  
+  var body: some View {
+    VStack {
+      HStack(spacing: 0) {
+        VStack {
+          Text(item.name)
+            .font(.subheadline)
+          
+          if let brand = item.brand {
+            Text(brand)
+              .font(.caption)
+          }
+        }
+        
+        Spacer()
+      }
+      .padding()
+      
+      Rectangle()
+        .fill(Color(UIColor.systemGray5).opacity(0.5))
+        .frame(height: 1)
     }
+  }
 }
 
 #Preview {
-    WantedItemListItem()
+  WantedItemListItem(item: Item(
+    name: "item name",
+    status: Item.ItemStatus.wanted.rawValue
+  ))
 }

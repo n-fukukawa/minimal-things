@@ -20,6 +20,12 @@ struct ContentView: View {
           Image(systemName: "house")
           Text("ホーム")
         }
+      
+      WantedItemView()
+        .tabItem {
+          Image(systemName: "star")
+          Text("ほしい物")
+        }
     }
     .tint(.text)
     .onAppear {
