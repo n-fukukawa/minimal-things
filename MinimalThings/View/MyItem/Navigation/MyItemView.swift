@@ -55,11 +55,14 @@ struct MyItemView: View {
       }
       .toolbar {
         ToolbarItemGroup(placement: .topBarTrailing) {
-          MyItemViewDisplaySettings()
-          Label("追加", systemImage: "plus")
-            .onTapGesture {
+          HStack(spacing: 12) {
+            MyItemViewDisplaySettings()
+            Button {
               isEditorPresented.toggle()
+            } label: {
+              Label("追加", systemImage: "plus")
             }
+          }
         }
       }
     }

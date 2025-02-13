@@ -24,6 +24,7 @@ struct MyItemGalleryItem: View {
             .scaledToFit()
             .aspectRatio(1, contentMode: .fit)
             .frame(width: size, height: size)
+            .clipShape(RoundedRectangle(cornerRadius: 5))
         } else {
           Text(item.name)
             .font(.caption)

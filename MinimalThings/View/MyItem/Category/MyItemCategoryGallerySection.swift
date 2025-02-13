@@ -37,7 +37,7 @@ struct MyItemCategoryGallerySection: View {
             }
             .frame(height: CGFloat(itemHeight))
             .padding(.horizontal)
-            .padding(.vertical, 4)
+            .padding(.vertical, 3)
           }
         }
         .padding(.bottom, 30)
@@ -50,6 +50,7 @@ struct MyItemCategoryGallerySection: View {
             Text(category?.name ?? "未分類")
               .font(.title3)
               .fontWeight(.ultraLight)
+              .tracking(2)
               .background(Color(UIColor.systemBackground))
               .padding(.leading)
               .padding(.vertical, 8)

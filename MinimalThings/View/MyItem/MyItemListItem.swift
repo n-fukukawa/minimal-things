@@ -13,7 +13,7 @@ struct MyItemListItem: View {
   var body: some View {
     if item.images.count > 0 {
       ZStack {
-        RoundedRectangle(cornerRadius: 0)
+        RoundedRectangle(cornerRadius: 4)
           .fill(Color(UIColor.systemBackground))
           .shadow(color: .gray.opacity(0.2), radius: 4, x: 1, y: 2)
         
@@ -33,6 +33,7 @@ struct MyItemListItem: View {
             .font(.subheadline)
             .lineLimit(2)
             .padding(8)
+            .multilineTextAlignment(.leading)
           
           Spacer()
         }

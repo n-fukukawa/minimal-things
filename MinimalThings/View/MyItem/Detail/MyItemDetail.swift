@@ -46,19 +46,27 @@ struct MyItemDetail: View {
       }
     }
     .toolbar {
-      ToolbarItemGroup(placement: .secondaryAction) {
-        Button("編集") {
-          isEditorPresented.toggle()
-        }
-        Button("削除", role: .destructive) {
-          isDeleteConfirmationPresented.toggle()
-        }
-        .confirmationDialog("", isPresented: $isDeleteConfirmationPresented) {
-          Button("削除", role: .destructive) {
-            modelContext.delete(item)
-            dismiss()
+      ToolbarItemGroup(placement: .topBarTrailing) {
+        HStack(spacing: 12) {
+          Button {
+            isEditorPresented.toggle()
+          } label: {
+            Label("編集", systemImage: "pencil")
+              .font(.subheadline)
           }
-          Button("キャンセル", role: .cancel) {}
+          Button(role: .destructive) {
+            isDeleteConfirmationPresented.toggle()
+          } label: {
+            Label("削除", systemImage: "trash")
+              .font(.subheadline)
+          }
+          .confirmationDialog("", isPresented: $isDeleteConfirmationPresented) {
+            Button("削除", role: .destructive) {
+              modelContext.delete(item)
+              dismiss()
+            }
+            Button("キャンセル", role: .cancel) {}
+          }
         }
       }
     }
