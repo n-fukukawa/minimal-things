@@ -16,7 +16,9 @@ struct MyItemDetailTabBar: View {
         activeTab = 1
       } label: {
         VStack {
-          Text("メモ").font(.subheadline)
+          Label("コメント", systemImage: "text.bubble")
+            .labelStyle(.iconOnly)
+            .padding(.bottom, 2)
           Rectangle()
             .frame(height: 2)
             .opacity(activeTab == 1 ? 0.8 : 0.1)
@@ -28,7 +30,9 @@ struct MyItemDetailTabBar: View {
         activeTab = 2
       } label: {
         VStack {
-          Text("仕様").font(.subheadline)
+          Label("仕様", systemImage: "info.circle")
+            .labelStyle(.iconOnly)
+            .padding(.bottom, 2)
           Rectangle()
             .frame(height: 2)
             .opacity(activeTab == 2 ? 0.8 : 0.1)
@@ -40,7 +44,9 @@ struct MyItemDetailTabBar: View {
         activeTab = 3
       } label: {
         VStack {
-          Text("購入情報").font(.subheadline)
+          Label("購入情報", systemImage: "cart")
+            .labelStyle(.iconOnly)
+            .padding(.bottom, 2)
           Rectangle()
             .frame(height: 2)
             .opacity(activeTab == 3 ? 0.8 : 0.1)

@@ -11,7 +11,7 @@ struct MyItemDetailMemoView: View {
   let item: Item
   
   var body: some View {
-    Text(item.memo ?? "")
+    Text(item.comment ?? "")
       .lineLimit(nil)
       .lineSpacing(5)
       .font(.subheadline)

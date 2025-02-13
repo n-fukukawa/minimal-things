@@ -17,8 +17,8 @@ struct MyItemDetailHeader: View {
         .font(.headline)
         .fontWeight(.medium)
       
-      if let brand = item.brand {
-        Text(brand)
+      if let maker = item.maker {
+        Text(maker)
           .textSelection(.enabled)
           .font(.caption)
           .opacity(0.8)

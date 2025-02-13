@@ -12,7 +12,7 @@ struct MyItemEditorFoundationSection: View {
   @Query private var categories: [ItemCategory]
   @Binding var name: String
   @Binding var category: ItemCategory?
-  @Binding var memo: String
+  @Binding var comment: String
   @FocusState.Binding var focused: Bool
   
   var body: some View {
@@ -40,9 +40,9 @@ struct MyItemEditorFoundationSection: View {
       }
       
       VStack(alignment: .leading, spacing: 4) {
-        Text("メモ")
+        Text("コメント")
           .font(.subheadline)
-        TextEditor(text: $memo)
+        TextEditor(text: $comment)
           .focused($focused)
           .multilineTextAlignment(.leading)
           .lineSpacing(4)
@@ -57,7 +57,7 @@ struct MyItemEditorFoundationSection: View {
   MyItemEditorFoundationSection(
     name: .constant("name"),
     category: .constant(nil),
-    memo: .constant(""),
+    comment: .constant(""),
     focused: FocusState<Bool>().projectedValue
   )
 }

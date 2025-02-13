@@ -18,7 +18,7 @@ struct MyItemDetailSpecView: View {
             .font(.subheadline)
             .frame(width: 80, alignment: .leading)
             .padding(.leading, 8)
-          Text(item.brand ?? "ー")
+          Text(item.maker ?? "ー")
             .font(.subheadline)
           Spacer()
         }

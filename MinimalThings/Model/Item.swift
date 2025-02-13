@@ -13,14 +13,14 @@ import SwiftData
 @Model
 final class Item {
   var name: String
-  var memo: String?
+  var comment: String?
   var category: ItemCategory?
   
   var status: ItemStatus.RawValue
   
   var images: [Data] = []
   
-  var brand: String?
+  var maker: String?
   var size:  String?
   var gram: Int?
   var weightUnit: WeightUnit?

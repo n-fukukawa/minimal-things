@@ -22,9 +22,9 @@ struct MyItemEditor: View {
   
   @State private var name: String = ""
   @State private var category: ItemCategory?
-  @State private var memo: String = ""
+  @State private var comment: String = ""
   
-  @State private var brand: String = ""
+  @State private var maker: String = ""
   @State private var size: String = ""
   @State private var weightInput: String = ""
   @State private var weightUnit: Item.WeightUnit = Item.WeightUnit.g
@@ -51,7 +51,7 @@ struct MyItemEditor: View {
             MyItemEditorFoundationSection(
               name: $name,
               category: $category,
-              memo: $memo,
+              comment: $comment,
               focused: $focused
             )
           }
@@ -59,7 +59,7 @@ struct MyItemEditor: View {
           if activeTab == 2 {
             MyItemEditorDetailSection(
               focused: $focused,
-              brand: $brand,
+              maker: $maker,
               size: $size,
               weightInput: $weightInput,
               weightUnit: $weightUnit,
@@ -109,8 +109,8 @@ struct MyItemEditor: View {
     })
     name = item.name
     category = item.category
-    memo = item.memo ?? ""
-    brand = item.brand ?? ""
+    comment = item.comment ?? ""
+    maker = item.maker ?? ""
     weightUnit = item.weightUnit ?? Item.WeightUnit.g
     if let gram = item.gram {
       if item.weightUnit == Item.WeightUnit.kg {
@@ -137,8 +137,8 @@ struct MyItemEditor: View {
     item.images = selectedPhotoData.map({ $0.data })
     item.name = name
     item.category = category
-    item.memo = memo.isEmpty ? nil : memo
-    item.brand = brand.isEmpty ? nil : brand
+    item.comment = comment.isEmpty ? nil : comment
+    item.maker = maker.isEmpty ? nil : maker
     item.weightUnit = weightUnit
     item.gram = getGramValue()
     item.color = color
@@ -153,8 +153,8 @@ struct MyItemEditor: View {
     let newItem = Item(name: name, status: Item.ItemStatus.owned.rawValue)
     newItem.images = selectedPhotoData.map({ $0.data })
     newItem.category = category
-    newItem.memo = memo.isEmpty ? nil : memo
-    newItem.brand = brand.isEmpty ? nil : brand
+    newItem.comment = comment.isEmpty ? nil : comment
+    newItem.maker = maker.isEmpty ? nil : maker
     newItem.weightUnit = weightUnit
     newItem.gram = getGramValue()
     newItem.color = color

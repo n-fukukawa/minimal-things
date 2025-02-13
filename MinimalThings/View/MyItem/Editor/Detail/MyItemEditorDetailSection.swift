@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MyItemEditorDetailSection: View {
   @FocusState.Binding var focused: Bool
-  @Binding var brand: String
+  @Binding var maker: String
   @Binding var size: String
   @Binding var weightInput: String
   @Binding var weightUnit: Item.WeightUnit
@@ -24,7 +24,7 @@ struct MyItemEditorDetailSection: View {
       VStack(alignment: .leading, spacing: 4) {
         Text("メーカー")
           .font(.subheadline)
-        TextField("", text: $brand)
+        TextField("", text: $maker)
         
           .focused($focused)
           .textFieldStyle(.roundedBorder)
@@ -138,7 +138,7 @@ struct MyItemEditorDetailSection: View {
 #Preview {
   MyItemEditorDetailSection(
     focused: FocusState<Bool>().projectedValue,
-    brand: .constant(""),
+    maker: .constant(""),
     size: .constant(""),
     weightInput: .constant(""),
     weightUnit: .constant(Item.WeightUnit.g),
