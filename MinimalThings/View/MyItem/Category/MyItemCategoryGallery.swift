@@ -25,7 +25,7 @@ struct MyItemCategoryGallery: View {
       }
       .padding(.bottom)
     }
-    .padding(.top, 10)
+    .padding(.top)
   }
 }
 

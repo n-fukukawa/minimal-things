@@ -21,7 +21,7 @@ struct MyItemCategoryListSection: View {
   var body: some View {
     if !items.isEmpty {
       Section {
-        VStack(spacing: 0) {
+        VStack(spacing: 6) {
           ForEach(items) { item in
             NavigationLink {
               MyItemDetail(item: item)
@@ -30,14 +30,24 @@ struct MyItemCategoryListSection: View {
             }
           }
         }
+        .padding(.top, 3)
+        .padding(.horizontal)
+        .padding(.bottom, 30)
       } header: {
-        HStack {
-          Text(category?.name ?? "未分類")
-            .font(.subheadline)
-            .padding(4)
+        ZStack {
+          Rectangle()
+            .fill(Color(UIColor.systemBackground))
             
-          Spacer()
-        }.background(Color(UIColor.systemGray6))
+          HStack {
+            Text(category?.name ?? "未分類")
+              .font(.title3)
+              .fontWeight(.ultraLight)
+              .background(Color(UIColor.systemBackground))
+              .padding(.leading)
+              .padding(.vertical, 8)
+            Spacer()
+          }
+        }
       }
     }
   }

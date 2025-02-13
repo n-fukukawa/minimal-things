@@ -12,7 +12,11 @@ struct MyItemListItem: View {
   
   var body: some View {
     if item.images.count > 0 {
-      VStack(spacing: 0) {
+      ZStack {
+        RoundedRectangle(cornerRadius: 0)
+          .fill(Color(UIColor.systemBackground))
+          .shadow(color: .gray.opacity(0.2), radius: 4, x: 1, y: 2)
+        
         HStack(spacing: 0) {
           if let uiImage = UIImage(data: item.images[0]) {
             Image(uiImage: uiImage)
@@ -25,19 +29,13 @@ struct MyItemListItem: View {
               .frame(width: 80, height: 80)
           }
           
-          Rectangle()
-            .fill(Color(UIColor.systemGray5).opacity(0.5)).frame(width: 1)
-          
           Text(item.name)
             .font(.subheadline)
             .lineLimit(2)
-            .padding(.leading, 8)
+            .padding(8)
           
           Spacer()
         }
-        Rectangle()
-          .fill(Color(UIColor.systemGray5).opacity(0.5))
-          .frame(height: 1)
       }
     }
   }

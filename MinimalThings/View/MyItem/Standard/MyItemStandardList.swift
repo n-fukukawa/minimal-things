@@ -19,7 +19,7 @@ struct MyItemStandardList: View {
   
   var body: some View {
     ScrollView {
-      LazyVStack(spacing: 0) {
+      LazyVStack(spacing: 6) {
         ForEach(items) { item in
           NavigationLink {
             MyItemDetail(item: item)
@@ -28,6 +28,7 @@ struct MyItemStandardList: View {
           }
         }
       }
+      .padding(.horizontal)
     }
   }
 }

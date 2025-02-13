@@ -9,45 +9,53 @@ import SwiftUI
 import SwiftData
 
 struct MyItemCategoryGallerySection: View {
-  @AppStorage("view.gallerySize") private var gallerySize: Int = 120
   @Query private var items: [Item]
   let category: ItemCategory?
   
-  private var gridItems = [GridItem(.fixed(120), spacing: 5)]
+  private var itemHeight = CGFloat(100)
+  private var gridItems = [GridItem(.fixed(100), spacing: 5)]
   
   init(category: ItemCategory?, searchText: String) {
     self.category = category
     let predicate = Item.fetchByCategory(status: .owned, category: category, searchText: searchText)
     _items = Query(filter: predicate)
-    gridItems = [GridItem(.fixed(CGFloat(gallerySize)), spacing: 5)]
   }
   
   var body: some View {
     if !items.isEmpty {
       Section {
-        VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: 0) {
           ScrollView(.horizontal, showsIndicators: false) {
             LazyHGrid(rows: gridItems) {
               ForEach(items) { item in
                 NavigationLink {
                   MyItemDetail(item: item)
                 } label: {
-                  MyItemGalleryItem(item: item)
+                  MyItemGalleryItem(item: item, size: itemHeight)
                 }
               }
             }
-            .frame(height: CGFloat(gallerySize))
-            .padding(10)
+            .frame(height: CGFloat(itemHeight))
+            .padding(.horizontal)
+            .padding(.vertical, 4)
           }
         }
+        .padding(.bottom, 30)
       } header: {
-        HStack {
-          Text(category?.name ?? "未分類")
-            .font(.subheadline)
-            .padding(4)
+        ZStack {
+          Rectangle()
+            .fill(Color(UIColor.systemBackground))
           
-          Spacer()
-        }.background(Color(UIColor.systemGray6))
+          HStack {
+            Text(category?.name ?? "未分類")
+              .font(.title3)
+              .fontWeight(.ultraLight)
+              .background(Color(UIColor.systemBackground))
+              .padding(.leading)
+              .padding(.vertical, 8)
+            Spacer()
+          }
+        }
       }
     }
   }

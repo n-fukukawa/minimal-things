@@ -10,19 +10,6 @@ import SwiftData
 
 @main
 struct MinimalThingsApp: App {
-  var sharedModelContainer: ModelContainer = {
-    let schema = Schema([
-      Item.self, ItemCategory.self
-    ])
-    let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-    
-    do {
-      return try ModelContainer(for: schema, configurations: [modelConfiguration])
-    } catch {
-      fatalError("Could not create ModelContainer: \(error)")
-    }
-  }()
-  
   var body: some Scene {
     WindowGroup {
       ContentView()
@@ -30,3 +17,39 @@ struct MinimalThingsApp: App {
     .modelContainer(sharedModelContainer)
   }
 }
+
+@MainActor
+let sharedModelContainer: ModelContainer = {
+  let schema = Schema([
+    Item.self, ItemCategory.self
+  ])
+  
+  let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+  
+  do {
+    let container = try ModelContainer(for: schema, configurations: [modelConfiguration])
+    
+    var categoryFetchDescriptor = FetchDescriptor<ItemCategory>()
+    categoryFetchDescriptor.fetchLimit = 1
+    
+    guard try container.mainContext.fetch(categoryFetchDescriptor).count == 0 else { return container }
+    
+    categoryNames.forEach({ name in
+      container.mainContext.insert(ItemCategory(name: name))
+    })
+    
+    
+    return container
+  } catch {
+    fatalError("Could not create ModelContainer: \(error)")
+  }
+}()
+
+let categoryNames = [
+  "家電",
+  "家具",
+  "衣類",
+  "日用品",
+  "美容用品",
+  "未分類",
+]

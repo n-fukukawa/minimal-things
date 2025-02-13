@@ -36,8 +36,8 @@ struct MyItemEditorPhotoSection: View {
                 } label: {
                   Image(uiImage: uiImage)
                     .resizable()
+                    .scaledToFit()
                     .frame(width: 80, height: 80)
-                    .scaledToFill()
                     .border(Color(UIColor.systemGray3), width: 1)
                 }
               }

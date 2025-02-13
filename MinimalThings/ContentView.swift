@@ -18,6 +18,8 @@ struct ContentView: View {
     .tint(.text)
     .onAppear {
       createCategoriesIfNeed()
+    }
+    .onChange(of: categories) {
       createItemsIfNeed()
     }
   }

@@ -8,26 +8,26 @@
 import SwiftUI
 
 struct MyItemGalleryItem: View {
-  @AppStorage("view.gallerySize") private var gallerySize: Int = 120
   var item: Item
+  var size: CGFloat
   
   var body: some View {
     if item.images.count > 0 {
       ZStack {
         RoundedRectangle(cornerRadius: 5)
           .fill(Color(UIColor.systemBackground))
-          .shadow(color: .gray.opacity(0.25), radius: 4, x: 1, y: 1)
-          .frame(width: CGFloat(gallerySize), height: CGFloat(gallerySize))
+          .shadow(color: .gray.opacity(0.2), radius: 4, x: 1, y: 2)
         
         if let uiImage = UIImage(data: item.images[0]) {
           Image(uiImage: uiImage)
             .resizable()
             .scaledToFit()
-            .frame(width: CGFloat(gallerySize), height: CGFloat(gallerySize))
+            .aspectRatio(1, contentMode: .fit)
+            .frame(width: size, height: size)
         } else {
           Text(item.name)
             .font(.caption)
-            .frame(width: CGFloat(gallerySize), height: CGFloat(gallerySize))
+            .frame(width: size, height: size)
         }
       }
     }
@@ -36,5 +36,8 @@ struct MyItemGalleryItem: View {
 
 #Preview {
   let item = Item(name: "item name", status: Item.ItemStatus.owned.rawValue)
-  return MyItemGalleryItem(item: item).modelContainer(for: Item.self, inMemory: true)
+  return MyItemGalleryItem(
+    item: item,
+    size: 100
+  ).modelContainer(for: Item.self, inMemory: true)
 }
