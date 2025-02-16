@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct ItemCard: View {
+struct ItemCardFront: View {
   let item: Item
   
   var body: some View {
@@ -59,39 +59,40 @@ struct ItemCard: View {
 }
 
 #Preview {
-  let config = ModelConfiguration(isStoredInMemoryOnly: true)
-  let container = try! ModelContainer(for: Item.self, configurations: config)
-  
-  let item = Item(name: "モバイルバッテリー")
-  item.maker = "無印良品"
-  
-  return ItemCard(item: item)
-    .frame(width: 300, height: 450)
-    .modelContainer(container)
-}
-
-#Preview {
-  let config = ModelConfiguration(isStoredInMemoryOnly: true)
-  let container = try! ModelContainer(for: Item.self, configurations: config)
-  
-  let item = Item(name: "ウレタンフォーム三層スポンジ３個入り／グレー")
-  item.maker = "無印良品"
-  
-  return ItemCard(item: item)
-    .frame(width: 300, height: 450)
-    .modelContainer(container)
-}
-
-#Preview {
-  let config = ModelConfiguration(isStoredInMemoryOnly: true)
-  let container = try! ModelContainer(for: Item.self, configurations: config)
-  
-  let item = Item(
-    name: "ウレタンフォーム三層スポンジウレタンフォーム三層スポンジ３個入り／グレー"
+  let container = PreviewModelContainer.container
+  let predicate = Item.search()
+  let fetchDescriptor = FetchDescriptor(
+    predicate: predicate,
+    sortBy: [.init(\Item.name)]
   )
-  item.maker = "無印良品無印良品無印良品無印良品無印良品無印良品無印良品"
+  let items = try! container.mainContext.fetch(fetchDescriptor)
   
-  return ItemCard(item: item)
+  return ItemCardFront(item: items[0])
     .frame(width: 300, height: 450)
-    .modelContainer(container)
+}
+
+#Preview {
+  let container = PreviewModelContainer.container
+  let predicate = Item.search()
+  let fetchDescriptor = FetchDescriptor(
+    predicate: predicate,
+    sortBy: [.init(\Item.name)]
+  )
+  let items = try! container.mainContext.fetch(fetchDescriptor)
+  
+  return ItemCardFront(item: items[1])
+    .frame(width: 300, height: 450)
+}
+
+#Preview {
+  let container = PreviewModelContainer.container
+  let predicate = Item.search()
+  let fetchDescriptor = FetchDescriptor(
+    predicate: predicate,
+    sortBy: [.init(\Item.name)]
+  )
+  let items = try! container.mainContext.fetch(fetchDescriptor)
+  
+  return ItemCardFront(item: items[2])
+    .frame(width: 300, height: 450)
 }
