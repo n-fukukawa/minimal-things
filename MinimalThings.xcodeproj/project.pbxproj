@@ -23,6 +23,7 @@
 		554AC36B2D61ED36009B3125 /* ItemCardBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554AC36A2D61ED36009B3125 /* ItemCardBack.swift */; };
 		554AC36F2D61F0FF009B3125 /* IconLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554AC36E2D61F0FF009B3125 /* IconLabel.swift */; };
 		554AC3712D61F48F009B3125 /* StylishArrowBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554AC3702D61F48F009B3125 /* StylishArrowBack.swift */; };
+		554AC3732D62951E009B3125 /* ItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554AC3722D62951E009B3125 /* ItemCard.swift */; };
 		55E8C9652D61E20600631966 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8C9642D61E20600631966 /* Item.swift */; };
 		55E8C9672D61E3DD00631966 /* PreviewModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8C9662D61E3DD00631966 /* PreviewModelContainer.swift */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,7 @@
 		554AC36A2D61ED36009B3125 /* ItemCardBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardBack.swift; sourceTree = "<group>"; };
 		554AC36E2D61F0FF009B3125 /* IconLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconLabel.swift; sourceTree = "<group>"; };
 		554AC3702D61F48F009B3125 /* StylishArrowBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylishArrowBack.swift; sourceTree = "<group>"; };
+		554AC3722D62951E009B3125 /* ItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCard.swift; sourceTree = "<group>"; };
 		55E8C9642D61E20600631966 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		55E8C9662D61E3DD00631966 /* PreviewModelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewModelContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -211,6 +213,7 @@
 		553C8AF82D61BF9000D0F342 /* Item */ = {
 			isa = PBXGroup;
 			children = (
+				554AC3722D62951E009B3125 /* ItemCard.swift */,
 				554AC36A2D61ED36009B3125 /* ItemCardBack.swift */,
 				553C8B002D61D67300D0F342 /* ItemCardFront.swift */,
 			);
@@ -366,6 +369,7 @@
 				55E8C9652D61E20600631966 /* Item.swift in Sources */,
 				553C8AFC2D61BFEA00D0F342 /* CategoryCard.swift in Sources */,
 				553C8AF32D61BF4A00D0F342 /* HomeView.swift in Sources */,
+				554AC3732D62951E009B3125 /* ItemCard.swift in Sources */,
 				552ACBF32D44CE490055BA9A /* MinimalThingsApp.swift in Sources */,
 				554AC36F2D61F0FF009B3125 /* IconLabel.swift in Sources */,
 				554AC3712D61F48F009B3125 /* StylishArrowBack.swift in Sources */,
