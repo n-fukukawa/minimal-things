@@ -6,14 +6,18 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct HomeView: View {
+  @Query var categories: [ItemCategory]
+  @Query var items: [Item]
+  
     var body: some View {
-      CategoryCard(category: nil)
+      HomeCategoryList()
     }
 }
 
 #Preview {
     HomeView()
-    .modelContainer(for: Item.self, inMemory: true)
+    .modelContainer(PreviewModelContainer.container)
 }

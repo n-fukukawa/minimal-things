@@ -34,9 +34,20 @@ let sharedModelContainer: ModelContainer = {
     
     guard try container.mainContext.fetch(categoryFetchDescriptor).count == 0 else { return container }
     
-    categoryNames.forEach({ name in
-      container.mainContext.insert(ItemCategory(name: name))
-    })
+    for category in categories {
+      container.mainContext.insert(category)
+    }
+    
+    for _item in items {
+      let item = Item(name: _item["name"] as! String)
+      item.category = categories[Int.random(in: 0..<categories.count)]
+      item.maker = _item["maker"] as! String?
+      item.comment = _item["comment"] as! String?
+      item.purchaseDate = _item["purchaseDate"] as! Date?
+      item.price = _item["price"] as! Int?
+      item.url = _item["url"] as! String?
+      container.mainContext.insert(item)
+    }
     
     
     return container
@@ -44,12 +55,3 @@ let sharedModelContainer: ModelContainer = {
     fatalError("Could not create ModelContainer: \(error)")
   }
 }()
-
-let categoryNames = [
-  "家電",
-  "家具",
-  "衣類",
-  "日用品",
-  "美容用品",
-  "未分類",
-]
