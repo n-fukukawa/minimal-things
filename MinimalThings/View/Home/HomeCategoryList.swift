@@ -85,14 +85,6 @@ struct HomeCategoryList: View {
           .offset(x: offsetX, y: 0)
           .zIndex(0)
           .animation(.easeOut, value: activeIndex)
-          .gesture(
-            TapGesture()
-              .onEnded {
-                if !isActive {
-                  activeIndex = index
-                }
-              }
-          )
       }
     }
     .gesture(
