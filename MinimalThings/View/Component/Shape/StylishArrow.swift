@@ -14,7 +14,7 @@ struct StylishArrow: View {
   var body: some View {
     StylishArrowPath()
       .stroke(color, lineWidth: 1)
-      .frame(width: width, height: 10)
+      .frame(width: width, height: 3)
   }
 }
 
@@ -24,7 +24,7 @@ struct StylishArrowPath: Shape {
     
     path.move(to: CGPoint(x: rect.minX, y: rect.maxY))
     path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-    path.addLine(to: CGPoint(x: rect.maxX - 10, y: rect.maxY - 10))
+    path.addLine(to: CGPoint(x: rect.maxX - 3, y: rect.maxY - 3))
     
     return path
   }
