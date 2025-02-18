@@ -30,33 +30,28 @@ struct CategoryCard: View {
         
         // MARK: - Content
         VStack(alignment: .leading, spacing: 0) {
-          // MARK: - Edit Button
-          HStack {
-            Spacer()
-            Button {} label: {
-              Image(systemName: "ellipsis")
-                .foregroundStyle(.foregroundTertiary)
-            }
-          }
           Spacer()
           // MARK: - Category name & items count
-          VStack(alignment: .leading, spacing: 8) {
-            Text(category?.name ?? "未分類")
-              .font(.headline)
-              .foregroundStyle(.foregroundPrimary)
-            
-            HStack(spacing: 3) {
-              Text("\(items.count)")
-              Text("items")
+          HStack {
+            VStack(alignment: .leading, spacing: 8) {
+              Text(category?.name ?? "未分類")
+                .font(.headline)
+                .foregroundStyle(.foregroundPrimary)
+              
+              HStack(spacing: 3) {
+                Text("\(items.count)")
+                Text("items")
+              }
+              .foregroundStyle(.foregroundTertiary)
+              .font(.caption)
             }
-            .foregroundStyle(.foregroundTertiary)
-            .font(.caption)
+            Spacer()
           }
           Spacer()
           // MARK: - Arrow
           HStack {
             Spacer()
-            StylishArrow(width: frame.maxX * 0.6, color: .foregroundTertiary)
+            StylishArrow(width: frame.maxX * 0.3, color: .foregroundTertiary)
           }
         }
         .padding(frame.maxX * 0.1)
