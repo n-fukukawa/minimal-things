@@ -24,7 +24,8 @@ struct StylishArrowPath: Shape {
     
     path.move(to: CGPoint(x: rect.minX, y: rect.maxY))
     path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-    path.addLine(to: CGPoint(x: rect.maxX - 3, y: rect.maxY - 3))
+    path.addLine(to: CGPoint(x: rect.maxX - 5, y: rect.maxY - 5))
+    path.addLine(to: CGPoint(x: rect.maxX - 5, y: rect.maxY))
     
     return path
   }

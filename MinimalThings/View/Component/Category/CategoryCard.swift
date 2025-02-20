@@ -9,9 +9,10 @@ import SwiftUI
 import SwiftData
 
 struct CategoryCard: View {
-  @Environment(\.dismiss) var dismiss
   @Namespace var namespace
+  @Environment(\.dismiss) var dismiss
   @Query var items: [Item]
+  
   let category: ItemCategory?
   let detail: Bool
   
@@ -43,61 +44,17 @@ struct CategoryCard: View {
         
         VStack(alignment: .leading, spacing: 0) {
           Spacer()
-          
-          HStack(spacing: 15) {
-            if detail {
-              Button { dismiss() } label: {
-                Image(systemName: "chevron.left")
-                  .font(.title3)
-                  .tint(.foregroundSecondary)
-              }
-            }
-            VStack(alignment: .leading, spacing: 8) {
-              Text(category?.name ?? "未分類")
-                .font(.headline)
-                .foregroundStyle(.foregroundPrimary)
-              
-              HStack(spacing: 3) {
-                Text("\(items.count)")
-                Text("items")
-              }
-              .foregroundStyle(.foregroundTertiary)
-              .font(.caption)
-            }
-            .scaleEffect(detail ? 1.4 : 1, anchor: .leading)
-            
-            Spacer()
-            
-            if detail {
-              Menu {
-                Button { } label: {
-                  HStack {
-                    Text("並び替え")
-                    Image(systemName: "chevron.right")
-                  }
-                }
-              } label: {
-                Image(systemName: "ellipsis")
-                  .font(.title3)
-                  .tint(.foregroundSecondary)
-                  .frame(width: 50, height: 50)
-              }
-            }
-          }
-          .padding(.horizontal, detail ? 30 : frame.maxX * 0.1)
-          
+          header.padding(.horizontal, detail ? 30 : frame.maxX * 0.1)
           Spacer()
           
-          if !detail {
+          if detail {
+            itemList.padding(.top, 10)
+          } else {
             HStack {
               Spacer()
               StylishArrow(width: frame.maxX * 0.3, color: .foregroundTertiary)
             }
             .padding(.horizontal, frame.maxX * 0.1)
-          }
-          
-          if detail {
-            itemList.padding(.top, 10)
           }
         }
         .padding(.vertical, detail ? frame.maxX * 0.08 : frame.maxX * 0.1)
@@ -106,7 +63,56 @@ struct CategoryCard: View {
     }
   }
   
-  var itemList: some View {
+  private var header: some View {
+    HStack(spacing: 15) {
+      if detail { backButton }
+      headerTitle
+      Spacer()
+      if detail { menuButton }
+    }
+  }
+  
+  private var headerTitle: some View {
+    VStack(alignment: .leading, spacing: 8) {
+      Text(category?.name ?? "未分類")
+        .font(.headline)
+        .foregroundStyle(.foregroundPrimary)
+      
+      HStack(spacing: 3) {
+        Text("\(items.count)")
+        Text("items")
+      }
+      .foregroundStyle(.foregroundTertiary)
+      .font(.caption)
+    }
+    .scaleEffect(detail ? 1.4 : 1, anchor: .leading)
+  }
+  
+  private var backButton: some View {
+    Button { dismiss() } label: {
+      Image(systemName: "chevron.left")
+        .font(.title3)
+        .tint(.foregroundSecondary)
+    }
+  }
+  
+  private var menuButton: some View {
+    Menu {
+      Button { } label: {
+        HStack {
+          Text("並び替え")
+          Image(systemName: "chevron.right")
+        }
+      }
+    } label: {
+      Image(systemName: "ellipsis")
+        .font(.title3)
+        .tint(.foregroundSecondary)
+        .frame(width: 50, height: 50)
+    }
+  }
+  
+  private var itemList: some View {
     let gridItems = [GridItem(.adaptive(minimum: 150, maximum: 240), spacing: 0)]
     return NavigationStack {
       ZStack {
