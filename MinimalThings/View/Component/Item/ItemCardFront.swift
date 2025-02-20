@@ -10,51 +10,57 @@ import SwiftData
 
 struct ItemCardFront: View {
   let item: Item
+  let detail: Bool
+  
+  init(item: Item, detail: Bool = false) {
+    self.item = item
+    self.detail = detail
+  }
   
   var body: some View {
-    GeometryReader { geometry in
-      let frame = geometry.frame(in: .local)
+    ZStack {
+      RoundedRectangle(cornerRadius: detail ? 10 : 5)
+        .fill(.containerBackground)
+        .shadow(color: .shadow, radius: detail ? 3 : 2, x: 0, y: detail ? 3 : 1)
       
-      ZStack {
-        // MARK: - Background
-        RoundedRectangle(cornerRadius: 10)
-          .fill(.containerBackground)
-          .shadow(color: .shadow, radius: 5, x: 0, y: 5)
+      VStack(alignment: .leading, spacing: 0) {
+        Image("photo")
+          .resizable()
+          .scaledToFit()
+          .aspectRatio(1, contentMode: .fit)
+          .frame(width: .infinity, height: .infinity)
+          .clipShape(UnevenRoundedRectangle(topLeadingRadius: detail ? 0 : 5, topTrailingRadius: detail ? 0 : 5))
         
-        // MARK: - Content
-        VStack(alignment: .leading, spacing: 0) {
-          // MARK: - Photo
-          Image("photo")
-            .resizable()
-            .scaledToFit()
-            .aspectRatio(1, contentMode: .fit)
-            .frame(width: .infinity)
-          // MARK: - Title
-          VStack(alignment: .leading, spacing: 8) {
-            Text(item.name)
-              .lineLimit(2)
-              .font(.subheadline)
-              .fontWeight(.semibold)
-              .foregroundStyle(.foregroundSecondary)
-            
-            if let maker = item.maker {
-              Text(maker)
-                .lineLimit(1)
-                .font(.caption)
-                .foregroundStyle(.foregroundTertiary)
-            }
-          }
-          .padding(.top, 20)
-          Spacer()
-          // MARK: - Arrow
-          HStack {
-            Spacer()
-            StylishArrow(width: frame.maxX * 0.5, color: .foregroundTertiary)
+        VStack(alignment: .leading, spacing: 8) {
+          Text(item.name)
+            .lineLimit(2, reservesSpace: !detail)
+            .multilineTextAlignment(.leading)
+            .font(detail ? .title3 : .caption)
+            .fontWeight(.semibold)
+            .foregroundStyle(.foregroundSecondary)
+          
+          if detail, let maker = item.maker {
+            Text(maker)
+              .lineLimit(1)
+              .font(detail ? .body : .caption2)
+              .foregroundStyle(.foregroundTertiary)
           }
         }
-        .padding(frame.maxX * 0.1)
+        .padding(.top, detail ? 30 : 12)
+        .padding(.bottom, detail ? 0 : 15)
+        .padding(.horizontal, detail ? 0 : 10)
+        
+        if detail {
+          Spacer()
+          HStack {
+            Spacer()
+            StylishArrow(width: SCREEN_MAXX * 0.3, color: .foregroundTertiary)
+          }
+        }
       }
+      .padding(detail ? SCREEN_MAXX * 0.07 : 0)
     }
+    .padding(detail ? 0 : 6)
   }
 }
 
@@ -67,7 +73,7 @@ struct ItemCardFront: View {
   )
   let items = try! container.mainContext.fetch(fetchDescriptor)
   
-  return ItemCardFront(item: items[0])
+  return ItemCardFront(item: items[0], detail: true)
     .frame(width: 300, height: 450)
 }
 
@@ -80,7 +86,7 @@ struct ItemCardFront: View {
   )
   let items = try! container.mainContext.fetch(fetchDescriptor)
   
-  return ItemCardFront(item: items[1])
+  return ItemCardFront(item: items[1], detail: true)
     .frame(width: 300, height: 450)
 }
 
@@ -94,5 +100,5 @@ struct ItemCardFront: View {
   let items = try! container.mainContext.fetch(fetchDescriptor)
   
   return ItemCardFront(item: items[2])
-    .frame(width: 300, height: 450)
+    .frame(width: 300, height: 300)
 }

@@ -9,30 +9,49 @@ import SwiftUI
 import SwiftData
 
 struct CategoryCard: View {
+  @Environment(\.dismiss) var dismiss
+  @Namespace var namespace
   @Query var items: [Item]
   let category: ItemCategory?
+  let detail: Bool
   
-  init(category: ItemCategory?) {
+  init(category: ItemCategory?, detail: Bool = false) {
     self.category = category
+    self.detail = detail
     let predicate = Item.fetchByCategory(category: category)
     _items = Query(filter: predicate, sort: \.createdAt, order: .reverse)
   }
   
   var body: some View {
+    if detail {
+      content
+        .ignoresSafeArea()
+        .navigationBarBackButtonHidden()
+    } else {
+      content
+    }
+  }
+  
+  var content: some View {
     GeometryReader { geometry in
       let frame = geometry.frame(in: .local)
       
       ZStack {
-        // MARK: - Background
         RoundedRectangle(cornerRadius: 10)
-          .fill(.containerBackground)
+          .fill(detail ? .backgroundPrimary : .containerBackground)
           .shadow(color: .shadow, radius: 5, x: 0, y: 5)
         
-        // MARK: - Content
         VStack(alignment: .leading, spacing: 0) {
           Spacer()
-          // MARK: - Category name & items count
-          HStack {
+          
+          HStack(spacing: 15) {
+            if detail {
+              Button { dismiss() } label: {
+                Image(systemName: "chevron.left")
+                  .font(.title3)
+                  .tint(.foregroundSecondary)
+              }
+            }
             VStack(alignment: .leading, spacing: 8) {
               Text(category?.name ?? "未分類")
                 .font(.headline)
@@ -45,16 +64,75 @@ struct CategoryCard: View {
               .foregroundStyle(.foregroundTertiary)
               .font(.caption)
             }
+            .scaleEffect(detail ? 1.4 : 1, anchor: .leading)
+            
             Spacer()
+            
+            if detail {
+              Menu {
+                Button { } label: {
+                  HStack {
+                    Text("並び替え")
+                    Image(systemName: "chevron.right")
+                  }
+                }
+              } label: {
+                Image(systemName: "ellipsis")
+                  .font(.title3)
+                  .tint(.foregroundSecondary)
+                  .frame(width: 50, height: 50)
+              }
+            }
           }
+          .padding(.horizontal, detail ? 30 : frame.maxX * 0.1)
+          
           Spacer()
-          // MARK: - Arrow
-          HStack {
-            Spacer()
-            StylishArrow(width: frame.maxX * 0.3, color: .foregroundTertiary)
+          
+          if !detail {
+            HStack {
+              Spacer()
+              StylishArrow(width: frame.maxX * 0.3, color: .foregroundTertiary)
+            }
+            .padding(.horizontal, frame.maxX * 0.1)
+          }
+          
+          if detail {
+            itemList.padding(.top, 10)
           }
         }
-        .padding(frame.maxX * 0.1)
+        .padding(.vertical, detail ? frame.maxX * 0.08 : frame.maxX * 0.1)
+        .padding(.top, detail ? 45 : 0)
+      }
+    }
+  }
+  
+  var itemList: some View {
+    let gridItems = [GridItem(.adaptive(minimum: 150, maximum: 240), spacing: 0)]
+    return NavigationStack {
+      ZStack {
+        ScrollView(.vertical, showsIndicators: false) {
+          LazyVGrid(columns: gridItems, spacing: 0) {
+            ForEach(items) { item in
+              NavigationLink {
+                ZStack {
+                  Rectangle()
+                    .fill(.backgroundPrimary)
+                    .ignoresSafeArea()
+                  
+                  VStack {
+                    ItemCard(item: item, detail: true)
+                      .navigationTransition(.zoom(sourceID: item.id, in: namespace))
+                    Spacer()
+                  }
+                }
+              } label: {
+                ItemCard(item: item)
+                  .matchedTransitionSource(id: item.id, in: namespace)
+              }
+            }
+          }
+        }
+        .padding()
       }
     }
   }
@@ -63,7 +141,14 @@ struct CategoryCard: View {
 #Preview {
   return (
     CategoryCard(category: nil)
-      .modelContainer(for: Item.self, inMemory: true)
+      .modelContainer(PreviewModelContainer.container)
       .frame(width: 200, height: 300)
+  )
+}
+
+#Preview {
+  return (
+    CategoryCard(category: nil, detail: true)
+      .modelContainer(PreviewModelContainer.container)
   )
 }

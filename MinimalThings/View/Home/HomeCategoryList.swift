@@ -8,8 +8,7 @@
 import SwiftUI
 import SwiftData
 
-let SCREEN_MAXX = UIScreen.main.bounds.width
-let SCREEN_MIDX = UIScreen.main.bounds.width / 2
+
 let LEADING_MAG: CGFloat = 1.0
 let TRAILING_MAG: CGFloat = 1.0
 let ACTIVE_MAG: CGFloat = 1.5
@@ -23,19 +22,22 @@ let CARD_HEIGHT = CARD_WIDTH * 1.5
 let CRITICAL_DRAGX = CARD_WIDTH * 4 / 3
 
 struct HomeCategoryList: View {
+  @Namespace var namespace
   @Query var categories: [ItemCategory]
-  @State var activeIndex: Int = 1
+  @State var activeIndex: Int = 6
   
   @State var dragX: CGFloat = 0
   
   var body: some View {
     ZStack {
-      ForEach(0..<categories.count, id: \.self) { index in
-        let category = categories[index]
+      Rectangle()
+        .fill(.backgroundPrimary)
+      
+      ForEach(0..<categories.count + 1, id: \.self) { index in
+        let category = index == categories.count ? nil : categories[index]
         let isActive = activeIndex == index
         // アクティブなカードに対して、左右のどちらにあるか（-1: 左, 1: 右, 0: アクティブ）
         let indexSign = (index - activeIndex).signum()
-
         let dragProgress = {
           let progress = dragX / CRITICAL_DRAGX
           return progress < -1 ? -1 : progress > 1 ? 1 : progress
@@ -47,8 +49,8 @@ struct HomeCategoryList: View {
             return dragX * 0.5 // 感度が高いので移動量に0.5をかける
           } else {
             let baseOffset: CGFloat = indexSign > 0
-              ? CARD_WIDTH * ACTIVE_MAG - TRAILING_CARD_INTERVAL * 2
-              : -(CARD_WIDTH / 3)
+            ? CARD_WIDTH * ACTIVE_MAG - TRAILING_CARD_INTERVAL * 2
+            : -(CARD_WIDTH / 3)
             let cardInterval = indexSign > 0 ? TRAILING_CARD_INTERVAL : LEADING_CARD_INTERVAL
             if index == nextIndex {
               return (baseOffset + cardInterval * CGFloat(index - activeIndex)) * (1 - abs(dragProgress))
@@ -88,16 +90,26 @@ struct HomeCategoryList: View {
           }
         }()
         
-        CategoryCard(category: category)
-          .frame(width: CARD_WIDTH, height: CARD_HEIGHT)
-          .scaleEffect(scale)
-          .rotationEffect(.degrees(angle))
-          .offset(x: offsetX, y: 0)
-          .zIndex(0)
-          .animation(.easeOut, value: activeIndex)
+        NavigationLink {
+          CategoryCard(category: category, detail: true)
+            .navigationTransition(.zoom(sourceID: category?.name ?? "no", in: namespace))
+        } label: {
+          CategoryCard(category: category)
+            .frame(width: CARD_WIDTH, height: CARD_HEIGHT)
+            .scaleEffect(scale)
+            .rotationEffect(.degrees(angle))
+            .offset(x: offsetX, y: 0)
+            .zIndex(0)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .animation(.timingCurve(0.27, 0, 0.23, 1, duration: 0.7), value: activeIndex)
+            .matchedTransitionSource(id: category?.name ?? "no", in: namespace)
+        }
+        // ドラッグ時にカードの透明度が変わらないようにする
+        .buttonStyle(FlatLinkStyle())
       }
     }
-    .gesture(
+    //      .frame(width: .infinity, height: .infinity)
+    .highPriorityGesture(
       DragGesture()
         .onChanged { value in
           let transition = value.translation.width
@@ -109,9 +121,9 @@ struct HomeCategoryList: View {
             activeIndex = max(activeIndex - moveIndex, 0)
           }
           if value.translation.width < 0 {
-            activeIndex = min(activeIndex + moveIndex, categories.count - 1)
+            activeIndex = min(activeIndex + moveIndex, categories.count)
           }
-          withAnimation { dragX = 0 }
+          dragX = 0
         }
     )
   }

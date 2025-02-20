@@ -15,21 +15,19 @@ struct ItemCardBack: View {
   var body: some View {
     GeometryReader { geometry in
       let frame = geometry.frame(in: .local)
-      let paddingSize = frame.maxX * 0.1
+      let paddingSize = SCREEN_MAXX * 0.07
       
       ZStack {
-        // MARK: - Background
         RoundedRectangle(cornerRadius: 10)
           .fill(.containerBackground)
-          .shadow(color: .shadow, radius: 5, x: 0, y: 5)
+          .shadow(color: .shadow, radius: 3, x: 0, y: 3)
         
-        // MARK: - Content
         VStack(alignment: .leading, spacing: 0) {
-          // MARK: - Header
           VStack(alignment: .leading, spacing: 0) {
             Text(item.name)
               .lineLimit(2)
-              .font(.subheadline)
+              .multilineTextAlignment(.leading)
+              .font(.title3)
               .fontWeight(.semibold)
               .foregroundStyle(.foregroundSecondary)
               .padding(.bottom, 8)
@@ -38,7 +36,7 @@ struct ItemCardBack: View {
               if let maker = item.maker {
                 Text(maker)
                   .lineLimit(1)
-                  .font(.caption)
+                  .font(.body)
                   .foregroundStyle(.foregroundTertiary)
               }
               Spacer()
@@ -57,18 +55,17 @@ struct ItemCardBack: View {
           }
           .padding(.top, paddingSize)
           
-          // MARK: - comment
           ScrollView(.vertical, showsIndicators: false) {
             Text(item.comment ?? "")
               .multilineTextAlignment(.leading)
-              .font(.caption)
-              .foregroundStyle(.foregroundSecondary)
+              .font(.body)
+              .foregroundStyle(.foregroundTertiary)
               .padding(.vertical, paddingSize)
               .padding(.trailing)
           }
-          .padding(.bottom, paddingSize)
+          .scrollBounceBehavior(.basedOnSize, axes: .vertical)
+          .padding(.bottom, paddingSize * 1.5)
           
-          // MARK: - detail
           VStack(alignment: .leading, spacing: 15) {
             if let purchaseDate = item.purchaseDate {
               IconLabel(
@@ -92,17 +89,16 @@ struct ItemCardBack: View {
               )
             }
           }
-          .padding(.bottom, paddingSize / 2)
-          
+          .padding(.bottom, paddingSize)
           
           Spacer()
           // MARK: - Arrow
           HStack {
-            StylishArrowBack(width: frame.maxX * 0.5, color: .foregroundTertiary)
+            StylishArrowBack(width: SCREEN_MAXX * 0.3, color: .foregroundTertiary)
             Spacer()
           }
         }
-        .padding(frame.maxX * 0.1)
+        .padding(paddingSize)
       }
     }
   }

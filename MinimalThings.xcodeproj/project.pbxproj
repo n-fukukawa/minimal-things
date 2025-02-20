@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5507F3622D6539ED007CA17B /* FlatLinkStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5507F3612D6539ED007CA17B /* FlatLinkStyle.swift */; };
 		552ACBF32D44CE490055BA9A /* MinimalThingsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552ACBF22D44CE490055BA9A /* MinimalThingsApp.swift */; };
 		552ACBF52D44CE490055BA9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552ACBF42D44CE490055BA9A /* ContentView.swift */; };
 		552ACBF92D44CE4A0055BA9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 552ACBF82D44CE4A0055BA9A /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5507F3612D6539ED007CA17B /* FlatLinkStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatLinkStyle.swift; sourceTree = "<group>"; };
 		552ACBEF2D44CE490055BA9A /* MinimalThings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinimalThings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		552ACBF22D44CE490055BA9A /* MinimalThingsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalThingsApp.swift; sourceTree = "<group>"; };
 		552ACBF42D44CE490055BA9A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -98,6 +100,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5507F3602D6539D1007CA17B /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				5507F3612D6539ED007CA17B /* FlatLinkStyle.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
 		552ACBE62D44CE490055BA9A = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +218,7 @@
 				553C8AF62D61BF6C00D0F342 /* Category */,
 				553C8AF82D61BF9000D0F342 /* Item */,
 				553C8AFD2D61CD5500D0F342 /* Shape */,
+				5507F3602D6539D1007CA17B /* Style */,
 				554AC36E2D61F0FF009B3125 /* IconLabel.swift */,
 			);
 			path = Component;
@@ -366,6 +377,7 @@
 				553C8B012D61D67300D0F342 /* ItemCardFront.swift in Sources */,
 				552ACBF52D44CE490055BA9A /* ContentView.swift in Sources */,
 				55E8C9672D61E3DD00631966 /* PreviewModelContainer.swift in Sources */,
+				5507F3622D6539ED007CA17B /* FlatLinkStyle.swift in Sources */,
 				55B8A56E2D62A96900D68EE8 /* HomeCategoryList.swift in Sources */,
 				554AC36B2D61ED36009B3125 /* ItemCardBack.swift in Sources */,
 				553C8AFA2D61BFA500D0F342 /* DetailView.swift in Sources */,
@@ -548,6 +560,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -577,6 +590,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

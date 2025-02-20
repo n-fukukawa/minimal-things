@@ -14,11 +14,7 @@ struct ContentView: View {
   @Query private var items: [Item]
   
   var body: some View {
-    ZStack {
-      Rectangle().fill(.backgroundPrimary)
-      .frame(height: .infinity)
-      .ignoresSafeArea()
-      
+    NavigationStack {
       HomeView()
     }
   }

@@ -23,7 +23,7 @@ class PreviewModelContainer {
       
       for _item in items {
         let item = Item(name: _item["name"] as! String)
-        item.category = categories[Int.random(in: 0..<categories.count)]
+        item.category = nil //categories[Int.random(in: 0..<categories.count)]
         item.maker = _item["maker"] as! String?
         item.comment = _item["comment"] as! String?
         item.purchaseDate = _item["purchaseDate"] as! Date?
@@ -74,8 +74,18 @@ let items: [Dictionary<String, Any?>] = [
     "price": 299,
     "url": nil,
     "categoryIndex": 0
-  ],  [
+  ],
+  [
     "name": "電子ピアノ P-225",
+    "maker": "YAMAHA",
+    "comment": nil,
+    "purchaseDate": nil,
+    "price": 59800,
+    "url": "https://jp.yamaha.com/products/musical_instruments/pianos/p_series/p-225/index.html",
+    "categoryIndex": 1
+  ],
+  [
+    "name": "電子ピアノ P-525",
     "maker": "YAMAHA",
     "comment": nil,
     "purchaseDate": nil,
