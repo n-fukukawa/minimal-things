@@ -10,68 +10,143 @@ import SwiftData
 
 struct ItemCard: View {
   @Environment(\.dismiss) var dismiss
-  let item: Item
-  let detail: Bool
-  
-  @State private var isFront: Bool = true
+  var item: Item
+  var detail: Bool
   
   init(item: Item, detail: Bool = false) {
     self.item = item
     self.detail = detail
   }
   
+  let paddingSize = SCREEN_MAXX * 0.07
+  
   var body: some View {
     if detail {
-      VStack {
+      content
+        .navigationBarBackButtonHidden()
+        .ignoresSafeArea()
+    } else {
+      ZStack {
+        RoundedRectangle(cornerRadius: detail ? 10 : 5)
+          .fill(.containerBackground)
+          .shadow(color: .shadow, radius: 2, x: 0, y: 1)
         content
-          .padding()
-          .onTapGesture {
-            withAnimation(.timingCurve(0.47, 0, 0.23, 1, duration: 0.7)) {
-              isFront.toggle()
+      }
+      .padding(6)
+    }
+  }
+  
+  private var content: some View {
+    return ZStack {
+      ScrollView(.vertical, showsIndicators: false) {
+        VStack(alignment: .leading, spacing: 0) {
+          photo
+          Divider()
+          VStack(alignment: .leading, spacing: 0) {
+            itemTitle
+            if detail {
+              makerText.padding(.top, 8)
+              commentText.padding(.top, paddingSize)
+              itemDetails.padding(.top, paddingSize)
             }
           }
-      }
-      .aspectRatio(2/3, contentMode: .fit)
-      .navigationBarBackButtonHidden()
-      .toolbar {
-        ToolbarItem(placement: .topBarLeading) {
-          Button { dismiss() } label: {
-            Image(systemName: "chevron.left")
-              .font(.title3)
-              .tint(.foregroundSecondary)
-          }
-          .padding(.leading, 8)
+          .padding(.top, detail ? 30 : 12)
+          .padding(.bottom, detail ? 15 : 15)
+          .padding(.horizontal, detail ? SCREEN_MAXX * 0.07 : 10)
         }
       }
-    } else {
-      ItemCardFront(item: item, detail: detail)
+      if detail { hoverActionButtons }
+    }
+    .scrollBounceBehavior(.basedOnSize, axes: .vertical)
+  }
+  
+  private var photo: some View {
+    Image("photo")
+      .resizable()
+      .scaledToFit()
+      .aspectRatio(1, contentMode: .fit)
+      .clipShape(UnevenRoundedRectangle(
+        topLeadingRadius: detail ? 0 : 5, topTrailingRadius: detail ? 0 : 5)
+      )
+      .frame(
+        maxWidth: detail ? SCREEN_MAXX : .infinity,
+        maxHeight: detail ? SCREEN_MAXX : .infinity
+      )
+  }
+  
+  private var itemTitle: some View {
+    Text(item.name)
+      .lineLimit(2, reservesSpace: !detail)
+      .multilineTextAlignment(.leading)
+      .font(detail ? .title2 : .caption)
+      .fontWeight(.semibold)
+      .foregroundStyle(.foregroundSecondary)
+  }
+  
+  @ViewBuilder
+  private var makerText: some View {
+    if let maker = item.maker {
+      Text(maker)
+        .lineLimit(1)
+        .font(.body)
+        .foregroundStyle(.foregroundTertiary)
     }
   }
   
-  var content: some View {
-    ZStack {
-      ItemCardFront(item: item, detail: detail)
-        .rotation3DEffect(.init(degrees: isFront ? 0 : 180), axis: (x: 0, y: -1, z: 0))
-        .modifier(FlipOpacityTransition(progress: isFront ? 1 : 0))
-      ItemCardBack(item: item)
-        .rotation3DEffect(.init(degrees: isFront ? 180 : 0), axis: (x: 0, y: 1, z: 0))
-        .modifier(FlipOpacityTransition(progress: isFront ? 0 : 1))
+  @ViewBuilder
+  private var commentText: some View {
+    if let comment = item.comment {
+      Text(comment)
+        .multilineTextAlignment(.leading)
+        .font(.body)
+        .foregroundStyle(.foregroundSecondary)
+        .padding(.trailing)
     }
   }
-}
-
-private struct FlipOpacityTransition: ViewModifier, Animatable {
-  var progress: CGFloat = 0
-  var animatableData: CGFloat {
-    get { progress }
-    set { progress = newValue }
+  
+  @ViewBuilder
+  private var itemDetails: some View {
+    let dateFormatStyle = Date.FormatStyle(date: .numeric, time: .omitted)
+    VStack(alignment: .leading, spacing: 15) {
+      if let purchaseDate = item.purchaseDate {
+        IconLabel(
+          label: dateFormatStyle.format(purchaseDate),
+          icon: "calendar"
+        )
+      }
+      
+      if let price = item.price {
+        IconLabel(
+          label: "\(price.formatted())円",
+          icon: "yensign.square"
+        )
+      }
+      
+      if let url = item.url {
+        IconLabel(
+          label: url,
+          icon: "link",
+          isURL: true
+        )
+      }
+    }
   }
   
-  func body(content: Content) -> some View {
-    //例えば表面のprogressが1 → 0、裏面のprogressが0 → 1で変更させるとする
-    //進捗率が50%以上（つまりカードが90度回転したとき）で、表面のopacityを0になり、裏面のopacityを1になる
-    content
-      .opacity(progress.rounded())
+  private var hoverActionButtons: some View {
+    HStack {
+      Button {
+        dismiss()
+      } label: { Image(systemName: "xmark") }
+        .buttonStyle(HoverActionButtonStyle())
+      Spacer()
+      Button {
+        dismiss()
+      } label: { Image(systemName: "ellipsis") }
+        .buttonStyle(HoverActionButtonStyle())
+    }
+    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+    .padding(.horizontal, 25)
+    .padding(.top, 30)
   }
 }
 
@@ -85,7 +160,6 @@ private struct FlipOpacityTransition: ViewModifier, Animatable {
   let items = try! container.mainContext.fetch(fetchDescriptor)
   
   return ItemCard(item: items[0])
-    .frame(width: 300, height: 450)
 }
 
 #Preview {
@@ -100,4 +174,6 @@ private struct FlipOpacityTransition: ViewModifier, Animatable {
   return ItemCard(item: items[0], detail: true)
     .frame(width: 300, height: 450)
 }
+
+
 

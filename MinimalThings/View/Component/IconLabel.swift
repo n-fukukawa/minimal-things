@@ -19,16 +19,16 @@ struct IconLabel: View {
           HStack(alignment: .bottom) {
             Link(label, destination: url)
               .lineLimit(1)
-              .font(.caption)
+              .font(.body)
             ShareLink("", item: url)
               .font(.subheadline)
           }
-          .foregroundStyle(.foregroundSecondary)
+          .foregroundStyle(.foregroundTertiary)
         } else {
           Text(label)
             .lineLimit(1)
-            .font(.caption)
-            .foregroundStyle(.foregroundSecondary)
+            .font(.body)
+            .foregroundStyle(.foregroundTertiary)
         }
       },
       icon: {
