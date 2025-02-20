@@ -24,7 +24,6 @@ struct ItemCard: View {
     if detail {
       content
         .navigationBarBackButtonHidden()
-        .ignoresSafeArea()
     } else {
       ZStack {
         RoundedRectangle(cornerRadius: detail ? 10 : 5)
@@ -145,8 +144,8 @@ struct ItemCard: View {
         .buttonStyle(HoverActionButtonStyle())
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-    .padding(.horizontal, 25)
-    .padding(.top, 30)
+    .padding(.horizontal, 15)
+    .padding(.top, 10)
   }
 }
 

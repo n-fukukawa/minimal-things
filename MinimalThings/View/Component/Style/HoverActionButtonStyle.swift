@@ -11,8 +11,8 @@ struct HoverActionButtonStyle: ButtonStyle {
   func makeBody(configuration: Configuration) -> some View {
     configuration.label
       .foregroundStyle(.foregroundSecondary)
-      .font(.system(size: 24))
-      .frame(width: 44, height: 44)
+      .font(.system(size: 20))
+      .frame(width: 36, height: 36)
       .background(
         Circle()
           .fill(Color.shadow.opacity(0.3))
