@@ -18,7 +18,11 @@ struct CategorySetting: View {
   var body: some View {
     List {
       ForEach(categories) { category in
-        Text(category.name)
+        NavigationLink {
+          CategoryEditor(category: category)
+        } label: {
+          Text(category.name)
+        }
       }
       .onMove(perform: moveRow)
       .onDelete(perform: showDeleteAlert)
@@ -26,7 +30,10 @@ struct CategorySetting: View {
     .navigationTitle("カテゴリ")
     .navigationBarTitleDisplayMode(.inline)
     .toolbar {
-      ToolbarItem(placement: .topBarTrailing) {
+      ToolbarItemGroup(placement: .topBarTrailing) {
+        NavigationLink("追加") {
+          CategoryEditor()
+        }
         EditButton()
       }
     }

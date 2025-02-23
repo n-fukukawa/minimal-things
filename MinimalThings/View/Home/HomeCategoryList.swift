@@ -108,7 +108,6 @@ struct HomeCategoryList: View {
         .buttonStyle(FlatLinkStyle())
       }
     }
-    //      .frame(width: .infinity, height: .infinity)
     .highPriorityGesture(
       DragGesture()
         .onChanged { value in
@@ -126,6 +125,9 @@ struct HomeCategoryList: View {
           dragX = 0
         }
     )
+    .onChange(of: categories) {
+      activeIndex = 0
+    }
   }
 }
 
