@@ -22,7 +22,7 @@ struct HomeView: View {
           .ignoresSafeArea(.all)
         
         VStack {
-          HStack {
+          HStack(spacing: 20) {
             Text("My Items")
               .font(.title)
             Spacer()
@@ -31,7 +31,15 @@ struct HomeView: View {
             } label: {
               Image(systemName: "plus")
                 .font(.title2)
-                .foregroundStyle(.foregroundPrimary)
+                .foregroundStyle(.foregroundSecondary)
+            }
+            
+            NavigationLink {
+              SettingList()
+            } label: {
+              Image(systemName: "gearshape.fill")
+                .font(.title2)
+                .foregroundStyle(.foregroundTertiary)
             }
           }
           .frame(height: 50)

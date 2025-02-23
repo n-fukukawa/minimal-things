@@ -23,7 +23,7 @@ let CRITICAL_DRAGX = CARD_WIDTH * 4 / 3
 
 struct HomeCategoryList: View {
   @Namespace var namespace
-  @Query var categories: [ItemCategory]
+  @Query(sort: \ItemCategory.sortOrder) var categories: [ItemCategory]
   @State var activeIndex: Int = 6
   
   @State var dragX: CGFloat = 0

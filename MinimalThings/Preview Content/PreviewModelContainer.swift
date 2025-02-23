@@ -17,7 +17,8 @@ class PreviewModelContainer {
         configurations: config
       )
       
-      for category in categories {
+      for (index, category) in categories.enumerated() {
+        category.sortOrder = index + 1
         container.mainContext.insert(category)
       }
       
