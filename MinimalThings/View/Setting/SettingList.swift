@@ -16,6 +16,8 @@ struct SettingList: View {
         Text("カテゴリ")
       }
     }
+    .background(.backgroundPrimary)
+    .scrollContentBackground(.hidden)
     .navigationTitle("設定")
     .navigationBarTitleDisplayMode(.inline)
   }

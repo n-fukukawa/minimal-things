@@ -25,6 +25,8 @@ final class Item {
   var price: Int?
   var url: String?
   
+  var sortOrder: Int = 0
+  
   var createdAt: Date?
   var updatedAt: Date?
   

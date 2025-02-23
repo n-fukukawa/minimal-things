@@ -27,6 +27,8 @@ struct CategorySetting: View {
       .onMove(perform: moveRow)
       .onDelete(perform: showDeleteAlert)
     }
+    .background(.backgroundPrimary)
+    .scrollContentBackground(.hidden)
     .navigationTitle("カテゴリ")
     .navigationBarTitleDisplayMode(.inline)
     .toolbar {

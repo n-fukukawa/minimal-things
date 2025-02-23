@@ -20,7 +20,7 @@ struct CategoryCard: View {
     self.category = category
     self.detail = detail
     let predicate = Item.fetchByCategory(category: category)
-    _items = Query(filter: predicate, sort: \.createdAt, order: .reverse)
+    _items = Query(filter: predicate, sort: \.sortOrder, order: .forward)
   }
   
   var body: some View {
@@ -68,7 +68,7 @@ struct CategoryCard: View {
       if detail { backButton }
       headerTitle
       Spacer()
-      if detail { menuButton }
+      if detail { sortButton }
     }
   }
   
@@ -98,19 +98,12 @@ struct CategoryCard: View {
     }
   }
   
-  private var menuButton: some View {
-    Menu {
-      Button { } label: {
-        HStack {
-          Text("並び替え")
-          Image(systemName: "chevron.right")
-        }
-      }
+  private var sortButton: some View {
+    NavigationLink {
+      ItemListSorter(items: items)
     } label: {
-      Image(systemName: "ellipsis")
-        .font(.title3)
+      Image(systemName: "arrow.up.arrow.down")
         .tint(.foregroundSecondary)
-        .frame(width: 50, height: 50)
     }
   }
   

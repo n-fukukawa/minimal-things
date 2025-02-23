@@ -28,6 +28,7 @@
 		55C7B89A2D6ACF2B0017926D /* SettingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C7B8992D6ACF2B0017926D /* SettingList.swift */; };
 		55C7B89C2D6AD9DF0017926D /* CategoryEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C7B89B2D6AD9DF0017926D /* CategoryEditor.swift */; };
 		55C7B89E2D6ADC8D0017926D /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C7B89D2D6ADC8D0017926D /* PrimaryButtonStyle.swift */; };
+		55C7B8A02D6AF5B90017926D /* ItemListSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C7B89F2D6AF5B90017926D /* ItemListSorter.swift */; };
 		55E8C9652D61E20600631966 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8C9642D61E20600631966 /* Item.swift */; };
 		55E8C9672D61E3DD00631966 /* PreviewModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8C9662D61E3DD00631966 /* PreviewModelContainer.swift */; };
 /* End PBXBuildFile section */
@@ -75,6 +76,7 @@
 		55C7B8992D6ACF2B0017926D /* SettingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingList.swift; sourceTree = "<group>"; };
 		55C7B89B2D6AD9DF0017926D /* CategoryEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEditor.swift; sourceTree = "<group>"; };
 		55C7B89D2D6ADC8D0017926D /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
+		55C7B89F2D6AF5B90017926D /* ItemListSorter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListSorter.swift; sourceTree = "<group>"; };
 		55E8C9642D61E20600631966 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		55E8C9662D61E3DD00631966 /* PreviewModelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewModelContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -216,6 +218,7 @@
 			children = (
 				553C8AFB2D61BFEA00D0F342 /* CategoryCard.swift */,
 				55C7B89B2D6AD9DF0017926D /* CategoryEditor.swift */,
+				55C7B89F2D6AF5B90017926D /* ItemListSorter.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				55C7B89E2D6ADC8D0017926D /* PrimaryButtonStyle.swift in Sources */,
 				553C8AFF2D61CD6F00D0F342 /* StylishArrow.swift in Sources */,
 				552ACBF52D44CE490055BA9A /* ContentView.swift in Sources */,
+				55C7B8A02D6AF5B90017926D /* ItemListSorter.swift in Sources */,
 				55C7B8972D67F53C0017926D /* CategorySetting.swift in Sources */,
 				55E8C9672D61E3DD00631966 /* PreviewModelContainer.swift in Sources */,
 				5507F3622D6539ED007CA17B /* FlatLinkStyle.swift in Sources */,

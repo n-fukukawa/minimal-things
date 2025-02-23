@@ -24,33 +24,41 @@ struct CategoryEditor: View {
   }
   
   var body: some View {
-    VStack(spacing: 30) {
-      TextField("カテゴリ名", text: $name)
-        .focused($isFocused)
-        .padding(12)
-        .overlay(
-          RoundedRectangle(cornerRadius: 5)
-            .stroke(.containerDivider, lineWidth: 1)
-        )
-      Button(category == nil ? "作成" : "上書き保存") { onSave() }
-      .buttonStyle(PrimaryButtonStyle())
-      Spacer()
-    }
-    .padding(30)
-    .navigationTitle(category == nil ? "カテゴリ作成" : "カテゴリ編集")
-    .navigationBarTitleDisplayMode(.inline)
-    .toolbar {
-      ToolbarItem(placement: .keyboard) {
-        HStack {
-          Spacer()
-          Button("閉じる") {
-            isFocused = false
+    ZStack {
+      Rectangle()
+        .fill(.backgroundPrimary)
+        .ignoresSafeArea()
+      
+      VStack(spacing: 30) {
+        TextField("カテゴリ名", text: $name)
+          .focused($isFocused)
+          .padding(12)
+          .background(.containerBackground)
+          .frame(maxWidth: .infinity)
+          .overlay(
+            RoundedRectangle(cornerRadius: 5)
+              .stroke(.containerDivider, lineWidth: 1)
+          )
+        Button(category == nil ? "作成" : "上書き保存") { onSave() }
+          .buttonStyle(PrimaryButtonStyle())
+        Spacer()
+      }
+      .padding(30)
+      .navigationTitle(category == nil ? "カテゴリ作成" : "カテゴリ編集")
+      .navigationBarTitleDisplayMode(.inline)
+      .toolbar {
+        ToolbarItem(placement: .keyboard) {
+          HStack {
+            Spacer()
+            Button("閉じる") {
+              isFocused = false
+            }
           }
         }
       }
-    }
-    .onAppear {
-      isFocused = true
+      .onAppear {
+        isFocused = true
+      }
     }
   }
   

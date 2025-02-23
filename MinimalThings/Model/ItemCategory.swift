@@ -9,7 +9,7 @@ import SwiftData
 
 @Model
 final class ItemCategory {
-  @Attribute(.unique) var name: String
+  var name: String
   var sortOrder: Int = 0
   @Relationship(deleteRule: .nullify, inverse: \Item.category)
   var items = [Item]()
