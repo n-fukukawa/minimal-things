@@ -105,7 +105,6 @@ struct HomeCategoryList: View {
         .zIndex(0)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .animation(.timingCurve(0.27, 0, 0.23, 1, duration: 0.7), value: activeIndex)
-        .matchedTransitionSource(id: category?.name ?? "no", in: namespace)
     }
     
     return ZStack {
@@ -118,10 +117,10 @@ struct HomeCategoryList: View {
         
         NavigationLink {
           CategoryCard(category: category, detail: true)
-            .navigationTransition(.zoom(sourceID: "\(category.name)-\(category.sortOrder)", in: namespace))
+            .navigationTransition(.zoom(sourceID: category.uuid.uuidString, in: namespace))
         } label: {
           categoryCard(category: category, index: index, isActive: isActive)
-            .matchedTransitionSource(id: "\(category.name)-\(category.sortOrder)", in: namespace)
+            .matchedTransitionSource(id: category.uuid.uuidString, in: namespace)
         }
         // ドラッグ時にカードの透明度が変わらないようにする
         .buttonStyle(FlatLinkStyle())

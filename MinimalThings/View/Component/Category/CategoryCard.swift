@@ -127,13 +127,13 @@ struct CategoryCard: View {
                   
                   VStack {
                     ItemCard(item: item, detail: true)
-                      .navigationTransition(.zoom(sourceID: "\(item.name)-\(item.sortOrder)", in: namespace))
+                      .navigationTransition(.zoom(sourceID: item.uuid.uuidString, in: namespace))
                     Spacer()
                   }
                 }
               } label: {
                 ItemCard(item: item)
-                  .matchedTransitionSource(id: "\(item.name)-\(item.sortOrder)", in: namespace)
+                  .matchedTransitionSource(id: item.uuid.uuidString, in: namespace)
               }
             }
           }

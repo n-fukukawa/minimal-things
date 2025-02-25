@@ -12,6 +12,7 @@ import SwiftData
 
 @Model
 final class Item {
+  var uuid: UUID
   var status: ItemStatus.RawValue
   var name: String
   
@@ -31,6 +32,7 @@ final class Item {
   var updatedAt: Date?
   
   init(name: String, status: ItemStatus.RawValue = ItemStatus.owned.rawValue) {
+    self.uuid = UUID()
     self.name = name
     self.status = status
   }
