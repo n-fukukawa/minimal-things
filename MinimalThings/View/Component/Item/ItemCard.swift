@@ -125,20 +125,25 @@ struct ItemCard: View {
     }
   }
   
-  @ViewBuilder
   private var itemDetails: some View {
-    let dateFormatStyle = Date.FormatStyle(date: .numeric, time: .omitted)
-    VStack(alignment: .leading, spacing: 10) {
+    let numberFormatter = NumberFormatter()
+    numberFormatter.numberStyle = .currency
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateStyle = .medium
+    dateFormatter.timeStyle = .none
+    
+    return VStack(alignment: .leading, spacing: 10) {
       if let purchaseDate = item.purchaseDate {
         IconLabel(
-          label: dateFormatStyle.format(purchaseDate),
+          label: dateFormatter.string(from: purchaseDate),
           icon: "calendar"
         )
       }
       
       if let price = item.price {
         IconLabel(
-          label: "\(price.formatted())円",
+          label: numberFormatter.string(from: price as NSNumber) ?? String(price),
           icon: "wallet.pass"
         )
       }

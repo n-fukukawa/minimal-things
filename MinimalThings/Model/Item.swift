@@ -22,7 +22,7 @@ final class Item {
   var comment: String?
   
   var purchaseDate: Date?
-  var price: Int?
+  var price: Float?
   var url: String?
   
   var sortOrder: Int = 0

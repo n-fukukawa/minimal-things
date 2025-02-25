@@ -95,7 +95,11 @@ struct ItemEditor: View {
       category = _item.category
       comment = _item.comment ?? ""
       purchaseDate = _item.purchaseDate
-      price = _item.price == nil ? "" : String(price)
+      if let priceValue = _item.price {
+        price = String(priceValue)
+      } else {
+        price = ""
+      }
       url = _item.url ?? ""
     }
   }
@@ -108,7 +112,7 @@ struct ItemEditor: View {
       newItem.comment = comment.isEmpty ? nil : comment
       newItem.category = category
       newItem.purchaseDate = purchaseDate
-      newItem.price = price.isEmpty ? nil : Int(price)
+      newItem.price = price.isEmpty ? nil : Float(price)
       newItem.url = url.isEmpty ? nil : url
       newItem.createdAt = Date()
       newItem.updatedAt = newItem.createdAt
@@ -134,7 +138,7 @@ struct ItemEditor: View {
       item.comment = comment.isEmpty ? nil : comment
       item.category = category
       item.purchaseDate = purchaseDate
-      item.price = price.isEmpty ? nil : Int(price)
+      item.price = price.isEmpty ? nil : Float(price)
       item.url = url.isEmpty ? nil : url
       item.updatedAt = Date()
       

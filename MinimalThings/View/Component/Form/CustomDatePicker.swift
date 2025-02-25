@@ -15,7 +15,11 @@ struct CustomDatePicker: View {
   @State private var dateState: Date = Date()
   
   var body: some View {
-    HStack {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .medium
+    formatter.timeStyle = .none
+    
+    return HStack {
       if let date = dateBinding {
         HStack {
           Button {
@@ -23,7 +27,7 @@ struct CustomDatePicker: View {
           } label: {
             HStack {
               Text("\(label):")
-              Text(date, format: Date.FormatStyle(date: .numeric, time: .omitted))
+              Text(formatter.string(from: date))
             }
           }
           
@@ -60,7 +64,6 @@ struct CustomDatePicker: View {
         )
         .labelsHidden()
         .datePickerStyle(.wheel)
-        
         .toolbar {
           ToolbarItem(placement: .cancellationAction) {
             Button("Cancel") {

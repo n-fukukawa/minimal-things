@@ -30,8 +30,9 @@ class PreviewModelContainer {
         item.maker = _item["maker"] as! String?
         item.comment = _item["comment"] as! String?
         item.purchaseDate = _item["purchaseDate"] as! Date?
-        item.price = _item["price"] as! Int?
+        item.price = _item["price"] as! Float?
         item.url = _item["url"] as! String?
+        item.sortOrder = index + 1
         container.mainContext.insert(item)
       }
       
@@ -64,7 +65,7 @@ class PreviewModelContainer {
         2ポート同時使用時合計15Wの出力が可能2台当時充電可能です。
       """,
       "purchaseDate": Date(),
-      "price": 3990,
+      "price": Float(3990),
       "url": "https://www.muji.com/jp/ja/store/cmdty/detail/4550583825003",
       "categoryIndex": 2
     ],
@@ -75,7 +76,7 @@ class PreviewModelContainer {
         食器用・油汚れ用・シンク洗い用など用途でスポンジを使い分けたり、洗った際の色移りが気になりにくいグレー色を追加しました。
       """,
       "purchaseDate": nil,
-      "price": 299,
+      "price": Float(299),
       "url": nil,
       "categoryIndex": 0
     ],
@@ -84,7 +85,7 @@ class PreviewModelContainer {
       "maker": "YAMAHA",
       "comment": nil,
       "purchaseDate": nil,
-      "price": 59800,
+      "price": Float(59800),
       "url": "https://jp.yamaha.com/products/musical_instruments/pianos/p_series/p-225/index.html",
       "categoryIndex": 1
     ],
@@ -93,7 +94,7 @@ class PreviewModelContainer {
       "maker": "YAMAHA",
       "comment": nil,
       "purchaseDate": nil,
-      "price": 59800,
+      "price": Float(59800),
       "url": "https://jp.yamaha.com/products/musical_instruments/pianos/p_series/p-225/index.html",
       "categoryIndex": 1
     ],

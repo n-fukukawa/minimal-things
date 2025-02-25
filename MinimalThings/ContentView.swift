@@ -23,4 +23,11 @@ struct ContentView: View {
 #Preview {
   return ContentView()
     .modelContainer(PreviewModelContainer.container)
+    .environment(\.locale, .init(identifier: "en"))
+}
+
+#Preview {
+  return ContentView()
+    .modelContainer(PreviewModelContainer.container)
+    .environment(\.locale, .init(identifier: "ja"))
 }
