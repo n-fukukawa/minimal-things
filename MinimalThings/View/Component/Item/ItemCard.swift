@@ -139,7 +139,7 @@ struct ItemCard: View {
       if let price = item.price {
         IconLabel(
           label: "\(price.formatted())円",
-          icon: "yensign.square"
+          icon: "wallet.pass"
         )
       }
       
@@ -172,11 +172,11 @@ struct ItemCard: View {
       }
       .buttonStyle(HoverActionButtonStyle())
       .confirmationDialog("", isPresented: $showDeleteDialog) {
-        Button("削除", role: .destructive) {
+        Button("Delete", role: .destructive) {
           modelContext.delete(item)
           dismiss()
         }
-        Button("キャンセル", role: .cancel) {}
+        Button("Cancel", role: .cancel) {}
       }
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
@@ -188,7 +188,7 @@ struct ItemCard: View {
     Button {
       showEditor.toggle()
     } label: {
-      Label("編集", systemImage: "pencil")
+      Label("Edit", systemImage: "pencil")
         .font(.subheadline)
     }  }
   
@@ -196,7 +196,7 @@ struct ItemCard: View {
     Button(role: .destructive) {
       showDeleteDialog.toggle()
     } label: {
-      Label("削除", systemImage: "trash")
+      Label("Delete", systemImage: "trash")
         .font(.subheadline)
     }
   }

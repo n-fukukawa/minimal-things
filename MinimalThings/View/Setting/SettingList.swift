@@ -13,12 +13,12 @@ struct SettingList: View {
       NavigationLink {
         CategorySetting()
       } label: {
-        Text("カテゴリ")
+        Text("Category")
       }
     }
     .background(.backgroundPrimary)
     .scrollContentBackground(.hidden)
-    .navigationTitle("設定")
+    .navigationTitle("Settings")
     .navigationBarTitleDisplayMode(.inline)
   }
 }

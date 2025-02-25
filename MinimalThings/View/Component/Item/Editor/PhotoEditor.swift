@@ -29,7 +29,7 @@ struct PhotoEditor: View {
           photoData = nil
           dismiss()
         } label: {
-          Label(title: { Text("削除") }, icon: { Image(systemName: "trash") })
+          Label(title: { Text("Delete") }, icon: { Image(systemName: "trash") })
             .font(.title3)
         }
         .tint(.foregroundPrimary)
@@ -38,7 +38,7 @@ struct PhotoEditor: View {
       }
       .toolbar {
         ToolbarItem(placement: .topBarLeading) {
-          Button("閉じる") {
+          Button("Close") {
             dismiss()
           }
         }

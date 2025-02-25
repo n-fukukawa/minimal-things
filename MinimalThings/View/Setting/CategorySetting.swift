@@ -29,11 +29,11 @@ struct CategorySetting: View {
     }
     .background(.backgroundPrimary)
     .scrollContentBackground(.hidden)
-    .navigationTitle("カテゴリ")
+    .navigationTitle("Category")
     .navigationBarTitleDisplayMode(.inline)
     .toolbar {
       ToolbarItemGroup(placement: .topBarTrailing) {
-        NavigationLink("追加") {
+        NavigationLink("Add") {
           CategoryEditor()
         }
         EditButton()
@@ -41,12 +41,12 @@ struct CategorySetting: View {
     }
     .alert(isPresented: $isShowDeleteAlert) {
       Alert(
-        title: Text("削除しますか？"),
-        message: Text("削除するカテゴリに含まれるアイテムは未分類に移動されます"),
-        primaryButton: Alert.Button.destructive(Text("削除")) {
+        title: Text("Do you want to delete it?"),
+        message: Text("Items in the category to be deleted will be moved to Uncategorized。."),
+        primaryButton: Alert.Button.destructive(Text("Delete")) {
           deleteRow()
         },
-        secondaryButton: Alert.Button.default(Text("キャンセル")) {
+        secondaryButton: Alert.Button.default(Text("Cancel")) {
           deleteIndexes = []
           isShowDeleteAlert = false
         }

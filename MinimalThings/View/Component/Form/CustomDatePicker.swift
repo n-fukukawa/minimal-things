@@ -39,7 +39,7 @@ struct CustomDatePicker: View {
           isPresented.toggle()
         } label: {
           HStack {
-            Text("\(label)を選択")
+            Text("Select \(label)")
             Image(systemName: "chevron.down")
           }
         }
@@ -54,7 +54,7 @@ struct CustomDatePicker: View {
     .sheet(isPresented: $isPresented) {
       NavigationStack {
         DatePicker(
-          "Start Date",
+          "",
           selection: $dateState,
           displayedComponents: [.date]
         )
@@ -63,17 +63,17 @@ struct CustomDatePicker: View {
         
         .toolbar {
           ToolbarItem(placement: .cancellationAction) {
-            Button("キャンセル") {
+            Button("Cancel") {
               isPresented.toggle()
             }
           }
           ToolbarItem(placement: .primaryAction) {
-            Button("今日") {
+            Button("Today") {
               dateState = Date()
             }
           }
           ToolbarItem(placement: .primaryAction) {
-            Button("完了") {
+            Button("Done") {
               isPresented.toggle()
               dateBinding = dateState
             }
@@ -93,5 +93,5 @@ struct CustomDatePicker: View {
 
 #Preview {
   @Previewable @State var date: Date? = nil
-  return CustomDatePicker(dateBinding: $date, label: "日付")
+  return CustomDatePicker(dateBinding: $date, label: "date")
 }

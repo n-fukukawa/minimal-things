@@ -16,7 +16,7 @@ struct PhotoPicker: View {
   
   var body: some View {
     TabView {
-      Tab("アルバム", systemImage: "photo") {
+      Tab("Album", systemImage: "photo") {
         PhotosPicker(
           selection: $photosPickerItem,
           matching: .images,
@@ -37,13 +37,13 @@ struct PhotoPicker: View {
     }
     .toolbar {
       ToolbarItem(placement: .topBarLeading) {
-        Button("キャンセル") {
+        Button("Cancel") {
           photosPickerItem = nil
           dismiss()
         }
       }
       ToolbarItem(placement: .topBarTrailing) {
-        Button("完了") {
+        Button("Done") {
           photoData = photoDataState
           photosPickerItem = nil
           dismiss()

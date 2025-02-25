@@ -74,7 +74,7 @@ struct CategoryCard: View {
   
   private var headerTitle: some View {
     VStack(alignment: .leading, spacing: detail ? 2 : 8) {
-      Text(category?.name ?? "未分類")
+      Text(category?.name ?? String(localized: "Uncategorized"))
         .lineLimit(2)
         .multilineTextAlignment(.leading)
         .font(.headline)
@@ -136,7 +136,7 @@ struct CategoryCard: View {
         .padding()
         
         if items.isEmpty {
-          Text("アイテムがありません")
+          Text("No items yet.")
             .foregroundStyle(.buttonNormal)
         }
       }

@@ -35,7 +35,7 @@ struct HomeView: View {
   
   private var header: some View {
     HStack(spacing: 20) {
-      Text("My Items")
+      Text("Home Title")
         .font(.title)
       
       Spacer()

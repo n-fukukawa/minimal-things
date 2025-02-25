@@ -66,7 +66,7 @@ struct ItemEditor: View {
     .onAppear {
       onAppear()
     }
-    .alert("エラー", isPresented: $showValidationAlert) {
+    .alert("Error", isPresented: $showValidationAlert) {
     } message: {
       Text(validationMessages.joined(separator: "\n"))
     }
@@ -80,7 +80,7 @@ struct ItemEditor: View {
       ToolbarItem(placement: .keyboard) {
         HStack {
           Spacer()
-          Button("閉じる") { focusField = nil }
+          Button("Close") { focusField = nil }
             .tint(.foregroundSecondary)
         }
       }
@@ -150,13 +150,13 @@ struct ItemEditor: View {
     
     if photoData == nil {
       showValidationAlert = true
-      validationMessages.append("画像を選択してください")
+      validationMessages.append(String(localized: "Please select item image."))
       result = false
     }
     
     if name.isEmpty {
       showValidationAlert = true
-      validationMessages.append("名前を入力してください")
+      validationMessages.append(String(localized: "Please enter item name."))
       result = false
     }
     
@@ -171,15 +171,15 @@ struct ItemEditor: View {
         Spacer()
       }
       
-      CustomTextField(label: "名前", text: $name)
+      CustomTextField(label: String(localized: "Item name"), text: $name)
         .focused($focusField, equals: .name)
       
-      CustomTextField(label: "メーカー / ブランド", text: $maker)
+      CustomTextField(label: String(localized: "Manufacturer / Brand"), text: $maker)
         .focused($focusField, equals: .maker)
       
       HStack(spacing: 15) {
-        Picker("カテゴリ", selection: $category) {
-          Text("カテゴリを選択").tag(nil as ItemCategory?)
+        Picker("Category", selection: $category) {
+          Text("Select a category").tag(nil as ItemCategory?)
           ForEach(categories) { category in
             Text(category.name).tag(category as ItemCategory)
           }
@@ -208,7 +208,7 @@ struct ItemEditor: View {
           .border(Color(UIColor.systemGray5), width: 1)
         
         if comment.isEmpty {
-          Text("コメント").foregroundStyle(.placeholder)
+          Text("Description").foregroundStyle(.placeholder)
             .padding()
         }
       }
@@ -217,9 +217,9 @@ struct ItemEditor: View {
   
   private var detailFields: some View {
     VStack(alignment: .leading, spacing: 15) {
-      CustomDatePicker(dateBinding: $purchaseDate, label: "購入日")
+      CustomDatePicker(dateBinding: $purchaseDate, label: String(localized: "Date of purchase"))
       
-      CustomTextField(label: "価格", text: $price)
+      CustomTextField(label: String(localized: "Price"), text: $price)
         .focused($focusField, equals: .name)
         .keyboardType(.numberPad)
       
@@ -232,7 +232,7 @@ struct ItemEditor: View {
   @ViewBuilder
   private var saveButton: some View {
     if focusField == nil {
-      Button(item == nil ? "作成" : "上書き保存") {
+      Button(item == nil ? "Save" : "Save changes") {
         if let _item = item {
           update(item: _item)
         } else {
@@ -249,7 +249,7 @@ struct ItemEditor: View {
       ForEach(EditorTabType.allCases, id: \.self) { tab in
         Button { activeTab = tab } label: {
           VStack {
-            Text(tab.name)
+              tab.text
               .foregroundStyle(tab == activeTab ? .accentColor : Color.foregroundTertiary)
               .padding(4)
             Rectangle()
@@ -266,10 +266,10 @@ struct ItemEditor: View {
     case foundation
     case detail
     
-    var name: String {
+    var text: Text {
       switch self {
-      case .foundation: return "基本"
-      case .detail: return "詳細"
+      case .foundation: return Text("Basic")
+      case .detail: return Text("Detailed")
       }
     }
   }

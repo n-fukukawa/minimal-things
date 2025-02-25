@@ -25,5 +25,5 @@ struct CustomTextField: View {
 
 #Preview {
   @Previewable @State var name: String = ""
-  return CustomTextField(label: "名前", text: $name)
+  return CustomTextField(label: "name", text: $name)
 }

@@ -46,12 +46,12 @@ let sharedModelContainer: ModelContainer = {
 }()
 
 let defaultCategories: [ItemCategory] = [
-  ItemCategory(name: "クローゼット"),
-  ItemCategory(name: "キッチン"),
-  ItemCategory(name: "家具"),
-  ItemCategory(name: "家電"),
-  ItemCategory(name: "ガジェット"),
-  ItemCategory(name: "寝具"),
-  ItemCategory(name: "バスルーム"),
-  ItemCategory(name: "趣味"),
+  ItemCategory(name: String(localized: "category:Clothing")),
+  ItemCategory(name: String(localized: "category:Kitchen")),
+  ItemCategory(name: String(localized: "category:Furniture")),
+  ItemCategory(name: String(localized: "category:Consumer electronics")),
+  ItemCategory(name: String(localized: "category:Gadgets")),
+  ItemCategory(name: String(localized: "category:Bedclothes")),
+  ItemCategory(name: String(localized: "category:Bathroom")),
+  ItemCategory(name: String(localized: "category:Hobby items")),
 ]

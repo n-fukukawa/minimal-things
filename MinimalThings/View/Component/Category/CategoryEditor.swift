@@ -32,7 +32,7 @@ struct CategoryEditor: View {
         .ignoresSafeArea()
       
       VStack(spacing: 30) {
-        TextField("カテゴリ名", text: $name)
+        TextField("Category name", text: $name)
           .focused($isFocused)
           .padding(12)
           .background(.containerBackground)
@@ -41,18 +41,18 @@ struct CategoryEditor: View {
             RoundedRectangle(cornerRadius: 5)
               .stroke(.containerDivider, lineWidth: 1)
           )
-        Button(category == nil ? "作成" : "上書き保存") { onSave() }
+        Button(category == nil ? "Save" : "Save changes") { onSave() }
           .buttonStyle(PrimaryButtonStyle())
         Spacer()
       }
       .padding(30)
-      .navigationTitle(category == nil ? "カテゴリ作成" : "カテゴリ編集")
+      .navigationTitle(category == nil ? "Create category" : "Edit category")
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
         ToolbarItem(placement: .keyboard) {
           HStack {
             Spacer()
-            Button("閉じる") {
+            Button("Close") {
               isFocused = false
             }
           }
