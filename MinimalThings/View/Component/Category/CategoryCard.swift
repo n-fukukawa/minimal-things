@@ -25,9 +25,14 @@ struct CategoryCard: View {
   
   var body: some View {
     if detail {
-      content
-        .ignoresSafeArea()
-        .navigationBarBackButtonHidden()
+      VStack(spacing: 0) {
+        content
+          .ignoresSafeArea()
+          .navigationBarBackButtonHidden()
+        
+        BannerContentView()
+          .frame(maxHeight: 80)
+      }
     } else {
       content
     }
@@ -40,7 +45,7 @@ struct CategoryCard: View {
       ZStack {
         RoundedRectangle(cornerRadius: 10)
           .fill(detail ? .backgroundPrimary : .containerBackground)
-          .shadow(color: .shadow, radius: 5, x: 0, y: 5)
+          .shadow(color: detail ? .clear : .shadow, radius: 5, x: 0, y: 5)
         
         VStack(alignment: .leading, spacing: 0) {
           Spacer()

@@ -1,0 +1,6 @@
+framework module Pods_MinimalThings_MinimalThingsUITests {
+  umbrella header "Pods-MinimalThings-MinimalThingsUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

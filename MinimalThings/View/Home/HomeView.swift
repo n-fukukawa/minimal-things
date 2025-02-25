@@ -23,12 +23,11 @@ struct HomeView: View {
         .fill(.backgroundPrimary)
         .ignoresSafeArea(.all)
       
-      VStack {
+      VStack(spacing: 0) {
         header
         HomeCategoryList()
-        Rectangle()
-          .fill(.clear)
-          .frame(height: 60)
+        BannerContentView()
+          .frame(maxHeight: 80)
       }
     }
   }

@@ -30,13 +30,19 @@ struct ItemCard: View {
         Rectangle()
           .fill(Color.containerBackground)
           .ignoresSafeArea()
-        content
-          .navigationBarBackButtonHidden()
-          .sheet(isPresented: $showEditor) {
-            NavigationStack {
-              ItemEditor(item: item)
+        
+        VStack(spacing: 0) {
+          content
+            .navigationBarBackButtonHidden()
+            .sheet(isPresented: $showEditor) {
+              NavigationStack {
+                ItemEditor(item: item)
+              }
             }
-          }
+          
+          BannerContentView()
+            .frame(maxHeight: 80)
+        }
       }
     } else {
       ZStack {

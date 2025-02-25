@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E582F42EA3251132C216781 /* Pods_MinimalThings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A324EA6D2AC6436928BA9E /* Pods_MinimalThings.framework */; };
+		42F1FF17DDDE38F70ECAFF38 /* Pods_MinimalThingsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AB0D79F9D6E5E692ADB07E1 /* Pods_MinimalThingsTests.framework */; };
 		5507F3622D6539ED007CA17B /* FlatLinkStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5507F3612D6539ED007CA17B /* FlatLinkStyle.swift */; };
 		552ACBF32D44CE490055BA9A /* MinimalThingsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552ACBF22D44CE490055BA9A /* MinimalThingsApp.swift */; };
 		552ACBF52D44CE490055BA9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552ACBF42D44CE490055BA9A /* ContentView.swift */; };
@@ -35,8 +37,10 @@
 		55C7B89C2D6AD9DF0017926D /* CategoryEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C7B89B2D6AD9DF0017926D /* CategoryEditor.swift */; };
 		55C7B89E2D6ADC8D0017926D /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C7B89D2D6ADC8D0017926D /* PrimaryButtonStyle.swift */; };
 		55C7B8A02D6AF5B90017926D /* ItemListSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C7B89F2D6AF5B90017926D /* ItemListSorter.swift */; };
+		55DBA3E72D6DA92F005E0951 /* BannerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DBA3E62D6DA92F005E0951 /* BannerContentView.swift */; };
 		55E8C9652D61E20600631966 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8C9642D61E20600631966 /* Item.swift */; };
 		55E8C9672D61E3DD00631966 /* PreviewModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8C9662D61E3DD00631966 /* PreviewModelContainer.swift */; };
+		C6D570DB9D9110468CF8F6B6 /* Pods_MinimalThings_MinimalThingsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E2ECBD67C4EE2242430C597 /* Pods_MinimalThings_MinimalThingsUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,15 +61,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12AF87EC77A74B715CB87979 /* Pods-MinimalThings.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinimalThings.release.xcconfig"; path = "Target Support Files/Pods-MinimalThings/Pods-MinimalThings.release.xcconfig"; sourceTree = "<group>"; };
+		2767CC924C595DF1A5B7BC40 /* Pods-MinimalThings-MinimalThingsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinimalThings-MinimalThingsUITests.release.xcconfig"; path = "Target Support Files/Pods-MinimalThings-MinimalThingsUITests/Pods-MinimalThings-MinimalThingsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5507F3612D6539ED007CA17B /* FlatLinkStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatLinkStyle.swift; sourceTree = "<group>"; };
-		552ACBEF2D44CE490055BA9A /* MinimalThings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinimalThings.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5514470F2D6DA36700D944CB /* MinimalThings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinimalThings.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		551447102D6DA36700D944CB /* MinimalThingsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MinimalThingsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		551447112D6DA36700D944CB /* MinimalThingsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MinimalThingsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		552ACBF22D44CE490055BA9A /* MinimalThingsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalThingsApp.swift; sourceTree = "<group>"; };
 		552ACBF42D44CE490055BA9A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		552ACBF82D44CE4A0055BA9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		552ACBFB2D44CE4A0055BA9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		552ACC012D44CE4B0055BA9A /* MinimalThingsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MinimalThingsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		552ACC052D44CE4B0055BA9A /* MinimalThingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalThingsTests.swift; sourceTree = "<group>"; };
-		552ACC0B2D44CE4B0055BA9A /* MinimalThingsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MinimalThingsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		552ACC0F2D44CE4B0055BA9A /* MinimalThingsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalThingsUITests.swift; sourceTree = "<group>"; };
 		552ACC112D44CE4B0055BA9A /* MinimalThingsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalThingsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		552ACC1E2D44CF250055BA9A /* MinimalThings.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MinimalThings.xctestplan; sourceTree = "<group>"; };
@@ -89,8 +95,17 @@
 		55C7B89B2D6AD9DF0017926D /* CategoryEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEditor.swift; sourceTree = "<group>"; };
 		55C7B89D2D6ADC8D0017926D /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		55C7B89F2D6AF5B90017926D /* ItemListSorter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListSorter.swift; sourceTree = "<group>"; };
+		55DBA3E42D6DA6D7005E0951 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		55DBA3E62D6DA92F005E0951 /* BannerContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerContentView.swift; sourceTree = "<group>"; };
 		55E8C9642D61E20600631966 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		55E8C9662D61E3DD00631966 /* PreviewModelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewModelContainer.swift; sourceTree = "<group>"; };
+		65A324EA6D2AC6436928BA9E /* Pods_MinimalThings.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MinimalThings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AB0D79F9D6E5E692ADB07E1 /* Pods_MinimalThingsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MinimalThingsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		85FDA4D6AB9705AED97C2C00 /* Pods-MinimalThings.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinimalThings.debug.xcconfig"; path = "Target Support Files/Pods-MinimalThings/Pods-MinimalThings.debug.xcconfig"; sourceTree = "<group>"; };
+		9E2ECBD67C4EE2242430C597 /* Pods_MinimalThings_MinimalThingsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MinimalThings_MinimalThingsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A19685C475C0A29015414CA5 /* Pods-MinimalThings-MinimalThingsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinimalThings-MinimalThingsUITests.debug.xcconfig"; path = "Target Support Files/Pods-MinimalThings-MinimalThingsUITests/Pods-MinimalThings-MinimalThingsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C1E1334DD52C06E939FC1B7E /* Pods-MinimalThingsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinimalThingsTests.debug.xcconfig"; path = "Target Support Files/Pods-MinimalThingsTests/Pods-MinimalThingsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CB313E3926F13C3A2D3BBD13 /* Pods-MinimalThingsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinimalThingsTests.release.xcconfig"; path = "Target Support Files/Pods-MinimalThingsTests/Pods-MinimalThingsTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E582F42EA3251132C216781 /* Pods_MinimalThings.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42F1FF17DDDE38F70ECAFF38 /* Pods_MinimalThingsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,12 +129,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6D570DB9D9110468CF8F6B6 /* Pods_MinimalThings_MinimalThingsUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10D595947B29F09DB15289F2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				85FDA4D6AB9705AED97C2C00 /* Pods-MinimalThings.debug.xcconfig */,
+				12AF87EC77A74B715CB87979 /* Pods-MinimalThings.release.xcconfig */,
+				A19685C475C0A29015414CA5 /* Pods-MinimalThings-MinimalThingsUITests.debug.xcconfig */,
+				2767CC924C595DF1A5B7BC40 /* Pods-MinimalThings-MinimalThingsUITests.release.xcconfig */,
+				C1E1334DD52C06E939FC1B7E /* Pods-MinimalThingsTests.debug.xcconfig */,
+				CB313E3926F13C3A2D3BBD13 /* Pods-MinimalThingsTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		4BC7C14B5A059C96FD8592BE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				65A324EA6D2AC6436928BA9E /* Pods_MinimalThings.framework */,
+				9E2ECBD67C4EE2242430C597 /* Pods_MinimalThings_MinimalThingsUITests.framework */,
+				7AB0D79F9D6E5E692ADB07E1 /* Pods_MinimalThingsTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5507F3602D6539D1007CA17B /* Style */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,23 +177,18 @@
 				552ACBF12D44CE490055BA9A /* MinimalThings */,
 				552ACC042D44CE4B0055BA9A /* MinimalThingsTests */,
 				552ACC0E2D44CE4B0055BA9A /* MinimalThingsUITests */,
-				552ACBF02D44CE490055BA9A /* Products */,
+				10D595947B29F09DB15289F2 /* Pods */,
+				4BC7C14B5A059C96FD8592BE /* Frameworks */,
+				5514470F2D6DA36700D944CB /* MinimalThings.app */,
+				551447102D6DA36700D944CB /* MinimalThingsTests.xctest */,
+				551447112D6DA36700D944CB /* MinimalThingsUITests.xctest */,
 			);
-			sourceTree = "<group>";
-		};
-		552ACBF02D44CE490055BA9A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				552ACBEF2D44CE490055BA9A /* MinimalThings.app */,
-				552ACC012D44CE4B0055BA9A /* MinimalThingsTests.xctest */,
-				552ACC0B2D44CE4B0055BA9A /* MinimalThingsUITests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		552ACBF12D44CE490055BA9A /* MinimalThings */ = {
 			isa = PBXGroup;
 			children = (
+				55DBA3E42D6DA6D7005E0951 /* Info.plist */,
 				5532DE3B2D5425960079E80B /* View */,
 				5532DE362D52CFD80079E80B /* Model */,
 				552ACBF22D44CE490055BA9A /* MinimalThingsApp.swift */,
@@ -210,8 +246,9 @@
 		5532DE3B2D5425960079E80B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				55C7B8982D6ACF160017926D /* Setting */,
+				55DBA3E52D6DA91C005E0951 /* Ad */,
 				553C8AF42D61BF4F00D0F342 /* Home */,
+				55C7B8982D6ACF160017926D /* Setting */,
 				553C8AF72D61BF7700D0F342 /* Component */,
 			);
 			path = View;
@@ -286,6 +323,14 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		55DBA3E52D6DA91C005E0951 /* Ad */ = {
+			isa = PBXGroup;
+			children = (
+				55DBA3E62D6DA92F005E0951 /* BannerContentView.swift */,
+			);
+			path = Ad;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -293,9 +338,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 552ACC152D44CE4B0055BA9A /* Build configuration list for PBXNativeTarget "MinimalThings" */;
 			buildPhases = (
+				A974297BFD1945ABF8C91ED2 /* [CP] Check Pods Manifest.lock */,
 				552ACBEB2D44CE490055BA9A /* Sources */,
 				552ACBEC2D44CE490055BA9A /* Frameworks */,
 				552ACBED2D44CE490055BA9A /* Resources */,
+				CE35485C6CF58FA3D54390C0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -303,13 +350,14 @@
 			);
 			name = MinimalThings;
 			productName = MinimalThings;
-			productReference = 552ACBEF2D44CE490055BA9A /* MinimalThings.app */;
+			productReference = 5514470F2D6DA36700D944CB /* MinimalThings.app */;
 			productType = "com.apple.product-type.application";
 		};
 		552ACC002D44CE4B0055BA9A /* MinimalThingsTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 552ACC182D44CE4B0055BA9A /* Build configuration list for PBXNativeTarget "MinimalThingsTests" */;
 			buildPhases = (
+				1F8D6EC80316F00FE01559DB /* [CP] Check Pods Manifest.lock */,
 				552ACBFD2D44CE4B0055BA9A /* Sources */,
 				552ACBFE2D44CE4B0055BA9A /* Frameworks */,
 				552ACBFF2D44CE4B0055BA9A /* Resources */,
@@ -321,16 +369,18 @@
 			);
 			name = MinimalThingsTests;
 			productName = MinimalThingsTests;
-			productReference = 552ACC012D44CE4B0055BA9A /* MinimalThingsTests.xctest */;
+			productReference = 551447102D6DA36700D944CB /* MinimalThingsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		552ACC0A2D44CE4B0055BA9A /* MinimalThingsUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 552ACC1B2D44CE4B0055BA9A /* Build configuration list for PBXNativeTarget "MinimalThingsUITests" */;
 			buildPhases = (
+				EE8A372B9EBC6CA3B1A3AD7E /* [CP] Check Pods Manifest.lock */,
 				552ACC072D44CE4B0055BA9A /* Sources */,
 				552ACC082D44CE4B0055BA9A /* Frameworks */,
 				552ACC092D44CE4B0055BA9A /* Resources */,
+				DB76B700EB52F3BBAF39603B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -339,7 +389,7 @@
 			);
 			name = MinimalThingsUITests;
 			productName = MinimalThingsUITests;
-			productReference = 552ACC0B2D44CE4B0055BA9A /* MinimalThingsUITests.xctest */;
+			productReference = 551447112D6DA36700D944CB /* MinimalThingsUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -375,7 +425,7 @@
 				en,
 			);
 			mainGroup = 552ACBE62D44CE490055BA9A;
-			productRefGroup = 552ACBF02D44CE490055BA9A /* Products */;
+			productRefGroup = 552ACBE62D44CE490055BA9A;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -413,11 +463,115 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1F8D6EC80316F00FE01559DB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MinimalThingsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A974297BFD1945ABF8C91ED2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MinimalThings-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE35485C6CF58FA3D54390C0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MinimalThings/Pods-MinimalThings-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MinimalThings/Pods-MinimalThings-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MinimalThings/Pods-MinimalThings-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DB76B700EB52F3BBAF39603B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MinimalThings-MinimalThingsUITests/Pods-MinimalThings-MinimalThingsUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MinimalThings-MinimalThingsUITests/Pods-MinimalThings-MinimalThingsUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MinimalThings-MinimalThingsUITests/Pods-MinimalThings-MinimalThingsUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE8A372B9EBC6CA3B1A3AD7E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MinimalThings-MinimalThingsUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		552ACBEB2D44CE490055BA9A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55DBA3E72D6DA92F005E0951 /* BannerContentView.swift in Sources */,
 				55C7B89E2D6ADC8D0017926D /* PrimaryButtonStyle.swift in Sources */,
 				553C8AFF2D61CD6F00D0F342 /* StylishArrow.swift in Sources */,
 				55517EFB2D6B0E8200284AC9 /* PhotoEditor.swift in Sources */,
@@ -601,6 +755,7 @@
 		};
 		552ACC162D44CE4B0055BA9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85FDA4D6AB9705AED97C2C00 /* Pods-MinimalThings.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -609,7 +764,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MinimalThings/Preview Content\"";
 				DEVELOPMENT_TEAM = W8Y63B3AVP;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MinimalThings/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -631,6 +788,7 @@
 		};
 		552ACC172D44CE4B0055BA9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12AF87EC77A74B715CB87979 /* Pods-MinimalThings.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -639,7 +797,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MinimalThings/Preview Content\"";
 				DEVELOPMENT_TEAM = W8Y63B3AVP;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MinimalThings/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -661,6 +821,7 @@
 		};
 		552ACC192D44CE4B0055BA9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1E1334DD52C06E939FC1B7E /* Pods-MinimalThingsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -681,6 +842,7 @@
 		};
 		552ACC1A2D44CE4B0055BA9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB313E3926F13C3A2D3BBD13 /* Pods-MinimalThingsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -701,6 +863,7 @@
 		};
 		552ACC1C2D44CE4B0055BA9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A19685C475C0A29015414CA5 /* Pods-MinimalThings-MinimalThingsUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -719,6 +882,7 @@
 		};
 		552ACC1D2D44CE4B0055BA9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2767CC924C595DF1A5B7BC40 /* Pods-MinimalThings-MinimalThingsUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
