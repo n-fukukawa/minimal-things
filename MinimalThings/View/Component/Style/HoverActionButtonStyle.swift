@@ -15,8 +15,7 @@ struct HoverActionButtonStyle: ButtonStyle {
       .frame(width: 36, height: 36)
       .background(
         Circle()
-          .fill(Color.shadow.opacity(0.3))
-          .shadow(color: .foregroundPrimary, radius: 4, x: 2, y: 2)
+          .fill(Color.containerBackground.opacity(0.5))
       )
   }
 }

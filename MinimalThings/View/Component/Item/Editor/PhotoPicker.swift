@@ -30,25 +30,25 @@ struct PhotoPicker: View {
               photoDataState = data
             }
           }
-          .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-              Button("キャンセル") {
-                photosPickerItem = nil
-                dismiss()
-              }
-            }
-            ToolbarItem(placement: .topBarTrailing) {
-              Button("完了") {
-                photoData = photoDataState
-                photosPickerItem = nil
-                dismiss()
-              }
-            }
-          }
       }
       
       // カメラ起動 インライン
       
+    }
+    .toolbar {
+      ToolbarItem(placement: .topBarLeading) {
+        Button("キャンセル") {
+          photosPickerItem = nil
+          dismiss()
+        }
+      }
+      ToolbarItem(placement: .topBarTrailing) {
+        Button("完了") {
+          photoData = photoDataState
+          photosPickerItem = nil
+          dismiss()
+        }
+      }
     }
   }
 }

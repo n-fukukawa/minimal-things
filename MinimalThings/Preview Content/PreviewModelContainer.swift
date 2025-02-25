@@ -5,6 +5,7 @@
 //  Created by Naruki Fukukawa on 2025/02/16.
 
 import Foundation
+import SwiftUI
 import SwiftData
 
 @MainActor
@@ -24,6 +25,7 @@ class PreviewModelContainer {
       
       for _item in items {
         let item = Item(name: _item["name"] as! String)
+        item.photo = ImageRenderer(content: Image("photo")).uiImage?.jpegData(compressionQuality: 1.0)
         item.category = nil //categories[Int.random(in: 0..<categories.count)]
         item.maker = _item["maker"] as! String?
         item.comment = _item["comment"] as! String?

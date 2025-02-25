@@ -38,9 +38,10 @@ let sharedModelContainer: ModelContainer = {
       container.mainContext.insert(category)
     }
     
-    for _item in items {
+    for (index, _item) in items.enumerated() {
       let item = Item(name: _item["name"] as! String)
-      item.category = categories[Int.random(in: 0..<categories.count)]
+      item.photo = ImageRenderer(content: Image("photo")).uiImage?.jpegData(compressionQuality: 1.0)
+      item.category = categories[index % 2]
       item.maker = _item["maker"] as! String?
       item.comment = _item["comment"] as! String?
       item.purchaseDate = _item["purchaseDate"] as! Date?

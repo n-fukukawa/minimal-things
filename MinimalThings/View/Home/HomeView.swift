@@ -48,7 +48,9 @@ struct HomeView: View {
           .foregroundStyle(.foregroundSecondary)
       }
       .sheet(isPresented: $isItemEditorPresented) {
-        ItemEditor()
+        NavigationStack {
+          ItemEditor()
+        }
       }
       
       NavigationLink {

@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct ItemCard: View {
+  @Environment(\.modelContext) var modelContext
   @Environment(\.dismiss) var dismiss
   var item: Item
   var detail: Bool
@@ -18,12 +19,20 @@ struct ItemCard: View {
     self.detail = detail
   }
   
+  @State private var showEditor: Bool = false
+  @State private var showDeleteDialog: Bool = false
+  
   let paddingSize = SCREEN_MAXX * 0.07
   
   var body: some View {
     if detail {
       content
         .navigationBarBackButtonHidden()
+        .sheet(isPresented: $showEditor) {
+          NavigationStack {
+            ItemEditor(item: item)
+          }
+        }
     } else {
       ZStack {
         RoundedRectangle(cornerRadius: detail ? 10 : 5)
@@ -59,18 +68,21 @@ struct ItemCard: View {
     .scrollBounceBehavior(.basedOnSize, axes: .vertical)
   }
   
+  @ViewBuilder
   private var photo: some View {
-    Image("photo")
-      .resizable()
-      .scaledToFit()
-      .aspectRatio(1, contentMode: .fit)
-      .clipShape(UnevenRoundedRectangle(
-        topLeadingRadius: detail ? 0 : 5, topTrailingRadius: detail ? 0 : 5)
-      )
-      .frame(
-        maxWidth: detail ? SCREEN_MAXX : .infinity,
-        maxHeight: detail ? SCREEN_MAXX : .infinity
-      )
+    if let data = item.photo, let uiImage = UIImage(data: data) {
+      Image(uiImage: uiImage)
+        .resizable()
+        .scaledToFit()
+        .aspectRatio(1, contentMode: .fit)
+        .clipShape(UnevenRoundedRectangle(
+          topLeadingRadius: detail ? 0 : 5, topTrailingRadius: detail ? 0 : 5)
+        )
+        .frame(
+          maxWidth: detail ? SCREEN_MAXX : .infinity,
+          maxHeight: detail ? SCREEN_MAXX : .infinity
+        )
+    }
   }
   
   private var itemTitle: some View {
@@ -135,17 +147,48 @@ struct ItemCard: View {
     HStack {
       Button {
         dismiss()
-      } label: { Image(systemName: "xmark") }
-        .buttonStyle(HoverActionButtonStyle())
+      } label: {
+        Image(systemName: "xmark")
+      }
+      .buttonStyle(HoverActionButtonStyle())
+      
       Spacer()
-      Button {
-        dismiss()
-      } label: { Image(systemName: "ellipsis") }
-        .buttonStyle(HoverActionButtonStyle())
+      
+      Menu {
+        editButton
+        deleteButton
+      } label: {
+        Image(systemName: "ellipsis")
+      }
+      .buttonStyle(HoverActionButtonStyle())
+      .confirmationDialog("", isPresented: $showDeleteDialog) {
+        Button("削除", role: .destructive) {
+          modelContext.delete(item)
+          dismiss()
+        }
+        Button("キャンセル", role: .cancel) {}
+      }
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
     .padding(.horizontal, 15)
     .padding(.top, 10)
+  }
+  
+  private var editButton: some View {
+    Button {
+      showEditor.toggle()
+    } label: {
+      Label("編集", systemImage: "pencil")
+        .font(.subheadline)
+    }  }
+  
+  private var deleteButton: some View {
+    Button(role: .destructive) {
+      showDeleteDialog.toggle()
+    } label: {
+      Label("削除", systemImage: "trash")
+        .font(.subheadline)
+    }
   }
 }
 

@@ -48,10 +48,10 @@ struct ItemEditorPhotoField: View {
             .foregroundStyle(.foregroundTertiary)
         }
       }
-      .frame(width: 80, height: 80)
+      .frame(width: 90, height: 90)
       .background(
         Rectangle()
-          .fill(Color.shadow.opacity(0.5))
+          .fill(Color.shadow.opacity(0.3))
           .stroke(.foregroundTertiary.opacity(0.5))
       )
     }

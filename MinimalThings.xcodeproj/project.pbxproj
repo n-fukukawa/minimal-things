@@ -15,6 +15,8 @@
 		552ACC062D44CE4B0055BA9A /* MinimalThingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552ACC052D44CE4B0055BA9A /* MinimalThingsTests.swift */; };
 		552ACC102D44CE4B0055BA9A /* MinimalThingsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552ACC0F2D44CE4B0055BA9A /* MinimalThingsUITests.swift */; };
 		552ACC122D44CE4B0055BA9A /* MinimalThingsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552ACC112D44CE4B0055BA9A /* MinimalThingsUITestsLaunchTests.swift */; };
+		552EC92E2D6D357B000150BF /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552EC92D2D6D357B000150BF /* CustomDatePicker.swift */; };
+		552EC9302D6D3B9C000150BF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552EC92F2D6D3B9C000150BF /* CustomTextField.swift */; };
 		5532DE3A2D541C770079E80B /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5532DE392D541C770079E80B /* ItemCategory.swift */; };
 		553C8AF32D61BF4A00D0F342 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553C8AF22D61BF4A00D0F342 /* HomeView.swift */; };
 		553C8AFA2D61BFA500D0F342 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553C8AF92D61BFA500D0F342 /* DetailView.swift */; };
@@ -67,6 +69,8 @@
 		552ACC0F2D44CE4B0055BA9A /* MinimalThingsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalThingsUITests.swift; sourceTree = "<group>"; };
 		552ACC112D44CE4B0055BA9A /* MinimalThingsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalThingsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		552ACC1E2D44CF250055BA9A /* MinimalThings.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MinimalThings.xctestplan; sourceTree = "<group>"; };
+		552EC92D2D6D357B000150BF /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
+		552EC92F2D6D3B9C000150BF /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		5532DE392D541C770079E80B /* ItemCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategory.swift; sourceTree = "<group>"; };
 		553C8AF22D61BF4A00D0F342 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		553C8AF92D61BFA500D0F342 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
@@ -184,6 +188,15 @@
 			path = MinimalThingsUITests;
 			sourceTree = "<group>";
 		};
+		552EC92C2D6D3568000150BF /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				552EC92D2D6D357B000150BF /* CustomDatePicker.swift */,
+				552EC92F2D6D3B9C000150BF /* CustomTextField.swift */,
+			);
+			path = Form;
+			sourceTree = "<group>";
+		};
 		5532DE362D52CFD80079E80B /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +249,7 @@
 			children = (
 				553C8AF62D61BF6C00D0F342 /* Category */,
 				553C8AF82D61BF9000D0F342 /* Item */,
+				552EC92C2D6D3568000150BF /* Form */,
 				553C8AFD2D61CD5500D0F342 /* Shape */,
 				5507F3602D6539D1007CA17B /* Style */,
 				554AC36E2D61F0FF009B3125 /* IconLabel.swift */,
@@ -419,6 +433,7 @@
 				55E8C9672D61E3DD00631966 /* PreviewModelContainer.swift in Sources */,
 				55517EFD2D6B0EB200284AC9 /* PhotoPicker.swift in Sources */,
 				5507F3622D6539ED007CA17B /* FlatLinkStyle.swift in Sources */,
+				552EC9302D6D3B9C000150BF /* CustomTextField.swift in Sources */,
 				55B8A56E2D62A96900D68EE8 /* HomeCategoryList.swift in Sources */,
 				55C7B89A2D6ACF2B0017926D /* SettingList.swift in Sources */,
 				553C8AFA2D61BFA500D0F342 /* DetailView.swift in Sources */,
@@ -433,6 +448,7 @@
 				554AC36F2D61F0FF009B3125 /* IconLabel.swift in Sources */,
 				55C7B89C2D6AD9DF0017926D /* CategoryEditor.swift in Sources */,
 				55C7B8952D67DDFF0017926D /* HoverActionButtonStyle.swift in Sources */,
+				552EC92E2D6D357B000150BF /* CustomDatePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
