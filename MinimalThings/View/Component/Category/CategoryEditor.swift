@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct CategoryEditor: View {
   @Environment(\.dismiss) var dismiss
   @Environment(\.modelContext) var modelContext
+  @Query var categories: [ItemCategory]
   let category: ItemCategory?
   @State private var name: String
   @FocusState var isFocused: Bool
@@ -69,6 +71,10 @@ struct CategoryEditor: View {
     } else {
       // 作成
       let newCategory = ItemCategory(name: name)
+      let maxSortOrder = categories.map{$0.sortOrder}.max()
+      if let maxSortOrder = maxSortOrder {
+        newCategory.sortOrder = maxSortOrder + 1
+      }
       modelContext.insert(newCategory)
     }
     dismiss()
