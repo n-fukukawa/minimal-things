@@ -34,25 +34,24 @@ let sharedModelContainer: ModelContainer = {
     
     guard try container.mainContext.fetch(categoryFetchDescriptor).count == 0 else { return container }
     
-    for category in categories {
+    for (index, category) in defaultCategories.enumerated() {
+      category.sortOrder = index + 1
       container.mainContext.insert(category)
     }
-    
-    for (index, _item) in items.enumerated() {
-      let item = Item(name: _item["name"] as! String)
-      item.photo = ImageRenderer(content: Image("photo")).uiImage?.jpegData(compressionQuality: 1.0)
-      item.category = categories[index % 2]
-      item.maker = _item["maker"] as! String?
-      item.comment = _item["comment"] as! String?
-      item.purchaseDate = _item["purchaseDate"] as! Date?
-      item.price = _item["price"] as! Int?
-      item.url = _item["url"] as! String?
-      container.mainContext.insert(item)
-    }
-    
     
     return container
   } catch {
     fatalError("Could not create ModelContainer: \(error)")
   }
 }()
+
+let defaultCategories: [ItemCategory] = [
+  ItemCategory(name: "クローゼット"),
+  ItemCategory(name: "キッチン"),
+  ItemCategory(name: "家具"),
+  ItemCategory(name: "家電"),
+  ItemCategory(name: "ガジェット"),
+  ItemCategory(name: "寝具"),
+  ItemCategory(name: "バスルーム"),
+  ItemCategory(name: "趣味"),
+]
