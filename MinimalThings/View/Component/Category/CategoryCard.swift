@@ -73,7 +73,7 @@ struct CategoryCard: View {
   }
   
   private var headerTitle: some View {
-    VStack(alignment: .leading, spacing: 8) {
+    VStack(alignment: .leading, spacing: detail ? 2 : 8) {
       Text(category?.name ?? "未分類")
         .lineLimit(2)
         .multilineTextAlignment(.leading)
