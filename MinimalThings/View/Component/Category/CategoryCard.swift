@@ -134,6 +134,11 @@ struct CategoryCard: View {
           }
         }
         .padding()
+        
+        if items.isEmpty {
+          Text("アイテムがありません")
+            .foregroundStyle(.buttonNormal)
+        }
       }
     }
   }
