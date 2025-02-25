@@ -26,13 +26,18 @@ struct ItemCard: View {
   
   var body: some View {
     if detail {
-      content
-        .navigationBarBackButtonHidden()
-        .sheet(isPresented: $showEditor) {
-          NavigationStack {
-            ItemEditor(item: item)
+      ZStack {
+        Rectangle()
+          .fill(Color.containerBackground)
+          .ignoresSafeArea()
+        content
+          .navigationBarBackButtonHidden()
+          .sheet(isPresented: $showEditor) {
+            NavigationStack {
+              ItemEditor(item: item)
+            }
           }
-        }
+      }
     } else {
       ZStack {
         RoundedRectangle(cornerRadius: detail ? 10 : 5)
@@ -53,7 +58,7 @@ struct ItemCard: View {
           VStack(alignment: .leading, spacing: 0) {
             itemTitle
             if detail {
-              makerText.padding(.top, 8)
+              makerText.padding(.top, 6)
               commentText.padding(.top, paddingSize)
               itemDetails.padding(.top, paddingSize)
             }
@@ -89,7 +94,7 @@ struct ItemCard: View {
     Text(item.name)
       .lineLimit(2, reservesSpace: !detail)
       .multilineTextAlignment(.leading)
-      .font(detail ? .title2 : .caption)
+      .font(detail ? .title3 : .caption)
       .fontWeight(.semibold)
       .foregroundStyle(.foregroundSecondary)
   }
@@ -99,7 +104,7 @@ struct ItemCard: View {
     if let maker = item.maker {
       Text(maker)
         .lineLimit(1)
-        .font(.body)
+        .font(.subheadline)
         .foregroundStyle(.foregroundTertiary)
     }
   }
@@ -107,18 +112,23 @@ struct ItemCard: View {
   @ViewBuilder
   private var commentText: some View {
     if let comment = item.comment {
-      Text(comment)
-        .multilineTextAlignment(.leading)
-        .font(.body)
-        .foregroundStyle(.foregroundSecondary)
-        .padding(.trailing)
+      VStack(spacing: 0) {
+        Text(comment)
+          .multilineTextAlignment(.leading)
+          .font(.subheadline)
+          .lineSpacing(8)
+          .foregroundStyle(.foregroundSecondary)
+          .padding(.trailing)
+        
+        Divider().padding(.top, paddingSize)
+      }
     }
   }
   
   @ViewBuilder
   private var itemDetails: some View {
     let dateFormatStyle = Date.FormatStyle(date: .numeric, time: .omitted)
-    VStack(alignment: .leading, spacing: 15) {
+    VStack(alignment: .leading, spacing: 10) {
       if let purchaseDate = item.purchaseDate {
         IconLabel(
           label: dateFormatStyle.format(purchaseDate),
@@ -202,6 +212,7 @@ struct ItemCard: View {
   let items = try! container.mainContext.fetch(fetchDescriptor)
   
   return ItemCard(item: items[0])
+    .frame(width: 160, height: 160 * 1.5)
 }
 
 #Preview {
@@ -213,8 +224,7 @@ struct ItemCard: View {
   )
   let items = try! container.mainContext.fetch(fetchDescriptor)
   
-  return ItemCard(item: items[0], detail: true)
-    .frame(width: 300, height: 450)
+  return ItemCard(item: items[1], detail: true)
 }
 
 
