@@ -31,7 +31,7 @@ struct ItemCard: View {
           .fill(Color.containerBackground)
           .ignoresSafeArea()
         
-        VStack(spacing: 0) {
+        VStack(alignment: .leading, spacing: 0) {
           content
             .navigationBarBackButtonHidden()
             .sheet(isPresented: $showEditor) {
@@ -118,7 +118,7 @@ struct ItemCard: View {
   @ViewBuilder
   private var commentText: some View {
     if let comment = item.comment {
-      VStack(spacing: 0) {
+      VStack(alignment: .leading, spacing: 0) {
         Text(comment)
           .multilineTextAlignment(.leading)
           .font(.subheadline)
