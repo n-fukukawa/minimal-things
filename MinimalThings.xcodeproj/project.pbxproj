@@ -31,6 +31,8 @@
 		55517EFB2D6B0E8200284AC9 /* PhotoEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55517EFA2D6B0E8200284AC9 /* PhotoEditor.swift */; };
 		55517EFD2D6B0EB200284AC9 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55517EFC2D6B0EB200284AC9 /* PhotoPicker.swift */; };
 		55B8A56E2D62A96900D68EE8 /* HomeCategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B8A56D2D62A96900D68EE8 /* HomeCategoryList.swift */; };
+		55C0693C2D6FD6D9000FB21B /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0693B2D6FD6D3000FB21B /* ImagePickerView.swift */; };
+		55C0693E2D6FD75D000FB21B /* CameraPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0693D2D6FD75D000FB21B /* CameraPicker.swift */; };
 		55C7B8952D67DDFF0017926D /* HoverActionButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C7B8942D67DDFF0017926D /* HoverActionButtonStyle.swift */; };
 		55C7B8972D67F53C0017926D /* CategorySetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C7B8962D67F53C0017926D /* CategorySetting.swift */; };
 		55C7B89A2D6ACF2B0017926D /* SettingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C7B8992D6ACF2B0017926D /* SettingList.swift */; };
@@ -89,6 +91,8 @@
 		55517EFA2D6B0E8200284AC9 /* PhotoEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditor.swift; sourceTree = "<group>"; };
 		55517EFC2D6B0EB200284AC9 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		55B8A56D2D62A96900D68EE8 /* HomeCategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCategoryList.swift; sourceTree = "<group>"; };
+		55C0693B2D6FD6D3000FB21B /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		55C0693D2D6FD75D000FB21B /* CameraPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPicker.swift; sourceTree = "<group>"; };
 		55C7B8942D67DDFF0017926D /* HoverActionButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoverActionButtonStyle.swift; sourceTree = "<group>"; };
 		55C7B8962D67F53C0017926D /* CategorySetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySetting.swift; sourceTree = "<group>"; };
 		55C7B8992D6ACF2B0017926D /* SettingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingList.swift; sourceTree = "<group>"; };
@@ -276,6 +280,7 @@
 		553C8AF72D61BF7700D0F342 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				55C0693A2D6FD6C8000FB21B /* ImagePicker */,
 				553C8AF62D61BF6C00D0F342 /* Category */,
 				553C8AF82D61BF9000D0F342 /* Item */,
 				552EC92C2D6D3568000150BF /* Form */,
@@ -310,8 +315,17 @@
 				55517EF82D6B06CA00284AC9 /* ItemEditorPhotoField.swift */,
 				55517EFC2D6B0EB200284AC9 /* PhotoPicker.swift */,
 				55517EFA2D6B0E8200284AC9 /* PhotoEditor.swift */,
+				55C0693D2D6FD75D000FB21B /* CameraPicker.swift */,
 			);
 			path = Editor;
+			sourceTree = "<group>";
+		};
+		55C0693A2D6FD6C8000FB21B /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				55C0693B2D6FD6D3000FB21B /* ImagePickerView.swift */,
+			);
+			path = ImagePicker;
 			sourceTree = "<group>";
 		};
 		55C7B8982D6ACF160017926D /* Setting */ = {
@@ -593,8 +607,10 @@
 				554AC3732D62951E009B3125 /* ItemCard.swift in Sources */,
 				552ACBF32D44CE490055BA9A /* MinimalThingsApp.swift in Sources */,
 				554AC36F2D61F0FF009B3125 /* IconLabel.swift in Sources */,
+				55C0693C2D6FD6D9000FB21B /* ImagePickerView.swift in Sources */,
 				55C7B89C2D6AD9DF0017926D /* CategoryEditor.swift in Sources */,
 				55C7B8952D67DDFF0017926D /* HoverActionButtonStyle.swift in Sources */,
+				55C0693E2D6FD75D000FB21B /* CameraPicker.swift in Sources */,
 				552EC92E2D6D357B000150BF /* CustomDatePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -767,6 +783,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MinimalThings/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -800,6 +817,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MinimalThings/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

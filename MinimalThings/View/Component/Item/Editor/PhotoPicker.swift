@@ -11,8 +11,11 @@ import PhotosUI
 struct PhotoPicker: View {
   @Environment(\.dismiss) var dismiss
   @Binding var photoData: Data?
+  // Album
   @State private var photosPickerItem: PhotosPickerItem? = nil
   @State private var photoDataState: Data? = nil
+  // Camera
+  @State private var cameraImage: UIImage? = nil
   
   var body: some View {
     TabView {
@@ -32,8 +35,14 @@ struct PhotoPicker: View {
           }
       }
       
-      // カメラ起動 インライン
-      
+      Tab("Camera", systemImage: "camera") {
+        CameraPicker(
+          onAfterPick: {
+            photoData = cameraImage?.jpegData(compressionQuality: 1.0)
+            dismiss()
+          },
+          image: $cameraImage)
+      }
     }
     .toolbar {
       ToolbarItem(placement: .topBarLeading) {
