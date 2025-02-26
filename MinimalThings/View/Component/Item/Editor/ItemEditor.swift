@@ -47,18 +47,22 @@ struct ItemEditor: View {
     VStack(spacing: 0) {
       editorTab
       
-      Group {
-        if activeTab == EditorTabType.foundation {
-          foundationFields
-        }
-        
-        if activeTab == EditorTabType.detail {
-          detailFields
+      ScrollView(.vertical, showsIndicators: false) {
+        VStack(spacing: 0) {
+          Group {
+            if activeTab == EditorTabType.foundation {
+              foundationFields
+            }
+            
+            if activeTab == EditorTabType.detail {
+              detailFields
+            }
+          }
+          Spacer()
         }
       }
+      .scrollBounceBehavior(.basedOnSize)
       .padding(.top, 20)
-      
-      Spacer()
       
       saveButton
     }
@@ -210,6 +214,7 @@ struct ItemEditor: View {
           .lineSpacing(4)
           .padding(8)
           .border(Color(UIColor.systemGray5), width: 1)
+          .frame(height: 200)
         
         if comment.isEmpty {
           Text("Description").foregroundStyle(.placeholder)
@@ -235,17 +240,15 @@ struct ItemEditor: View {
   
   @ViewBuilder
   private var saveButton: some View {
-    if focusField == nil {
-      Button(item == nil ? "Save" : "Save changes") {
-        if let _item = item {
-          update(item: _item)
-        } else {
-          create()
-        }
+    Button(item == nil ? "Save" : "Save changes") {
+      if let _item = item {
+        update(item: _item)
+      } else {
+        create()
       }
-      .buttonStyle(PrimaryButtonStyle())
-      .padding(.vertical, 10)
     }
+    .buttonStyle(PrimaryButtonStyle())
+    .padding(.vertical, 10)
   }
   
   private var editorTab: some View {
@@ -253,7 +256,7 @@ struct ItemEditor: View {
       ForEach(EditorTabType.allCases, id: \.self) { tab in
         Button { activeTab = tab } label: {
           VStack {
-              tab.text
+            tab.text
               .foregroundStyle(tab == activeTab ? .accentColor : Color.foregroundTertiary)
               .padding(4)
             Rectangle()
