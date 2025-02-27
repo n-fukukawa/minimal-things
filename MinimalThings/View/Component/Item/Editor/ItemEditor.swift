@@ -68,7 +68,7 @@ struct ItemEditor: View {
     }
     .padding()
     .onAppear {
-      onAppear()
+      setDefaultValue()
     }
     .alert("Error", isPresented: $showValidationAlert) {
     } message: {
@@ -91,7 +91,7 @@ struct ItemEditor: View {
     }
   }
   
-  private func onAppear() -> Void {
+  private func setDefaultValue() -> Void {
     if let _item = item {
       photoData = _item.photo
       name = _item.name
