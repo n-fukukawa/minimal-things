@@ -55,7 +55,14 @@
       }
     },
     "Camera" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラ"
+          }
+        }
+      }
     },
     "Cancel" : {
       "localizations" : {
