@@ -52,7 +52,7 @@ class PreviewModelContainer {
     ItemCategory(name: "バスルーム"),
     ItemCategory(name: "趣味"),
   ]
-
+  
   static let items: [Dictionary<String, Any?>] = [
     [
       "name": "急速充電ができるモバイルバッテリー",
@@ -82,6 +82,123 @@ class PreviewModelContainer {
     ],
     [
       "name": "電子ピアノ P-225",
+      "maker": "YAMAHA",
+      "comment": nil,
+      "purchaseDate": nil,
+      "price": Float(59800),
+      "url": "https://jp.yamaha.com/products/musical_instruments/pianos/p_series/p-225/index.html",
+      "categoryIndex": 1
+    ],
+    [
+      "name": "電子ピアノ P-525",
+      "maker": "YAMAHA",
+      "comment": nil,
+      "purchaseDate": nil,
+      "price": Float(59800),
+      "url": "https://jp.yamaha.com/products/musical_instruments/pianos/p_series/p-225/index.html",
+      "categoryIndex": 1
+    ],
+    [
+      "name": "電子ピアノ P-525",
+      "maker": "YAMAHA",
+      "comment": nil,
+      "purchaseDate": nil,
+      "price": Float(59800),
+      "url": "https://jp.yamaha.com/products/musical_instruments/pianos/p_series/p-225/index.html",
+      "categoryIndex": 1
+    ],
+    [
+      "name": "電子ピアノ P-525",
+      "maker": "YAMAHA",
+      "comment": nil,
+      "purchaseDate": nil,
+      "price": Float(59800),
+      "url": "https://jp.yamaha.com/products/musical_instruments/pianos/p_series/p-225/index.html",
+      "categoryIndex": 1
+    ],
+    [
+      "name": "電子ピアノ P-525",
+      "maker": "YAMAHA",
+      "comment": nil,
+      "purchaseDate": nil,
+      "price": Float(59800),
+      "url": "https://jp.yamaha.com/products/musical_instruments/pianos/p_series/p-225/index.html",
+      "categoryIndex": 1
+    ],
+    [
+      "name": "電子ピアノ P-525",
+      "maker": "YAMAHA",
+      "comment": nil,
+      "purchaseDate": nil,
+      "price": Float(59800),
+      "url": "https://jp.yamaha.com/products/musical_instruments/pianos/p_series/p-225/index.html",
+      "categoryIndex": 1
+    ],
+    [
+      "name": "電子ピアノ P-525",
+      "maker": "YAMAHA",
+      "comment": nil,
+      "purchaseDate": nil,
+      "price": Float(59800),
+      "url": "https://jp.yamaha.com/products/musical_instruments/pianos/p_series/p-225/index.html",
+      "categoryIndex": 1
+    ],
+    [
+      "name": "電子ピアノ P-525",
+      "maker": "YAMAHA",
+      "comment": nil,
+      "purchaseDate": nil,
+      "price": Float(59800),
+      "url": "https://jp.yamaha.com/products/musical_instruments/pianos/p_series/p-225/index.html",
+      "categoryIndex": 1
+    ],
+    [
+      "name": "電子ピアノ P-525",
+      "maker": "YAMAHA",
+      "comment": nil,
+      "purchaseDate": nil,
+      "price": Float(59800),
+      "url": "https://jp.yamaha.com/products/musical_instruments/pianos/p_series/p-225/index.html",
+      "categoryIndex": 1
+    ],
+    [
+      "name": "電子ピアノ P-525",
+      "maker": "YAMAHA",
+      "comment": nil,
+      "purchaseDate": nil,
+      "price": Float(59800),
+      "url": "https://jp.yamaha.com/products/musical_instruments/pianos/p_series/p-225/index.html",
+      "categoryIndex": 1
+    ],
+    [
+      "name": "電子ピアノ P-525",
+      "maker": "YAMAHA",
+      "comment": nil,
+      "purchaseDate": nil,
+      "price": Float(59800),
+      "url": "https://jp.yamaha.com/products/musical_instruments/pianos/p_series/p-225/index.html",
+      "categoryIndex": 1
+    ],
+    [
+      "name": "電子ピアノ P-525",
+      "maker": "YAMAHA",
+      "comment": nil,
+      "purchaseDate": nil,
+      "price": Float(59800),
+      "url": "https://jp.yamaha.com/products/musical_instruments/pianos/p_series/p-225/index.html",
+      "categoryIndex": 1
+    ],
+    [
+      "name": "電子ピアノ P-525",
+      "maker": "YAMAHA",
+      "comment": nil,
+      "purchaseDate": nil,
+      "price": Float(59800),
+      "url": "https://jp.yamaha.com/products/musical_instruments/pianos/p_series/p-225/index.html",
+      "categoryIndex": 1
+    ],
+    [
+      "name": "電子ピアノ P-525",
       "maker": "YAMAHA",
       "comment": nil,
       "purchaseDate": nil,

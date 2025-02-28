@@ -11,16 +11,15 @@ import SwiftData
 struct CategoryCard: View {
   @Namespace var namespace
   @Environment(\.dismiss) var dismiss
-  @Query var items: [Item]
   
   let category: ItemCategory?
+  let items: [Item]
   let detail: Bool
   
-  init(category: ItemCategory?, detail: Bool = false) {
+  init(category: ItemCategory?, items: [Item], detail: Bool = false) {
     self.category = category
+    self.items = items.sorted{ $0.sortOrder < $1.sortOrder }
     self.detail = detail
-    let predicate = Item.fetchByCategory(category: category)
-    _items = Query(filter: predicate, sort: \.sortOrder, order: .forward)
   }
   
   var body: some View {
@@ -151,7 +150,7 @@ struct CategoryCard: View {
 
 #Preview {
   return (
-    CategoryCard(category: nil)
+    CategoryCard(category: nil, items: [])
       .modelContainer(PreviewModelContainer.container)
       .frame(width: 200, height: 300)
   )
@@ -159,7 +158,7 @@ struct CategoryCard: View {
 
 #Preview {
   return (
-    CategoryCard(category: nil, detail: true)
+    CategoryCard(category: nil, items: [], detail: true)
       .modelContainer(PreviewModelContainer.container)
   )
 }

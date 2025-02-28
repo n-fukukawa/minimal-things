@@ -22,7 +22,6 @@ let CARD_HEIGHT = CARD_WIDTH * 1.5
 let CRITICAL_DRAGX = CARD_WIDTH * 4 / 3
 
 struct HomeCategoryList: View {
-  @Namespace var namespace
   @Environment(\.modelContext) var modelContext
   @Query(sort: \ItemCategory.sortOrder) var categories: [ItemCategory]
   @Query var nonCategoryItems: [Item]
@@ -97,7 +96,8 @@ struct HomeCategoryList: View {
     }
     
     func categoryCard(category: ItemCategory?, index: Int, isActive: Bool) -> some View {
-      CategoryCard(category: category)
+      let items = category?.items ?? nonCategoryItems
+      return CategoryCard(category: category, items: items)
         .frame(width: CARD_WIDTH, height: CARD_HEIGHT)
         .scaleEffect(getScale(index: index, isActive: isActive))
         .rotationEffect(.degrees(getAngle(index: index, isActive: isActive)))
@@ -114,13 +114,12 @@ struct HomeCategoryList: View {
       ForEach(0..<categories.count, id: \.self) { index in
         let category = categories[index]
         let isActive = activeIndex == index
+        let items = category.items
         
         NavigationLink {
-          CategoryCard(category: category, detail: true)
-            .navigationTransition(.zoom(sourceID: category.uuid.uuidString, in: namespace))
+          CategoryCard(category: category, items: items, detail: true)
         } label: {
           categoryCard(category: category, index: index, isActive: isActive)
-            .matchedTransitionSource(id: category.uuid.uuidString, in: namespace)
         }
         // ドラッグ時にカードの透明度が変わらないようにする
         .buttonStyle(FlatLinkStyle())
@@ -131,11 +130,9 @@ struct HomeCategoryList: View {
         let isActive = activeIndex == index
         
         NavigationLink {
-          CategoryCard(category: nil, detail: true)
-            .navigationTransition(.zoom(sourceID: "non-category", in: namespace))
+          CategoryCard(category: nil, items: nonCategoryItems, detail: true)
         } label: {
           categoryCard(category: nil, index: index, isActive: isActive)
-            .matchedTransitionSource(id: "non-category", in: namespace)
         }
         // ドラッグ時にカードの透明度が変わらないようにする
         .buttonStyle(FlatLinkStyle())
