@@ -33,8 +33,6 @@ struct PhotoPicker: View {
               photoDataState = UIImage(data: data)?
                 .preparingThumbnail(of: CGSize(width: 1000, height: 1000))?
                 .jpegData(compressionQuality: 0.5)
-              let byte = [UInt8](photoDataState!)
-              print(Float(byte.count) / 1000 / 1000)
             }
           }
       }
