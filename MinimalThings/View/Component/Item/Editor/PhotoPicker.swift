@@ -30,7 +30,11 @@ struct PhotoPicker: View {
           .photosPickerAccessoryVisibility(.hidden, edges: .all)
           .task(id: photosPickerItem) {
             if let data = try? await photosPickerItem?.loadTransferable(type: Data.self) {
-              photoDataState = data
+              photoDataState = UIImage(data: data)?
+                .preparingThumbnail(of: CGSize(width: 1000, height: 1000))?
+                .jpegData(compressionQuality: 0.5)
+              let byte = [UInt8](photoDataState!)
+              print(Float(byte.count) / 1000 / 1000)
             }
           }
       }
@@ -38,7 +42,9 @@ struct PhotoPicker: View {
       Tab("Camera", systemImage: "camera") {
         CameraPicker(
           onAfterPick: {
-            photoData = cameraImage?.jpegData(compressionQuality: 1.0)
+            photoData = cameraImage?
+              .preparingThumbnail(of: CGSize(width: 1000, height: 1000))?
+              .jpegData(compressionQuality: 0.5)
             dismiss()
           },
           image: $cameraImage)
