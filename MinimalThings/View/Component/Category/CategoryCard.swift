@@ -30,7 +30,6 @@ struct CategoryCard: View {
           .navigationBarBackButtonHidden()
         
         BannerContentView()
-          .frame(maxHeight: 80)
       }
     } else {
       content
@@ -61,8 +60,8 @@ struct CategoryCard: View {
             .padding(.horizontal, frame.maxX * 0.1)
           }
         }
-        .padding(.vertical, detail ? frame.maxX * 0.08 : frame.maxX * 0.1)
-        .padding(.top, detail ? 45 : 0)
+        .padding(.top, detail ? 75 : frame.maxX * 0.1)
+        .padding(.bottom, detail ? 0 : frame.maxX * 0.1)
       }
     }
   }
@@ -136,8 +135,9 @@ struct CategoryCard: View {
               }
             }
           }
+          .padding(.vertical)
         }
-        .padding()
+        .padding(.horizontal)
         
         if items.isEmpty {
           Text("No items yet.")

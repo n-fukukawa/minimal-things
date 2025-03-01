@@ -11,12 +11,12 @@ struct BannerContentView: View {
         Rectangle()
           .fill(.backgroundPrimary)
         VStack {
-          Spacer()
           BannerViewContainer(adSize)
             .frame(height: adSize.size.height)
         }
       }
     }
+    .frame(maxHeight: 50)
     // [END add_banner_to_view]
   }
 }

@@ -27,7 +27,6 @@ struct HomeView: View {
         header
         HomeCategoryList()
         BannerContentView()
-          .frame(maxHeight: 80)
       }
     }
   }

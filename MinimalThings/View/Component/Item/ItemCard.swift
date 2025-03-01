@@ -41,7 +41,6 @@ struct ItemCard: View {
             }
           
           BannerContentView()
-            .frame(maxHeight: 80)
         }
       }
     } else {
