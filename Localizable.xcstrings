@@ -513,6 +513,7 @@
       }
     },
     "Successfully updated." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {

@@ -35,8 +35,10 @@ final class Snackbar: ObservableObject {
   func close(duration: Double) {
     Task {
       sleep(3)
-      withAnimation {
-        self.close()
+      await MainActor.run {
+        withAnimation {
+          self.close()
+        }
       }
     }
   }
@@ -45,6 +47,7 @@ final class Snackbar: ObservableObject {
     self.show = false
     self.message = ""
   }
+  
 }
 
 extension Snackbar {
