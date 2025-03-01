@@ -16,6 +16,8 @@ struct CategoryCard: View {
   let items: [Item]
   let detail: Bool
   
+  @State private var isEditorPresented: Bool = false
+  
   init(category: ItemCategory?, items: [Item], detail: Bool = false) {
     self.category = category
     self.items = items.sorted{ $0.sortOrder < $1.sortOrder }
@@ -71,7 +73,10 @@ struct CategoryCard: View {
       if detail { backButton }
       headerTitle
       Spacer()
-      if detail { sortButton }
+      if detail {
+        addButton
+        sortButton
+      }
     }
   }
   
@@ -101,6 +106,21 @@ struct CategoryCard: View {
     }
   }
   
+  private var addButton: some View {
+    Button {
+      isEditorPresented.toggle()
+    } label: {
+      Image(systemName: "plus")
+        .font(.title3)
+        .tint(.foregroundSecondary)
+    }
+    .sheet(isPresented: $isEditorPresented) {
+      NavigationStack {
+        ItemEditor(defaultCategory: category)
+      }
+    }
+  }
+  
   private var sortButton: some View {
     NavigationLink {
       ItemListSorter(items: items)
@@ -108,6 +128,7 @@ struct CategoryCard: View {
       Image(systemName: "arrow.up.arrow.down")
         .tint(.foregroundSecondary)
     }
+    .disabled(items.count == 0)
   }
   
   private var itemList: some View {
@@ -140,8 +161,22 @@ struct CategoryCard: View {
         .padding(.horizontal)
         
         if items.isEmpty {
-          Text("No items yet.")
-            .foregroundStyle(.buttonNormal)
+          VStack(spacing: 15) {
+            Text("No items yet.")
+              .foregroundStyle(.buttonNormal)
+            Button { isEditorPresented.toggle() }
+            label: {
+              Label(
+                title: { Text("Add item") },
+                icon: { Image(systemName: "plus") }
+              )
+              .padding(.vertical, 5)
+              .padding(.horizontal, 15)
+              .background(Color.buttonNormal)
+              .foregroundStyle(.buttonForeground)
+              .clipShape(RoundedRectangle(cornerRadius: 3))
+            }
+          }
         }
       }
     }
