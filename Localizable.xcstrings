@@ -35,7 +35,14 @@
       }
     },
     "Add item" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "追加"
+          }
+        }
+      }
     },
     "Album" : {
       "localizations" : {
