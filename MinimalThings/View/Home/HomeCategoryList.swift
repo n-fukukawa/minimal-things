@@ -21,12 +21,20 @@ let CARD_HEIGHT = CARD_WIDTH * 1.5
 
 let CRITICAL_DRAGX = CARD_WIDTH * 4 / 3
 
+// show interstitial ads when screen displayed 15 times
+let INTERSTITIAL_FREQUENCY = 15
+
 struct HomeCategoryList: View {
   @Environment(\.modelContext) var modelContext
   @Query(sort: \ItemCategory.sortOrder) var categories: [ItemCategory]
+  @Query var items: [Item]
   @Query var nonCategoryItems: [Item]
   @State var activeIndex: Int = 0
   @State var dragX: CGFloat = 0
+  
+  @State private var displayedCount: Int = 0
+  
+  let interstitialViewModel = InterstitialViewModel()
   
   init() {
     let predicate = Item.fetchByCategory(category: nil)
@@ -110,6 +118,15 @@ struct HomeCategoryList: View {
     return ZStack {
       Rectangle()
         .fill(.backgroundPrimary)
+        .onAppear {
+          if displayedCount % INTERSTITIAL_FREQUENCY == 1 {
+            interstitialViewModel.showAd()
+            Task {
+              await interstitialViewModel.loadAd()
+            }
+          }
+          displayedCount += 1
+        }
       
       ForEach(0..<categories.count, id: \.self) { index in
         let category = categories[index]
@@ -158,6 +175,11 @@ struct HomeCategoryList: View {
     )
     .onChange(of: categories) {
       activeIndex = 0
+    }
+    .onAppear {
+      Task {
+        await interstitialViewModel.loadAd()
+      }
     }
   }
 }
