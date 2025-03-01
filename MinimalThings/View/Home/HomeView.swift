@@ -71,4 +71,5 @@ struct HomeView: View {
 #Preview {
   HomeView()
     .modelContainer(PreviewModelContainer.container)
+    .environmentObject(Snackbar())
 }

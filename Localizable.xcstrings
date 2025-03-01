@@ -492,6 +492,36 @@
         }
       }
     },
+    "Successfully deleted." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "削除しました"
+          }
+        }
+      }
+    },
+    "Successfully saved." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存しました"
+          }
+        }
+      }
+    },
+    "Successfully updated." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上書き保存しました"
+          }
+        }
+      }
+    },
     "Today" : {
       "localizations" : {
         "ja" : {

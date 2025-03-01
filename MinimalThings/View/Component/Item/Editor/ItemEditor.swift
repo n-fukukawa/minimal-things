@@ -16,6 +16,8 @@ struct ItemEditor: View {
   let item: Item?
   let defaultCategory: ItemCategory?
   
+  @EnvironmentObject var snackbar: Snackbar
+  
   @State private var activeTab = EditorTabType.foundation
   
   @State private var photoData: Data? = nil
@@ -134,6 +136,7 @@ struct ItemEditor: View {
       
       modelContext.insert(newItem)
       
+      snackbar.success(message: String(localized: "Successfully saved."))
       dismiss()
     }
   }
@@ -150,6 +153,7 @@ struct ItemEditor: View {
       item.url = url.isEmpty ? nil : url
       item.updatedAt = Date()
       
+      snackbar.success(message: String(localized: "Successfully updated."))
       dismiss()
     }
   }

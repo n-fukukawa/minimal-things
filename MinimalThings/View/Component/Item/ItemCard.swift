@@ -11,6 +11,8 @@ import SwiftData
 struct ItemCard: View {
   @Environment(\.modelContext) var modelContext
   @Environment(\.dismiss) var dismiss
+  @EnvironmentObject var snackbar: Snackbar
+  
   var item: Item
   var detail: Bool
   
@@ -184,6 +186,7 @@ struct ItemCard: View {
       .confirmationDialog("", isPresented: $showDeleteDialog) {
         Button("Delete", role: .destructive) {
           modelContext.delete(item)
+          snackbar.success(message: String(localized: "Successfully deleted."))
           dismiss()
         }
         Button("Cancel", role: .cancel) {}

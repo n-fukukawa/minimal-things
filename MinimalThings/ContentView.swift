@@ -13,10 +13,16 @@ struct ContentView: View {
   @Query private var categories: [ItemCategory]
   @Query private var items: [Item]
   
+  @StateObject var snackbar = Snackbar()
+  
   var body: some View {
-    NavigationStack {
-      HomeView()
+    ZStack {
+      NavigationStack {
+        HomeView()
+      }
+      SnackbarView()
     }
+    .environmentObject(snackbar)
   }
 }
 
