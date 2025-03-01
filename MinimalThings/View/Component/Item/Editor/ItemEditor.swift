@@ -63,18 +63,20 @@ struct ItemEditor: View {
             }
           }
           Spacer()
+          saveButton
         }
       }
       .scrollBounceBehavior(.basedOnSize)
-      .padding(.top, 20)
-      
-      saveButton
+      .padding(.top, 15)
     }
     .padding()
     .onAppear {
       setDefaultValue()
     }
     .alert("Error", isPresented: $showValidationAlert) {
+      Button("OK") {
+        activeTab = .foundation
+      }
     } message: {
       Text(validationMessages.joined(separator: "\n"))
     }
@@ -186,12 +188,19 @@ struct ItemEditor: View {
         ItemEditorPhotoField(photoData: $photoData)
         Spacer()
       }
+      .padding(.top, 1)
       
       CustomTextField(label: String(localized: "Item name"), text: $name)
         .focused($focusField, equals: .name)
+        .onTapGesture { // 余白をタップした場合にもフォーカスが当たるようにする
+          focusField = .name
+        }
       
       CustomTextField(label: String(localized: "Manufacturer / Brand"), text: $maker)
         .focused($focusField, equals: .maker)
+        .onTapGesture {
+          focusField = .maker
+        }
       
       HStack(spacing: 15) {
         Picker("Category", selection: $category) {
@@ -229,6 +238,9 @@ struct ItemEditor: View {
             .padding()
         }
       }
+      .onTapGesture {
+        focusField = .comment
+      }
     }
   }
   
@@ -238,11 +250,17 @@ struct ItemEditor: View {
       
       CustomTextField(label: String(localized: "Price"), text: $price)
         .focused($focusField, equals: .name)
-        .keyboardType(.numberPad)
+        .keyboardType(.decimalPad)
+        .onTapGesture {
+          focusField = .price
+        }
       
       CustomTextField(label: "URL", text: $url)
         .focused($focusField, equals: .name)
         .keyboardType(.URL)
+        .onTapGesture {
+          focusField = .url
+        }
     }
   }
   

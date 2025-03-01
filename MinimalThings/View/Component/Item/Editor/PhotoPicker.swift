@@ -43,7 +43,6 @@ struct PhotoPicker: View {
             photoData = cameraImage?
               .preparingThumbnail(of: CGSize(width: 1000, height: 1000))?
               .jpegData(compressionQuality: 0.5)
-            dismiss()
           },
           image: $cameraImage)
       }

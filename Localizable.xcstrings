@@ -410,6 +410,9 @@
         }
       }
     },
+    "OK" : {
+
+    },
     "Please enter item name." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -513,7 +516,6 @@
       }
     },
     "Successfully updated." : {
-      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {

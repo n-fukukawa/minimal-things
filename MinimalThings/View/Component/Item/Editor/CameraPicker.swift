@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CameraPicker: View {
+  @Environment(\.dismiss) var dismiss
   let onAfterPick: () -> Void
   @Binding var image: UIImage?
   @State private var showCamera = true
@@ -24,6 +25,11 @@ struct CameraPicker: View {
     .onChange(of: image) { _, newValue in
       if newValue != nil {
         onAfterPick()
+      }
+    }
+    .onChange(of: showCamera) { _, newValue in
+      if !newValue {
+        dismiss()
       }
     }
   }

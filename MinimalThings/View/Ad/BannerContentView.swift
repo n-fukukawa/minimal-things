@@ -4,19 +4,22 @@ import SwiftUI
 struct BannerContentView: View {
   // [START add_banner_to_view]
   var body: some View {
-    GeometryReader { geometry in
-      let adSize = currentOrientationAnchoredAdaptiveBanner(width: geometry.size.width)
-
-      ZStack {
-        Rectangle()
-          .fill(.backgroundPrimary)
-        VStack {
-          BannerViewContainer(adSize)
-            .frame(height: adSize.size.height)
-        }
-      }
-    }
-    .frame(maxHeight: 50)
+    Rectangle()
+      .fill(.clear)
+      .frame(height: 50)
+//    GeometryReader { geometry in
+//      let adSize = currentOrientationAnchoredAdaptiveBanner(width: geometry.size.width)
+//
+//      ZStack {
+//        Rectangle()
+//          .fill(.backgroundPrimary)
+//        VStack {
+//          BannerViewContainer(adSize)
+//            .frame(height: adSize.size.height)
+//        }
+//      }
+//    }
+//    .frame(maxHeight: 50)
     // [END add_banner_to_view]
   }
 }
