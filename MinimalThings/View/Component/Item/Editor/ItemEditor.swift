@@ -14,6 +14,7 @@ struct ItemEditor: View {
   @Environment(\.modelContext) var modelContext
   @Query(sort: \ItemCategory.sortOrder) var categories: [ItemCategory]
   let item: Item?
+  let defaultCategory: ItemCategory?
   
   @State private var activeTab = EditorTabType.foundation
   
@@ -39,8 +40,9 @@ struct ItemEditor: View {
   @State private var showValidationAlert: Bool = false
   @State private var validationMessages: [String] = []
   
-  init(item: Item? = nil) {
+  init(item: Item? = nil, defaultCategory: ItemCategory? = nil) {
     self.item = item
+    self.defaultCategory = defaultCategory
   }
   
   var body: some View {
@@ -105,6 +107,8 @@ struct ItemEditor: View {
         price = ""
       }
       url = _item.url ?? ""
+    } else {
+      category = defaultCategory
     }
   }
   

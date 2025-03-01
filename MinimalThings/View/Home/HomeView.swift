@@ -12,10 +12,10 @@ let SCREEN_MAXX = UIScreen.main.bounds.width
 let SCREEN_MIDX = UIScreen.main.bounds.width / 2
 
 struct HomeView: View {
-  @Query var categories: [ItemCategory]
-  @Query var items: [Item]
+  @Query(sort: \ItemCategory.sortOrder) var categories: [ItemCategory]
   
   @State private var isItemEditorPresented: Bool = false
+  @State private var activeCategoryIndex: Int = 0
   
   var body: some View {
     ZStack {
@@ -25,7 +25,10 @@ struct HomeView: View {
       
       VStack(spacing: 0) {
         header
-        HomeCategoryList()
+        HomeCategoryList(
+          categories: categories,
+          activeCategoryIndex: $activeCategoryIndex
+        )
         BannerContentView()
       }
     }
@@ -47,7 +50,7 @@ struct HomeView: View {
       }
       .sheet(isPresented: $isItemEditorPresented) {
         NavigationStack {
-          ItemEditor()
+          ItemEditor(defaultCategory: categories[safe: activeCategoryIndex] )
         }
       }
       

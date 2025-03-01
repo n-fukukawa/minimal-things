@@ -26,19 +26,21 @@ let INTERSTITIAL_FREQUENCY = 15
 
 struct HomeCategoryList: View {
   @Environment(\.modelContext) var modelContext
-  @Query(sort: \ItemCategory.sortOrder) var categories: [ItemCategory]
-  @Query var items: [Item]
   @Query var nonCategoryItems: [Item]
+  
+  let categories: [ItemCategory]
+  @Binding private var activeCategoryIndex: Int
   @State var activeIndex: Int = 0
   @State var dragX: CGFloat = 0
-  
   @State private var displayedCount: Int = 0
   
   let interstitialViewModel = InterstitialViewModel()
   
-  init() {
+  init(categories: [ItemCategory], activeCategoryIndex: Binding<Int>) {
+    self.categories = categories
     let predicate = Item.fetchByCategory(category: nil)
     _nonCategoryItems = Query(filter: predicate)
+    _activeCategoryIndex = activeCategoryIndex
   }
   
   var body: some View {
@@ -171,11 +173,9 @@ struct HomeCategoryList: View {
             activeIndex = min(activeIndex + moveIndex, maxIndex)
           }
           dragX = 0
+          activeCategoryIndex = activeIndex
         }
     )
-    .onChange(of: categories) {
-      activeIndex = 0
-    }
     .onAppear {
       Task {
         await interstitialViewModel.loadAd()
@@ -185,6 +185,7 @@ struct HomeCategoryList: View {
 }
 
 #Preview {
-  HomeCategoryList()
+  @Previewable @Query var categories: [ItemCategory]
+  return HomeCategoryList(categories: categories, activeCategoryIndex: .constant(0))
     .modelContainer(PreviewModelContainer.container)
 }
