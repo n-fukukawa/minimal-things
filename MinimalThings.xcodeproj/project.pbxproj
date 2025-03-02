@@ -204,6 +204,7 @@
 				5532DE362D52CFD80079E80B /* Model */,
 				552ACBF22D44CE490055BA9A /* MinimalThingsApp.swift */,
 				552ACBF42D44CE490055BA9A /* ContentView.swift */,
+				55E8C9662D61E3DD00631966 /* PreviewModelContainer.swift */,
 				552ACBF82D44CE4A0055BA9A /* Assets.xcassets */,
 				552ACBFA2D44CE4A0055BA9A /* Preview Content */,
 			);
@@ -214,7 +215,6 @@
 			isa = PBXGroup;
 			children = (
 				552ACBFB2D44CE4A0055BA9A /* Preview Assets.xcassets */,
-				55E8C9662D61E3DD00631966 /* PreviewModelContainer.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
