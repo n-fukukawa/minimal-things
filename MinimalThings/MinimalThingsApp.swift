@@ -62,7 +62,7 @@ let defaultCategories: [ItemCategory] = [
   ItemCategory(name: String(localized: "category:Clothing")),
   ItemCategory(name: String(localized: "category:Kitchen")),
   ItemCategory(name: String(localized: "category:Furniture")),
-  ItemCategory(name: String(localized: "category:Consumer electronics")),
+  ItemCategory(name: String(localized: "category:Appliances")),
   ItemCategory(name: String(localized: "category:Gadgets")),
   ItemCategory(name: String(localized: "category:Bedclothes")),
   ItemCategory(name: String(localized: "category:Bathroom")),

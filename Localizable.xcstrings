@@ -104,6 +104,22 @@
         }
       }
     },
+    "category:Appliances" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appliances"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "家電"
+          }
+        }
+      }
+    },
     "category:Bathroom" : {
       "localizations" : {
         "en" : {
@@ -148,22 +164,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "クローゼット"
-          }
-        }
-      }
-    },
-    "category:Consumer electronics" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Consumer electronics"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "家電"
           }
         }
       }
