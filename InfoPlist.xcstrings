@@ -31,13 +31,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The camera is used to take pictures of your belongings."
+            "value" : "The camera is used to take pictures of your belongings.The captured image will only be used within this app and will not be sent outside."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "持ち物の写真を撮影してアプリに保存するためにカメラを使用します"
+            "value" : "持ち物の写真を撮影してアプリに保存するためにカメラを使用します。撮影した画像はこのアプリ内でのみ使用され、外部には送信されません。"
           }
         }
       }
