@@ -10,6 +10,7 @@
 		3E582F42EA3251132C216781 /* Pods_MinimalThings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A324EA6D2AC6436928BA9E /* Pods_MinimalThings.framework */; };
 		42F1FF17DDDE38F70ECAFF38 /* Pods_MinimalThingsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AB0D79F9D6E5E692ADB07E1 /* Pods_MinimalThingsTests.framework */; };
 		5507F3622D6539ED007CA17B /* FlatLinkStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5507F3612D6539ED007CA17B /* FlatLinkStyle.swift */; };
+		5510C5B62D82BC2900D04B95 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5510C5B52D82B3B600D04B95 /* InfoPlist.xcstrings */; };
 		552ACBF32D44CE490055BA9A /* MinimalThingsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552ACBF22D44CE490055BA9A /* MinimalThingsApp.swift */; };
 		552ACBF52D44CE490055BA9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552ACBF42D44CE490055BA9A /* ContentView.swift */; };
 		552ACBF92D44CE4A0055BA9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 552ACBF82D44CE4A0055BA9A /* Assets.xcassets */; };
@@ -476,6 +477,7 @@
 			files = (
 				552ACBFC2D44CE4A0055BA9A /* Preview Assets.xcassets in Resources */,
 				552ACBF92D44CE4A0055BA9A /* Assets.xcassets in Resources */,
+				5510C5B62D82BC2900D04B95 /* InfoPlist.xcstrings in Resources */,
 				552EC9332D6D7B6D000150BF /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
