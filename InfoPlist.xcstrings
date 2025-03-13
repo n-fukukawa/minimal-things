@@ -1,0 +1,23 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "NSCameraUsageDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The camera is used to take pictures of your belongings."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "持ち物の写真を撮影してアプリに保存するためにカメラを使用します"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
