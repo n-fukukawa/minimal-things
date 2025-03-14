@@ -8,26 +8,34 @@
 import SwiftUI
 import SwiftData
 import GoogleMobileAds
-
-class AppDelegate: UIResponder, UIApplicationDelegate {
-  func application(_ application: UIApplication,
-                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    
-    MobileAds.shared.start(completionHandler: nil)
-    
-    return true
-  }
-}
+import AppTrackingTransparency
+import AdSupport
 
 @main
 struct MinimalThingsApp: App {
-  @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-  
   var body: some Scene {
     WindowGroup {
       ContentView()
+        .onAppear {
+          DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            TrackingManager.requestTrackingPermission()
+            MobileAds.shared.start(completionHandler: nil)
+          }
+        }
     }
     .modelContainer(sharedModelContainer)
+  }
+}
+
+class TrackingManager {
+  static func requestTrackingPermission() {
+    if #available(iOS 14, *) {
+      if ATTrackingManager.trackingAuthorizationStatus == .notDetermined {
+        ATTrackingManager.requestTrackingAuthorization { status in
+          //
+        }
+      }
+    }
   }
 }
 

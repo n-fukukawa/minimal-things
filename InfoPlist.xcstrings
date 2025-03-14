@@ -41,6 +41,23 @@
           }
         }
       }
+    },
+    "NSUserTrackingUsageDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "By allowing tracking, you will see ads that are more relevant to you. This does not grant access to your personal information."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "許可すると、あなたに合った広告が表示されやすくなります。これによる個人情報へのアクセスはありません。"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

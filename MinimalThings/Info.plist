@@ -4,6 +4,10 @@
 <dict>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-3940256099942544~1458002511</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>By allowing tracking, you will see ads that are more relevant to you. This does not grant access to your personal information.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>The camera is used to take pictures of your belongings.The captured image will only be used within this app and will not be sent outside.</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>
